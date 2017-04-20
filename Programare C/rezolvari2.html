@@ -1,0 +1,492 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>~/Desktop/working/pc-materiale/Rezolvari/2010_2011/lab2/rezolvari2p01.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/Desktop/working/pc-materiale/Rezolvari/2010_2011/lab2/rezolvari2p02.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/Desktop/working/pc-materiale/Rezolvari/2010_2011/lab2/rezolvari2p03.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/Desktop/working/pc-materiale/Rezolvari/2010_2011/lab2/rezolvari2p04.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/Desktop/working/pc-materiale/Rezolvari/2010_2011/lab2/rezolvari2p05.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/Desktop/working/pc-materiale/Rezolvari/2010_2011/lab2/rezolvari2p06.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/Desktop/working/pc-materiale/Rezolvari/2010_2011/lab2/rezolvari2p07.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/Desktop/working/pc-materiale/Rezolvari/2010_2011/lab2/rezolvari2p08.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/Desktop/working/pc-materiale/Rezolvari/2010_2011/lab2/rezolvari2p09-10.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"></head><body bgcolor="#ffffff" text="#000000">Pentru fisierele sursa cu rezolvarile, verificati arhiva.
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><br>
+<font color="#0000c0">&nbsp;* Problema 1</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#0000c0">// Pentru functiile pe care le vom folosi in program, trebuie sa</font><br>
+<font color="#0000c0">//&nbsp;&nbsp;includem biblioteci suplimentare astfel:</font><br>
+<font color="#0000c0">//&nbsp;&nbsp;&nbsp;&nbsp; 1) pentru a putea folosi functia printf() vom include:</font><br>
+<font color="#c000c0"># include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<font color="#0000c0">//&nbsp;&nbsp;&nbsp;&nbsp; 2) pentru a putea folosi functiile srand() si rand() vom include:</font><br>
+<font color="#c000c0"># include </font><font color="#c00000">&lt;stdlib.h&gt;</font><br>
+<br>
+<font color="#008000">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Atentie!! In ANSI C, declaratiile de variabile nu se pot face in</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;interiorul buclelor (de exemplu, la bulca "for").</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;i;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Trebuie sa initializam generatorul de numere aleatoare cu o valoare.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Am ales in acest exemplu ca acea valoare sa fie "0". De obicei, in</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;practica se foloseste timpul local in secunde (ca sa fie diferit de</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;la o rulare la alta)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;srand(<font color="#c00000">0</font>);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>&nbsp;(i = <font color="#c00000">0</font>; i &lt; <font color="#c00000">5</font>; i++) {<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Pentru a trece pe linia urmatoare, afisam caracterul "\n",</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;care se numeste "newline", din motive evidente. </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Observatie: functia printf() returneaza valori, deci putem</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;sa afisam efectiv rezultatul intors de apelul functiei </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;rand(), fara sa folosim variabile auxiliare.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c00000">&nbsp;</font><font color="#c000c0">%d</font><font color="#c00000">&nbsp;</font><font color="#c000c0">%d</font><font color="#c000c0">\n</font><font color="#c00000">"</font>, rand(), rand(), rand());<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Orice program care are functia main de tipul &lt;int&gt; si a carui</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;executie se incheie fara erori trebuie sa intoarca valoarea "0",</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;prin conventie. (motivul il veti afla mai tarziu la USO)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><br>
+<font color="#0000c0">&nbsp;* Problema 2</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#0000c0">// Includem biblioteca &lt;stdio.h&gt; pentru a avea functiile scanf() si printf()</font><br>
+<font color="#c000c0"># include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<br>
+<font color="#008000">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">float</font>&nbsp;a, b, c;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Atentie! In stringurile de format pe care le primeste scanf() nu</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;trebuie - in marea majoritate a cazurilor - sa introduceti altceva</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;in afara de specificatorii de format (ca de exemplu, spatii). </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// De asemenea, numele variabilelor ce vor fi citite trebuie precedat de</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;caracterul "&amp;" - numit si "ampersand".</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#c00000">"</font><font color="#c000c0">%e%f%g</font><font color="#c00000">"</font>, &amp;a, &amp;b, &amp;c);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Prin comparatie, stringul de format primit de printf() poate contine</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;orice caractere, si doar specificatorii de format vor fi inlocuiti,</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;in ordinea in care sunt intalniti, cu valorile variabilelor din</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;lista care urmeaza.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">%e</font><font color="#c00000">&nbsp;</font><font color="#c000c0">%f</font><font color="#c00000">&nbsp;</font><font color="#c000c0">%g</font><font color="#c000c0">\n</font><font color="#c00000">"</font>, a, b, c);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Nu uitati sa intoarceti valoarea "0" la iesirea din functia main()!</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><br>
+<font color="#0000c0">&nbsp;* Problema 3</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#0000c0">// Pentru a avea functiile printf() si scanf():</font><br>
+<font color="#c000c0"># include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<font color="#0000c0">// Pentru a avea functiile sin() si cos(), si valoarea lui "pi":</font><br>
+<font color="#c000c0"># include </font><font color="#c00000">&lt;math.h&gt;</font><br>
+<br>
+<font color="#008000">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Valoarea constantei "pi" este data - pana la o anumita precizie - in</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;macrodefinitia M_PI din biblioteca &lt;math.h&gt;</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">double</font>&nbsp;x, PI = <font color="#c00000">M_PI</font>;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Pentru a afisa un tabel, vom afisa datele linie cu linie, avand grija</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;ca ele sa fie aliniate unele sub altele astfel incat sa cream</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;impresia vizuala a unui tabel. Aceeasi conventie o va respecta si</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;capul de tabel.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"&nbsp;&nbsp; x&nbsp;&nbsp;&nbsp;&nbsp; sin(x)&nbsp;&nbsp; cos(x)</font><font color="#c000c0">\n</font><font color="#c00000">"</font>&nbsp;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>(x = <font color="#c00000">0</font>; x &lt;= <font color="#c00000">2</font>&nbsp;* PI; x = x + PI / <font color="#c00000">20</font>) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Pentru semnificatia specificatorilor de format, recapitulati</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;din laborator/curs partea teoretica de la afisare.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf( <font color="#c00000">"</font><font color="#c000c0">%+2.3lf</font><font color="#c00000">&nbsp;&nbsp; </font><font color="#c000c0">%+2.3lf</font><font color="#c00000">&nbsp;&nbsp; </font><font color="#c000c0">%+2.3lf</font><font color="#c000c0">\n</font><font color="#c00000">"</font>, x, sin(x), cos(x));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Pentru ca functia main() s-a incheiat cu succes:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><br>
+<font color="#0000c0">&nbsp;* Problema 4</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#c000c0"># include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<br>
+<font color="#008000">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">float</font>&nbsp;x, y;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#c00000">"</font><font color="#c000c0">%f%f</font><font color="#c00000">"</font>, &amp;x, &amp;y);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Verificam intai daca nu cummva punctul este pe una din axe:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(x == <font color="#c00000">0</font>&nbsp;|| y == <font color="#c00000">0</font>) {<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Daca e pe axe, atunci afisam mesajul si am terminat:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"Punct pe axe"</font>);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <font color="#804000">else</font>&nbsp;{<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// In acest moment stim SIGUR ca nu este pe axe si verificam</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;daca nu cumva este deasupra axei Ox </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(x &gt; <font color="#c00000">0</font>) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Mai ramane de verificat pozitia in raport cu Oy</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(y &gt; <font color="#c00000">0</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"Cadranul 1"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"Cadranul 4"</font>);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <font color="#804000">else</font>&nbsp;{<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// In acest moment stim SIGUR ca nu este deasupra axei</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;Ox si verifica pozitia in raport cu Oy</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(y &gt; <font color="#c00000">0</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"Cadranul 2"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"Cadranul 3"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Incheierea cu succes a functiei main()</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><font color="#0000c0">&nbsp;</font><br>
+<font color="#0000c0">&nbsp;* Problema 5</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#c000c0">#include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<br>
+<font color="#008000">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;a, b, c;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Nu uitati sa nu introduceti caractere suplimentare pe langa</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;specificatorii de format in scanf()</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#c00000">"</font><font color="#c000c0">%d%d%d</font><font color="#c00000">"</font>, &amp;a, &amp;b, &amp;c);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Trei numere intregi pot forma laturile unui triunghi doar daca suma a</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;ORICARE doua dintre ele este mai mare sau egala cu alt treilea</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;(cazul de egalitate reprezinta un triunghi denaturat). Asta</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;inseamna:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(c + b &gt;= a &amp;&amp; a + c &gt;= b &amp;&amp; a + b &gt;= c)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;sau daca negam expresia de mai sus se obtine conditia sa NU formeze</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;triunghi:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(a &gt; b + c || b &gt; a + c || c &gt; a + b)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;De exemplu, am ales sa folosim a doua varianta:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(a &gt; b + c || b &gt; a + c || c &gt; a + b)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"NU"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"DA"</font>);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><br>
+<font color="#0000c0">&nbsp;* Problema 6</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#0000c0">// Pentru a avea functiile scanf() si printf():</font><br>
+<font color="#c000c0"># include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<br>
+<font color="#008000">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// a, b si c - laturile triunghiului</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;a, b, c;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// asq, bsq si csq - patratele acestor laturi</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;asq, bsq, csq;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Ipoteze despre triunghi: (0 = fals) si (1 = adevarat)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;La inceput le vom presupune pe toate false</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;drept = <font color="#c00000">0</font>, isoscel = <font color="#c00000">0</font>, echilateral = <font color="#c00000">0</font>;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#c00000">"</font><font color="#c000c0">%d%d%d</font><font color="#c00000">"</font>, &amp;a, &amp;b, &amp;c);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Verificam ca cele trei numere formeaza intr-adevar, un triunghi</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(a &gt; b + c || b &gt; a + c || c &gt; a + b) {<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Daca NU, atunci termina programul!</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>; <br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <font color="#804000">else</font>&nbsp;{<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Verificam prin teorema lui Pitagora daca exista un unghi</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;drept in triunghi.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;asq = a * a;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bsq = b * b;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;csq = c * c;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(asq + bsq == csq || asq + csq == bsq || bsq + csq == asq)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;drept
+ = <font color="#c00000">1</font>;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Verificam daca triunghiul este echilateral (evident, posibil</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;doar daca nu este deja dreptunghic)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(drept != <font color="#c00000">1</font>&nbsp;&amp;&amp; (a == b &amp;&amp; b == c))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echilateral
+ = <font color="#c00000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Observatie: operatorul logic SI (&amp;&amp;) isi evalueaza operanzii</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;de la stanga la dreapta, iar daca o conditie este false,</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;restul de operanzi nu se mai evalueaza (deja stim ca</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;rezultatul va fi fals)</font><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Verificam daca triunghiul este isoscel (evident, doar daca nu</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;este deja echilateral)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(echilateral != <font color="#c00000">1</font>&nbsp;&amp;&amp; (a == b || b == c || a == c))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isoscel
+ = <font color="#c00000">1</font>;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Afisarea concluziilor</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(drept == <font color="#c00000">1</font>) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf
+ (<font color="#c00000">"dreptunghic</font><font color="#c000c0">\n</font><font color="#c00000">"</font>); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <font color="#804000">else</font>&nbsp;<font color="#804000">if</font>&nbsp;(echilateral == <font color="#c00000">1</font>) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf
+ (<font color="#c00000">"echilateral</font><font color="#c000c0">\n</font><font color="#c00000">"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <font color="#804000">else</font>&nbsp;<font color="#804000">if</font>&nbsp;(isoscel == <font color="#c00000">1</font>) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf
+ (<font color="#c00000">"isoscel</font><font color="#c000c0">\n</font><font color="#c00000">"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <font color="#804000">else</font>&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf
+ (<font color="#c00000">"oarecare</font><font color="#c000c0">\n</font><font color="#c00000">"</font>); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><br>
+<font color="#0000c0">&nbsp;* Problema 7</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#c000c0"># include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<br>
+<font color="#008000">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;a, b, c, d, min, max;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf (<font color="#c00000">"</font><font color="#c000c0">%d%d%d%d</font><font color="#c00000">"</font>, &amp;a, &amp;b, &amp;c, &amp;d);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Aflam mai intai maximul dintre "a" si "b" si il stocam in variabila</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;"max", apoi verificam pe rand daca nu cumva "c" si "d" sunt mai mari</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;si in caz afirmativ, actualizam valoarea pe care o consideram noi</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;maxima.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(a&gt;b)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max = a;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max = b;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(c&gt;max) max = c;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(d&gt;max) max = d;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Pentru aflarea minimului se procedeaza analog.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(a&lt;b)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min = a;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min = b;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(c&lt;min) min = c;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(d&lt;min) min = d;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Afisarea concluziilor (Observatie: am afisat doua linii consecutive</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;cu un singur apel de functie printf(), inserand la locul potrivit</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;caracterul "\n", care are rolul de a trece pe linia urmatoare.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"Minimul este: </font><font color="#c000c0">%d</font><font color="#c000c0">\n</font><font color="#c00000">Maximul este: </font><font color="#c000c0">%d</font><font color="#c000c0">\n</font><font color="#c00000">"</font>, min, max);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Nu uitati ca executia cu succes inseamna intoarcerea valorii 0 in</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;main()!</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><br>
+<font color="#0000c0">&nbsp;* Problema 8</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#0000c0">// Pentru a avea functiile scanf() si printf()</font><br>
+<font color="#c000c0">#include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<br>
+<font color="#008000">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;a, b, c, aux;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#c00000">"</font><font color="#c000c0">%d%d%d</font><font color="#c00000">"</font>, &amp;a, &amp;b, &amp;c);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Vom sorta cele trei numere prin interschimbari. Intai urmarim sa</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;aducem in variabila "a" minimul dintre cele trei numere. </font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(a&gt;b) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aux = a;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a = b;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b = aux;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(a&gt;c) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aux = a;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a = c;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c = aux;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// In acest moment, in "a" avem valoarea minima. Verificam acum ca si</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;"b" si "c" sa fie in ordinea corecta!</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(b&gt;c) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aux = b;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b = c;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c = aux;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Observatie! Metoda de sortare folosita mai sus este de fapt o</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;defasurare pas cu pas a algoritmului de sortare "Bubble Sort".</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;Pentru mai multe detalii despre aceasta metoda de sortare, puteti</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;verifica, de exemplu pagina algoritmului de pe wikipedia:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://en.wikipedia.org/wiki/Bubble_sort">http://en.wikipedia.org/wiki/Bubble_sort</a></font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Afisam numerele in ordine:</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"Numerele sortate: </font><font color="#c000c0">%d</font><font color="#c00000">, </font><font color="#c000c0">%d</font><font color="#c00000">, </font><font color="#c000c0">%d</font><font color="#c000c0">\n</font><font color="#c00000">"</font>, a, b, c);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Nu uitati sa intoarceti valoarea 0 in main()!</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+<br>
+<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><br>
+<font color="#0000c0">&nbsp;* Problema 9 + 10</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#0000c0">// Pentru a avea functiile scanf() si printf()</font><br>
+<font color="#c000c0">#include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<br>
+<font color="#008000">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Variabilele in care sa retinem ORA, MINUTUL si SECUNDA</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;h, m, s; <br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Citim ora (si verificam ca a fost citita corect)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(scanf(<font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c00000">"</font>, &amp;h) != <font color="#c00000">1</font>) {&nbsp;&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Exemplu de situatie in care functia main() ar putea sa</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;introduca o valoare diferita de 0: caz de eroare, care poate</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;fi interpretat la nevoie sau poate fi ignorat. In orice caz,</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;se incheie executia programului.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"Ora a fost introdusa eronat.</font><font color="#c000c0">\n</font><font color="#c00000">"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">1</font>; <br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Testam ora: s-a citit un intreg, dar este el corect?</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(h &lt; <font color="#c00000">0</font>&nbsp;|| h &gt; <font color="#c00000">23</font>) { <br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Intoarcem un alt cod de eroare (ce poate fi interpretat sau</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;ignorat de un al program din exterior)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"Ora trebuie sa fie in intervalul 0..23</font><font color="#c000c0">\n</font><font color="#c00000">"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">11</font>;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Procedam analog pentru minute</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(scanf(<font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c00000">"</font>, &amp;m) != <font color="#c00000">1</font>) {<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// De data aceasta intoarcem un alt cod de eroare, pentru a face</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;distinctie intre sursele diferite de erori.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"Minutul a fost introdus eronat.</font><font color="#c000c0">\n</font><font color="#c00000">"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">2</font>; <br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Testam minutul: s-a citit un intreg, dar este el corect?</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(m &lt; <font color="#c00000">0</font>&nbsp;|| m &gt; <font color="#c00000">59</font>) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"Minutul trebuie sa fie in intervalul 0..59</font><font color="#c000c0">\n</font><font color="#c00000">"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">22</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Procedam analog pentru secunde</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;( scanf(<font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c00000">"</font>, &amp;s) != <font color="#c00000">1</font>) {&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"Secunda a fost introdusa eronat.</font><font color="#c000c0">\n</font><font color="#c00000">"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">3</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Testam secunda: s-a citit un intreg, dar este el corect?</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(s &lt; <font color="#c00000">0</font>&nbsp;|| s &gt; <font color="#c00000">59</font>) {&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"Secunda trebuie sa fie in intervalul 0..59</font><font color="#c000c0">\n</font><font color="#c00000">"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">33</font>; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Daca am ajuns aici, inseamna ca toate datele au fost citite corect</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;(au fost introduse numere intregi in intervalele corect) si afisam</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;ora in formatul HH:MM:SS (fiecare cifra pe doua pozitii):</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">%02d</font><font color="#c00000">:</font><font color="#c000c0">%02d</font><font color="#c00000">:</font><font color="#c000c0">%02d</font><font color="#c000c0">\n</font><font color="#c00000">"</font>, h, m, s);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+<br>
+</font><br>
+</body></html>

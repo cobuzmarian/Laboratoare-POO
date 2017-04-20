@@ -1,0 +1,747 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+
+<style type="text/css"> 
+
+
+
+.numar_laborator
+
+	{
+
+	font-family: Times New Roman;
+
+	}
+
+.nume_laborator
+
+	{
+
+	font-family: Times New Roman;
+
+	text-align: center;
+
+	}
+
+.titlu_sectiune
+
+	{
+
+	font-family: Times New Roman;
+
+	}
+
+.text_normal
+
+	{
+
+	font-family: Arial;
+
+	font-size: 1.0em;
+
+	color: black;
+
+	}
+
+.text_hint
+
+	{
+
+	font-family: Arial;
+
+	font-style: italic;
+
+	font-size: 0.8em;
+
+	color: rgb(102, 102, 102); 
+
+	}
+
+.text_exemplu
+
+	{
+
+	font-family: Arial;
+
+	}
+
+hr 
+
+	{
+
+	height: 1px;
+
+	}
+
+.cod
+
+	{
+
+	font-family: Courier New;
+
+	background-color: rgb(204,204,204);
+
+	color: black;
+
+	}
+
+.tabel_exemple
+
+	{
+
+	width: 100%;
+
+	color: black;
+
+	font-size: 1.0em;
+
+	font-family: Courier New;
+
+	border: 1 px black solid;
+
+	border-spacing: 0px;
+
+	border-collapse: collapse;
+
+	text-align: left;
+
+	}
+
+.celula_header
+
+	{
+
+	color: black;
+
+	font-family: Arial;
+
+	background-color: rgb(204,204,204);
+
+	width: 50%;
+
+	border: 2px groove black;
+
+	}
+
+.celula_exemplu
+
+	{
+
+	valign: top;
+
+	color: black;
+
+	font-family: Courier New;
+
+	width: 50%;
+
+	border: 2px groove black;
+
+	vertical-align: top;
+
+	}
+
+cod
+
+	{
+
+	font-family: Courier New;
+
+	background-color: rgb(204,204,204);
+
+	color: black;
+
+	}
+
+
+
+</style>
+
+</head><body>
+
+
+
+<div style="color: rgb(153, 153, 153);" id="google_header" class="google_header">
+
+<p><font size="4">&nbsp;</font><font face="Courier New" size="4"><span style="font-family: Times New Roman;">Programarea Calculatoarelor, seria CC</span></font></p>
+<p></p>
+</div>
+
+
+
+<h1 class="numar_laborator">Laborator 13 </h1>
+
+<h1 class="nume_laborator">Fişiere binare. Compilarea din mai multe surse</h1>
+
+<h3 class="titlu_sectiune">În acest laborator veţi învăţa să: </h3>
+
+<ul>
+	<li class="text_normal">	
+		Folosiţi corect fişiere binare.
+	</li>
+	<li class="text_normal">	
+		Folosiţi funcţii de citire şi scriere la nivel de octet.
+	</li>
+	<li class="text_normal">	
+		Creaţi proiecte şi să compilaţi executabile din mai multe surse (introducere).
+	</li>
+</ul>
+<br>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+	Introducere despre fișierele binare. Comparație cu fișierele text.
+</h3>
+
+<div style="margin-left: 40px;">
+    <p>
+        Până în acest moment, când am folosit expresiile "scriere din 
+fișier" sau "citire din fișier", ne-am referit în mod exclusiv la 
+fișiere de tip text. 
+    </p>
+    <p>
+        Practic, <cod>fișierele text</cod> <u><b>conțin informația stocată sub forma unui șir de caractere</b></u> (eventual, pe mai multe linii, dar știm deja că sfârșitul de linie este și el tot un caracter). 
+    </p>
+    <p>
+        Spre deosebire de ele, <cod>fișierele binare</cod> <u><b>stochează informația brut, fără prelucrări</b></u>
+ exact așa cum apare ea în memorie (puteți să va imaginați că se face 
+fotografia unei porțiuni din memoria RAM, și se scrie în fișier Byte cu 
+Byte, astfel încât poate fi restaurată mai târziu printr-o simplă 
+copiere înapoi în RAM).
+    </p>
+    
+    <p>
+        Ca de obicei, ambele metode de stocare au avantaje și 
+dezavantaje care indică folosirea uneia sau a celeilalte în funcție de 
+aplicație:
+    </p>
+    
+    <ul>
+        <li>
+            Stocarea sub formă text are ca principal <b>avantaj</b> formatul <u>human readable</u>
+ al informației. Asta înseamnă că oricând putem să deschidem fișierul 
+într-un editor și putem interpreta ce scrie în el direct, fără a mai 
+avea nevoie de o altă aplicație. (<cod>Exemplu: sursele de C</cod>). Dezavantajul este că informația text ocupă mai mult decât în formă binară, și este greu de prelucrat de către programe.
+        </li>
+        <br>
+        <li>
+            Stocarea sub formă binară are ca <b>avantaje</b> faptul că datele ocupă <b>în medie (nu mereu)</b> mai puțină memorie decât cele în format text, au structură previzibilă, dar cel mai important, <b><u>pot fi încărcate direct în memorie</u></b>. (<cod>Exemplu: un binar executabil</cod>,
+ care este de fapt imaginea din care este lansat un proces în execuție).
+ Dezavantajul constă în faptul că ele devin complet neinteligibile 
+pentru oameni (trebuie să le interpretăm cu o altă aplicație pentru a le
+ înțelege).
+        </li>
+    </ul>
+    
+    <p>
+        Pentru că o imagine valorează cât o mie de cuvinte, vom ilustra 
+grafic cum are loc reprezentarea efectivă în memorie a informațiilor în 
+format text și binar. Fie următoarea structură de date care conține 
+informații despre un elev.        
+    </p>
+    
+    <p class="cod">
+        <font color="#00ff00">typedef</font>&nbsp;<font color="#00ff00">struct</font>&nbsp;Elev{<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">short</font>&nbsp;<font color="#00ff00">int</font>&nbsp;nota1;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">short</font>&nbsp;<font color="#00ff00">int</font>&nbsp;nota2;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">char</font>&nbsp;nume[<font color="#ff6060">10</font>];<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">float</font>&nbsp;medie;<br>
+        } Elev;<br>
+        <br>
+        <font color="blue">[ ... main() și alte funcții ...] </font><br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Elev elev;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elev.nota1 = <font color="#ff6060">7</font>;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elev.nota2 = <font color="#ff6060">10</font>;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elev.medie = (elev.nota1 + elev.nota2) / <font color="#ff6060">2.0</font>;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strcpy(elev.nume, <font color="#ff6060">"Cartman"</font>);<br>
+        <br>
+    </p>
+    
+    <p>
+        Sa considerăm că avem două fișiere: 
+        </p><ul>
+            <hr size="1">
+            <li>
+                <b><cod>FILE* t = fopen("text.out",<font color="red">"w"</font>);</cod></b>, în care scriem conținutul acestei structuri în <b>format text</b> (așa cum am făcut până acum). Un exemplu de stocare este dat de următorul apel: <br>
+                <cod>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(<font color="#ff6060">t</font>, <font color="#ff6060">"</font><font color="#ff40ff">%d</font><font color="#ff6060">&nbsp;</font><font color="#ff40ff">%d</font><font color="#ff6060">&nbsp;</font><font color="#ff40ff">%f</font><font color="#ff6060">&nbsp;</font><font color="#ff40ff">%s</font><font color="#ff40ff">\n</font><font color="#ff6060">"</font>, elev.nota1, elev.nota2, elev.medie, elev.nume);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                </cod>
+                <br>
+                În realitate, fișierul arată în memorie astfel:<br>
+                <img src="PC_lab13_files/fisier_text.png">
+                <br>
+            </li>
+            <p>
+                </p><ol>
+                    <li>
+                        În primul rând se observă că numerele <font color="blue">nu se reprezintă pe un număr previzibil de caractere</font> (ex: 1.1, 10.1, sau 10.333333333) care să depindă de tipul de dată.                         
+                    </li>
+                    <li>
+                        Pe de altă parte, trebuie să introducem <font color="blue">caractere speciale de separație</font>, ca să ne putem da seama unde se termină un număr și unde începe un altul. 
+                    </li><li>
+                    </li>
+                        Cel mai important însă, dacă am vrea să citim aceste date din fișier, <font color="blue">trebuie să interpretăm din nou șirul de caractere</font>, să îl tăiem în segmente (după spații) și să transformăm bucățile individuale de șir în numere, unde este cazul. <u>Nu vă lăsați păcăliți</u> ca în loc de <cod>strtok()</cod> și <cod>atoi()</cod> există <cod>scanf()</cod>. Cineva <b>tot trebuie să facă munca asta</b>, deci apelând <cod>scanf()</cod> de fapt în spate se desfășoară mult efort, care <u>costă timp</u>!
+                    
+                </ol>
+            <p></p>
+            <hr size="1">
+            <li>
+                <b><cod>FILE* b = fopen("binar.out",<font color="red">"rb"</font>);</cod></b>, în care scriem conținutul acestei structuri în <b>format binar</b> astfel: <br>
+                <cod>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fwrite(&amp;elev, <font color="brown">sizeof</font>(Elev), <font color="#ff6060">1</font>, <font color="#ff6060">b</font>);<br>
+                </cod>
+                <br>
+                În realitate, fișierul arată în memorie astfel:<br>
+                <img src="PC_lab13_files/fisier_binar.png">
+                <br>
+            </li>
+            <p>
+                </p><ol>
+                    <li>
+                        În acest caz, datele <font color="blue">se reprezintă pe un număr cunoscut de Bytes</font>
+ (mai exact, dimensiunea tipului de dată). După cum se vede din exemplu,
+ asta nu înseamnă mereu că se ocupă mai puțină memorie. Cu toate 
+acestea, în mod statistic, datele binare ocupă mai puțină memorie!      
+                   
+                    </li>
+                    <li>
+                        O problemă este că dacă am vrea să deschidem fișierul pentru a citi aceste date, <font color="blue">nu s-ar înțelege mai nimic</font>,
+ pentru că orice editor ar încerca să transforme fiecare Byte într-un 
+caracter pe care să îl afișeze pe ecran. Evident, nu se obține ceea ce 
+ne-am dori noi sa vedem. Avem nevoie de un program care să interpreteze 
+fișierul și să ne arate conținutul din el.
+                    </li><li>
+                    </li>
+                        Din nou, cel mai important este că dacă am vrea să citim aceste date din fișier, <font color="blue">le putem încărca direct la adresa unei structuri de tip <cod>Elev</cod></font>. În realitate, aceste date nu sunt cu nimic mai mult decât o <i>"fotografie"</i> a unei porțiuni din RAM, astfel încât <u>citirea este de fapt o simplă copiere</u>.
+                    
+                </ol>
+            <p></p>
+        </ul>
+    <p></p>
+    
+    
+</div>
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+	Funcţii de citire şi scriere la nivel de octet:
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+	    <p>
+	        Primul lucru pe care trebuie să îl facem pentru a putea folosi un fișier este să <b>îl deschidem</b>.
+ În acest sens, lucrurile stau foarte simplu: trebuie doar să adaugăm 
+"b" la șirul care specifică modul de deschidere al unui fișier în 
+funcția <cod>fopen()</cod>.<br>
+	        <br>
+	        Câteva exemple:
+            <table class="tabel_exemple">
+              <tbody>
+                 <tr>
+                    <td class="celula_header">
+                       Semnificație
+                    </td>
+                    <td class="celula_header">
+                       Fișiere binare
+                    </td>
+                    <td class="celula_header">
+                       Fișiere text
+                    </td>
+                 </tr>
+                 <tr>
+                    <td class="celula_exemplu">
+                       citire
+                    </td>
+                    <td class="celula_exemplu">
+                       "rb"
+                    </td>
+                    <td class="celula_exemplu">
+                       "r"
+                    </td>
+                 </tr>
+                 <tr>
+                    <td class="celula_exemplu">
+                       scriere
+                    </td>
+                    <td class="celula_exemplu">
+                       "wb"
+                    </td>
+                    <td class="celula_exemplu">
+                       "w"
+                    </td>
+                 </tr>
+                 <tr>
+                    <td class="celula_exemplu">
+                       adăugare
+                    </td>
+                    <td class="celula_exemplu">
+                       "ab"
+                    </td>
+                    <td class="celula_exemplu">
+                       "a"
+                    </td>
+                 </tr>
+                
+              </tbody>
+            </table>
+
+	    </p>
+	<hr size="1">
+		<p>
+		   <b>Pentru citire</b> la nivel de octet se foloseşte funcţia <cod>fread()</cod> definită în headerul <cod>&lt;stdio.h&gt;</cod>, care are următoarea sintaxă:<br><br>
+		   <cod>size_t fread ( void * ptr, size_t size, size_t count, FILE * stream );</cod><br><br>
+		   Semnificaţia argumentelor este următoarea:
+		   </p><ul>
+                   <li><cod>void* ptr</cod> este un pointer către o zonă de memorie unde se va face citirea</li>
+                   <li><cod>size_t size</cod> reprezintă dimensiunea în octeţi a unui element citit</li>
+		   <li><cod>size_t count</cod> reprezintă numărul de elemente citite. Elementele vor fi depuse în locaţii consecutive începând de la adresa <cod>ptr</cod> din memorie</li>
+		   <li><cod>FILE* stream</cod> reprezintă fluxul (fişierul) din care se face citirea</li>
+		   </ul>
+		<p></p>
+	<hr size="1">
+		<p>
+		   <b>Pentru scriere</b> la nivel de octet se foloseşte funcţia <cod>fwrite()</cod> definită în headerul <cod>&lt;stdio.h&gt;</cod>, care are următoarea sintaxă:<br><br>
+		   <cod>size_t fwrite ( void * ptr, size_t size, size_t count, FILE * stream );</cod><br><br>
+		   Semnificaţia argumentelor este următoarea:
+		   </p><ul>
+                   <li><cod>void* ptr</cod> este un pointer către o zonă de memorie unde se vor prelua datele ce trebuie scrise</li>
+                   <li><cod>size_t size</cod> reprezintă dimensiunea în octeţi a unui element scris</li>
+		   <li><cod>size_t count</cod> reprezintă numărul de elemente scrise. Elementele vor fi preluate pentru scriere din locaţii consecutive începând de la adresa <cod>ptr</cod> din memorie</li>
+		   <li><cod>FILE* stream</cod> reprezintă fluxul (fişierul) în care se face scrierea</li>
+		   </ul>
+		<p></p>
+	<hr size="1">
+		<p>
+		   Nu în ultimul rând, fișierele binare au o proprietate interesantă: 
+Am spus că spațiul ocupat de diverse articole depinde exclusiv de tipul 
+lor de dată. Cu alte cuvinte, dacă am vrea să citim al 101-lea număr 
+întreg dintr-un fișier binar care conține doar numere întregi, știm 
+sigur că acest număr ocupă Bytes-ii cu numerele <cod>400, 401, 402 și 403</cod> din fișier. (Presupunând că <cod>sizeof(int)==4</cod>. Numerele se schimbă dacă avem alte arhitecturi cu alte tipuri de date.)
+	    </p>
+	    <p>
+		   Ar fi foarte convenabil dacă am putea sări peste restul fișierului 
+direct la acea locație de memorie. În realitate, acest lucru este 
+posibil. Pentru a rezolva această problemă, C-ul pune la dispoziție două
+ funcții:
+		</p>
+        <ul>
+            <li><cod>long int ftell ( FILE * fisier )</cod>, întoarce o valoare care reprezintă poziția curentă în fișier.</li>
+            <li><cod>int fseek ( FILE * fisier, long int deplasament, long int fata_de_acest_punct )</cod>, sare în fișierul <cod>fisier</cod>
+ la poziția obținută prin suma celor doi parametri întregi. 
+Deplasamentul reprezintă un număr de Bytes peste care se sare, iar 
+punctul fața de care se sare poate fi una din constantele:
+            <ul>
+                <li>
+                    <cod>SEEK_SET</cod>, începutul fișierului
+                </li>
+                <li>
+                    <cod>SEEK_CUR</cod>, poziția curentă în fișier (salt autorelativ)
+                </li>
+                <li>
+                    <cod>SEEK_END</cod>, poziția finală din fișier (nu adunați valori pozitive :D)
+                </li>
+            </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+	<hr size="1">
+<h3 class="titlu_sectiune">
+	Includerea fișierelor. Gărzi de includere multiplă.
+</h3>
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+		   În aplicaţiile mari, în mod normal modulele diferite de program se 
+implementează în fişiere separate, urmând a fi necesară compilarea 
+executabilului final din mai multe surse. Includerea unui fişier sursă 
+în alt fişier sursă se face cu ajutorul directivei de preprocesare <cod># include</cod> care este urmată de numele fişierului ce trebuie inclus. Distingem două cazuri:
+		   </p><ul>
+                   <li><cod>&lt;nume_header&gt;</cod> specifică un 
+fişier header standard. Compilatorul se aşteaptă să găsească un astfel 
+de fişier într-un director anume care conţine biblioteci standard</li>
+                   <li><cod>"nume_header"</cod> specifică un fişier 
+header definit de utilizator. Compilatorul se aşteaptă să găasească un 
+astfel de fişier în directorul curent al proiectului</li>
+		   </ul>
+		   Trebuie să mai specificăm aici următoarea problemă. Este posibil să
+ implementăm de exemplu definiţia unei structuri de date într-un fişier 
+header, şi apoi să scriem în fişiere separate funcţii ce operează pe 
+acea structură de date. Evident, funcţiile definite vor trebui să 
+includă la rândul lor fişierul de definire al structurii de date. Dar 
+fişierul care conţine funcţia <cod>main()</cod>, de exemplu, trebuie să 
+includă toate fişierele care implementează funcţii, ceea ce ar însemna 
+că fişierul de definire al structurii de date este inclus de mai multe 
+ori. Acest lucru trebuie <b>întotdeauna</b> evitat prin protejarea clauzelor de includere astfel:
+		<p></p>
+		<p class="cod">
+			#ifndef __STDLIB__<br>
+			#define __STDLIB__<br>
+			<br>
+			#include &lt;stdlib.h&gt;<br>
+			<br>
+			#endif /* __STDLIB__ */<br>
+		</p>
+		<p>
+		Înainte de a se include pentru prima dată <cod>&lt;stdlib.h&gt;</cod>, numele <cod>__STDLIB__</cod>
+ nu este definit, ceea ce permite includerea headerului. Încercările 
+ulterioare de a include fişierul header vor eşua (ne dorim acest lucru 
+deoarece per ansamblu nu dorim să includem headerul decât o singură dată
+ în program).
+		</p>
+	</div>
+</div>
+
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Problema1.
+
+</h3>
+
+<div style="margin-left: 40px;">
+<div class="text_normal">
+		<p>
+		Să se definească o structură cu următoarele date despre un produs:
+		</p><ul>		
+		<li><cod>nume_produs</cod> - un şir <font color="red"><u>de maxim 20 caractere</u></font></li>
+		<li><cod>cantitate</cod> - un număr întreg</li>
+		<li><cod>pret_produs</cod> - un număr real</li>
+		</ul>
+		<p></p>
+		<p> 
+            Să se implementeze definiția structurii într-un fișier numit <cod>Produs.h</cod> și o funcție <cod>main()</cod>, într-un fișier numit <cod>main.c</cod>. <br>
+            <br>
+            Funcția main va primi argumente din linia de comandă și va trebui să importe tipul de dată <cod>Produs</cod> din fișierul extern (folosiți directiva <cod>#include</cod>).
+		</p>
+		<p>
+		<font color="red"><b>ATENŢIE!</b></font> Definiţia tipului de date, 
+includerea bibliotecilor precum şi antetele funcţiilor care se vor 
+defini ulterior vor fi grupate într-un fişier header! 
+		</p>
+</div>
+</div>
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Problema 2. (9-11 linii)
+
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+			Scrieți o funcție pentru crearea unui fişier binar care să conţină 100 de produse cu date generate aleator astfel:
+			</p><ul>
+			<li>Numele produsului este de forma <cod>Produs<b>X</b></cod> unde <cod><b>X</b></cod> este un număr generat aleator (convertit în şir de caractere)</li>
+			<li>Cantitatea produsului este <cod><b>X</b>%100</cod>
+			</li><li>Preţul produsului se obţine cu relaţia <cod><b>X</b>&lt;=100 ? <b>X</b> : <b>X</b> % 100</cod></li>
+			</ul>
+			În fişier se va scrie câte un articol întreg cu ajutorul funcţiei <cod>fwrite()</cod> (nu pe componente).
+		<p></p>
+		<p>
+		<b>Hints:</b>
+		</p>
+			<ul>
+			<li>Folosiţi funcţia <cod>rand()</cod> pentru a genera un număr aleator între <cod>0</cod> şi <cod>RAND_MAX</cod></li>
+			<li>Puteţi transforma uşor un întreg într-un şir folosind: <cod>char* itoa(int value, char *string, int radix);</cod> unde <cod>radix</cod> reprezintă baza de numeraţie (adică 10)</li>
+			<li>Puteţi concatena uşor două şiruri folosind: <cod>char *strcat(char * s1,const char * s2);</cod></li>
+			</ul>
+		<p></p>
+	</div>
+</div>
+
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+   Problema 3. (7-10 linii)
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+		Scrieți o funcție pentru afişarea pe monitor a fişierului creat anterior, câte un articol pe o linie.
+		</p>
+	</div>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+   Problema 4. (10-12 linii)
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+		Scrieți o funcție pentru sortarea articolelor din fişier crescător după nume. <br><br>
+		
+		<b>Hint-uri:</b><br>
+		</p><ul>
+		    <li>
+		        Aduceți fișierul în RAM, aplicați sortarea și apoi suprascrieți fostul conținut. 
+		    </li>
+		    <li>
+		        Apelați funcțiile scrise anterior
+		    </li>
+		    <li>
+		        Pentru sortare <u><b>se va folosi funcţia <cod>qsort()</cod></b></u> din headerul <cod>&lt;stdlib.h&gt;</cod>
+		    </li>
+		</ul>
+	</div>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+   Problema 5. 
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+		Scrieți o funcție pentru citirea unui număr întreg <b><cod>X</cod></b> de la tastatură, căutarea produsului cu nume <cod>Produs<b>X</b></cod>
+ şi afişarea datelor despre produsul găsit. După afişare se poate 
+introduce o linie cu alte valori pentru cele 3 câmpuri, care vor înlocui
+ in fişier valorile afişate (o linie goală nu modifică nimic în fişier).
+ <br>
+		<br>
+		Dacă nu există un produs cu acel nume atunci se afişează un mesaj corespunzător. <br>
+		<br>
+		<b>Hint:</b><br>
+		</p><ul>
+		    <li>
+		        Pentru căutare, <u><b>se va folosi funcţia <cod>bsearch()</cod></b></u> din headerul <cod>&lt;stdlib.h&gt;</cod>
+		    </li>
+		</ul>
+	</div>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+    Problema 6.
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+		    <font color="blue"><b>Completați</b></font> următorul schelet de 
+cod astfel încât să realizeze salvarea și apoi restaurarea a 4 structuri
+ care contin siruri alocate dinamic. În fișierul binar NU aveți voie să 
+scrieți și terminatorul de șir (caracterul <cod>\0</cod>). În fișier va trebui sa precedeți fiecare șir cu <cod>4 Bytes</cod> în care să se regăsească dimensiunea șirului stocat de la acel punct încolo.<br>
+		    <br>
+		    Procesul de salvare al unui obiect într-un fișier este uneori mai 
+complicat decât o simplă copiere. Dacă obiectul conține membrii alocați 
+dinamic, atunci nu mai este suficientă o scriere de tip "shallow" 
+(simplă copiere), deoarece se pierde informația din obiectele alocate 
+dinamic.<br>
+		</p>
+		<b><u> ATENTIE!</u> NU scrieți <font color="red"><u>niciodată, sub nici o formă</u></font> pointeri în fișiere! Aceasta este o greșeală de logică foarte gravă!!<br></b>
+		<div style="margin-left: 40px;">
+		<br> <b>De ce?</b> Un pointer reprezintă o adresă către o zonă din memoria RAM pe care sistemul de operare o oferă <u>procesului pe timpul rulării acestuia</u>. Fișierele supraviețuiesc de la o rulare la alta a programului.<br>
+		<br>Astfel, la următoarea rulare, nu numai ca probabil că zona 
+respectivă de memorie ajunge între timp în posesia altui proces, dar 
+nici măcar datele nu mai exista fizic acolo, deoarece sunt șanse foarte 
+mari să fi fost suprascrise între timp (memoria RAM este extrem de 
+intens utilizată). Este foarte important să cereți informații 
+suplimentare dacă nu vă este foarte clar de ce nu ar funcționa!<br>
+		<p>
+		    În concluzie, în astfel de cazuri, trebuie să "aplatizăm" 
+structura, adică să scriem în fișier absolut toate datele referențiate 
+de aceasta prin pointeri, iar la restaurare să realocăm toată memoria și
+ să refacem pointerii. Procesul de <u>salvare</u> al unei structuri în formă binară se numește <u><b>serializare</b></u>, iar reconstruirea acestuia din formă binară se numește <u><b>deserializare</b></u>.
+		</p>
+		</div>
+	<p class="cod">
+<font color="#ff40ff">#include </font><font color="#ff6060">&lt;stdio.h&gt;</font><br>
+<font color="#ff40ff">#include </font><font color="#ff6060">&lt;string.h&gt;</font><br>
+<font color="#ff40ff">#include </font><font color="#ff6060">&lt;stdlib.h&gt;</font><br>
+<br>
+<font color="#ff40ff">#define N </font><font color="#ff6060">4</font><br>
+<br>
+<font color="#00ff00">typedef</font>&nbsp;<font color="#00ff00">struct</font>&nbsp;Persoana{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">char</font>* nume;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">char</font>* prenume;<br>
+} Persoana;<br>
+<br>
+<font color="#00ff00">void</font>&nbsp;serializeaza(Persoana v[], <font color="#00ff00">int</font>&nbsp;nrPersoane, <font color="#00ff00">char</font>* fileName)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">FILE</font>* f = fopen(fileName, <font color="#ff6060">"wb"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8080ff">//</font><span style="background-color: rgb(255, 255, 0);"><font color="#808080">TODO</font></span><font color="#8080ff">! Adauga codul de serializare: ~10 linii</font><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fclose(f);<br>
+}<br>
+<br>
+<font color="#00ff00">void</font>&nbsp;deserializeaza(Persoana v[], <font color="#00ff00">int</font>&nbsp;nrPersoane, <font color="#00ff00">char</font>* fileName)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">FILE</font>* f = fopen(fileName, <font color="#ff6060">"rb"</font>);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8080ff">//</font><span style="background-color: rgb(255, 255, 0);"><font color="#808080">TODO</font></span><font color="#8080ff">! Adauga codul de deserializare: ~10 linii</font><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fclose(f);<br>
+}<br>
+<br>
+<font color="#00ff00">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Persoana v[N],w[N];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">char</font>* prenume[N] = { <font color="#ff6060">"Eric"</font>, <font color="#ff6060">"Kyle"</font>, <font color="#ff6060">"Stan"</font>, <font color="#ff6060">"Kenny"</font>&nbsp;};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">char</font>* nume[N] = { <font color="#ff6060">"Cartman"</font>, <font color="#ff6060">"Broflovski"</font>, <font color="#ff6060">"Marsh"</font>, <font color="#ff6060">"McCormick"</font>&nbsp;};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">int</font>&nbsp;i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ffff00">for</font>&nbsp;(i = <font color="#ff6060">0</font>; i &lt; N; i++){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v[i].nume = nume[i];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v[i].prenume = prenume[i];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8080ff">// Serializam vectorul intr-un fisier</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;serializeaza(v, N, <font color="#ff6060">"persoane.bin"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8080ff">// Deserializam in alt vector, din acelasi fisier. Ar trebui sa obtinem aceleasi informatii.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deserializeaza(w, N, <font color="#ff6060">"persoane.bin"</font>);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ffff00">for</font>&nbsp;(i = <font color="#ff6060">0</font>; i &lt; N; i++){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"</font><font color="#ff40ff">%s</font><font color="#ff6060">&nbsp;</font><font color="#ff40ff">%s</font><font color="#ff40ff">\n</font><font color="#ff6060">"</font>,w[i].prenume,w[i].nume);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ffff00">return</font>&nbsp;<font color="#ff6060">0</font>;<br>
+}<br>
+<br>
+
+	</p></div>
+</div>
+</body></html>

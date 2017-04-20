@@ -1,0 +1,422 @@
+<html><head>
+
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<style type="text/css"> 
+
+
+
+.numar_laborator
+	{
+	font-family: Times New Roman;
+	}
+.nume_laborator
+	{
+	font-family: Times New Roman;
+	text-align: center;
+	}
+.titlu_sectiune
+	{
+	font-family: Times New Roman;
+	}
+.text_normal
+	{
+	font-family: Arial;
+	font-size: 1.0em;
+	color: black;
+	}
+.text_hint
+	{
+	font-family: Arial;
+	font-style: italic;
+	font-size: 0.8em;
+	color: rgb(102, 102, 102); 
+	}
+.text_exemplu
+	{
+	font-family: Arial;
+	}
+hr 
+	{
+	height: 1px;
+	}
+.cod
+	{
+	font-family: Courier New;
+	background-color: rgb(204,204,204);
+	color: black;
+	}
+.tabel_exemple
+	{
+	width: 100%;
+	color: black;
+	font-size: 1.0em;
+	font-family: Courier New;
+	border: 1 px black solid;
+	border-spacing: 0px;
+	border-collapse: collapse;
+	text-align: left;
+	}
+.celula_header
+	{
+	color: black;
+	font-family: Arial;
+	background-color: rgb(204,204,204);
+	width: 50%;
+	border: 2px groove black;
+	}
+.celula_exemplu
+	{
+	valign: top;
+	color: black;
+	font-family: Courier New;
+	width: 50%;
+	border: 2px groove black;
+	vertical-align: top;
+	}
+cod
+	{
+	font-family: Courier New;
+	background-color: rgb(204,204,204);
+	color: black;
+	}
+
+</style>
+
+</head><body>
+
+
+<div style="color: rgb(153, 153, 153);" id="google_header" class="google_header">
+
+<p><font size="4">&nbsp;</font><font face="Courier New" size="4"><span style="font-family: Times New Roman;">Programarea Calculatoarelor, seria CC</span></font></p>
+<p></p>
+</div>
+
+
+
+<h1 class="numar_laborator">Laborator 9 </h1>
+
+<h1 class="nume_laborator">Structuri</h1>
+
+<h3 class="titlu_sectiune">În acest laborator veţi învăţa să: </h3>
+
+<ul>
+	<li class="text_normal">	
+		Folosiți structuri predefinite.
+	</li>
+	<li class="text_normal">	
+		Definiţi și folosiți noi tipuri de structuri.
+	</li>
+</ul>
+<br>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+	Structuri - scurt breviar de sintaxă
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+		   Sintaxa de definire a unei variabile de tip structură este următoarea:<br>
+		   <cod>struct {...} variabila;</cod><br>
+		   Variabilele definite cu această sintaxă au un tip de dată anonim (nu se pot face atribuiri între ele). 
+		   <br><br>
+		   Putem rezolva mai elegant problema dacă <b>definim un tip de dată structură</b> cu următoarea sintaxă:<br>
+		   <cod>typedef struct TIP_STRUCTURA {...};<br> TIP_STRUCTURA variabila1, variabila2, vector_structuri[100];</cod>
+ 		   <br><br>
+		   Membrii unei structuri se accesează folosind operatorul <cod>.</cod> astfel:<br>
+		   <cod>typedef struct{<br>&nbsp;&nbsp;&nbsp;int a, b;<br>&nbsp;&nbsp;&nbsp;float c;<br>&nbsp;&nbsp;&nbsp;} TRIPLET; <br> TRIPLET t;<br>...<br>&nbsp;&nbsp;&nbsp;if (t.a==0) ...<br>...<br></cod>
+		   <br><br>
+		   Două variabile de acelaşi tip structură se pot atribui una alteia, dar nu se pot compara între ele!
+<!--
+		   Pentru situatiile in care avem un pointer la o structura putem referi membrii acesteia in doua moduri:
+		   <ul>
+		   <li> aplicăm operatorul <cod>*</cod> pointerului pentru a obţine structura şi apoi folosim operatorul punct pentru a obţine câmpul din structură. Această metodă are <b>dezavantjul</b> de a necesita să punem multe paranteze, care îngreunează lizibilitatea.</li>
+		   <li> folosim operatorul <cod>-></cod> <b>direct asupra pointerului</b> pentru a obţine câmpul structurii la care face referire pointerul. (<b>Folosiţi cu încredere această metodă!</b>) </li>
+		   </ul>
+		   <cod>typedef struct TRIPLET {int a, b; float c;}; <br> TRIPLET t, *p = &t;<br>...<br>&nbsp;&nbsp;&nbsp;if ((*p).a==0) ...<br>...<br></cod>
+	           sau, mai elegant:<br>
+                   <cod>...<br>&nbsp;&nbsp;&nbsp;if (p->a==0) ...<br>...</cod>
+		   <br><br>
+                   <b> Observaţii:</b>
+		   <ul>
+                   <li>În multe situaţii, structurile ocupă un spaţiu mare de memorie, şi nu este indicat să le trimitem unor funcţii ca parametri specificaţi prin valoare, deoarece se va pierde mult timp şi multă memorie copiind datele în stivă. Se recomandă ca pentru structurile mari să transmitem unei funcţii adresa structurii, chiar dacă informaţiile din aceasta nu urmează a fi modificate de funcţie.</li>
+                   <li>Două variabile de acelaşi tip structură se pot atribui una alteia, dar nu se pot compara între ele!</li>
+		   <li>Este recomandat ca funcţiile să nu returneze o structură, ci o adresă la o variabilă de tip structură, din considerente similare cu cele de mai sus.</li>
+		   </ul>
+-->
+		</p>
+	</div>
+</div>
+
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+	Problema 1 - Problemă rezolvată.
+</h3>
+
+<div style="margin-left: 40px;">
+<div class="text_normal">
+		<p>Scrieți un program în care să se definească o structură <b>Punct</b> ce are ca membrii coordonatele x și y. 
+			Să se citească de la tastatură coordonatele pentru un <b>Punct</b> p și să se afișeze sub forma (x,y).
+		</p>
+		<p>Observați folosirea structurilor (definire, accesare membrii).
+		</p>
+</div>
+
+	<div class="cod">
+      <p> 
+#include &lt;stdio.h&gt;<br>
+<br>
+typedef struct {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float x, y;<br>
+} Punct;<br>
+<br>
+int main ()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Punct p;<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("Introduceti x: ");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%f", &amp;p.x);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("Introduceti y: ");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf("%f", &amp;p.y);<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf("(%.2f,%.2f)\n", p.x, p.y);<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br>
+}<br>
+<br>
+      </p>
+	</div>
+</div>
+
+ <h4 class="test_exemplu">
+     Exemplu:
+  </h4>
+  <table class="tabel_exemple">
+      <tbody>
+         <tr>
+            <td class="celula_header">
+               Intrare
+            </td>
+            <td class="celula_header">
+               Ieşire
+            </td>
+         </tr>
+         <tr>
+            <td class="celula_exemplu">
+               8.6<br>
+			   3.5
+            </td>
+            <td class="celula_exemplu">
+               (8.60,3.50)
+            </td>
+         </tr>
+      </tbody>
+   </table>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Problema 2.
+
+</h3>
+
+<div style="margin-left: 40px;">
+<div class="text_normal">
+		<p>
+		Moduri în care timpul poate fi exprimat într-un program C:
+		</p><ul>
+
+		<li>Printr-un întreg lung (tip de date <cod>time_t</cod>, echivalent cu <cod>long int</cod>),
+
+ce reprezintă numărul de secunde față de ora 0 din 1 ianuarie 1970.</li>
+
+		<li>Printr-o structură cu numele <cod>tm</cod> ce conține:
+		<div class="cod">
+		<p>
+		struct tm {	// definita in time.h	<br>
+
+		&nbsp;&nbsp;&nbsp;&nbsp;int tm_sec,tm_min, tm_hour;	// sec (0-59), min (0-59), ora (0-23)<br>
+
+	  	&nbsp;&nbsp;&nbsp;&nbsp;int tm_mday, tm_mon, tm_year;	// zi (0-31), luna (0-11), an (dupa 1900)<br>
+
+		&nbsp;&nbsp;&nbsp;&nbsp;int tm_wday;	// ziua din saptamana (0-6)<br>
+
+  		&nbsp;&nbsp;&nbsp;&nbsp;int tm_yday;	// ziua din an (0-365)<br>
+
+  		&nbsp;&nbsp;&nbsp;&nbsp;int tm_isdst;	// +1 Daylight Savings Time, 0 No DST, -1 don't know <br>
+
+};<br>
+		</p>
+		</div>
+		</li></ul>
+		<p> Pentru a facilita lucrul cu date ce reprezintă timpul sunt declarate în biblioteca <cod>time.h</cod> mai multe funcții. Câteva funcții din <cod>time.h</cod>:
+		</p><ul>
+		<li><cod>time_t time(time_t*)</cod> returnează ora curentă (ca număr 
+de secunde); această valoare se pune și la adresa trimisă ca parametru 
+(excepție când se apelează <cod>time(NULL)</cod> - atunci se va întoarce timpul doar ca rezultat al funcției)</li>
+		<li><cod>struct tm* localtime(const time_t*)</cod> transformă o dată din format <cod>time_t</cod> în <cod>struct tm</cod>; funcția întoarce un pointer la o structură de tip <cod>tm</cod> </li>
+		<li><cod>char* asctime(const struct tm*)</cod> transformă din <cod>struct tm</cod> într-un șir de caractere ce va reprezenta data în format human-readable</li>
+		<li><cod>char* ctime(const time_t*)</cod> transformă din <cod>time_t</cod> într-un șir de 
+caractere ce va reprezenta data în format human-readable</li>
+		</ul>
+		<p></p>
+		<p> Să se scrie un program pentru afișarea orei și datei folosind funcțiile din <cod>time.h</cod> descrise mai sus.
+		</p>
+</div>
+</div>
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Problema 3. 
+
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>  Să se scrie și să se verifice o funcție pentru transformarea orei 
+
+din <cod>struct tm</cod> în șir de caractere (se vor afișa oră, minut, secundă) :
+		</p>
+		<div class="cod">
+		<p>
+
+	     char* timestr(struct tm t, char* time);
+		</p>
+		</div>
+
+		 Rezultatul funcției este același cu al doilea argument și reprezintă
+
+		adresa unde se depune șirul de caractere rezultat.
+		<p></p>
+	</div>
+
+</div>
+
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+   Problema 4. 
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+		Să se definească o structură pentru un vector <cod>struct vector</cod> de întregi alocat 
+
+dinamic care conține: 
+		</p><ul>
+		<li><cod>int* v</cod> - adresa vector</li>
+		<li><cod>int cap</cod> - dimensiune alocata (maxima)</li>
+		<li><cod>int n</cod> - dimensiune efectiva (număr de întregi stocați)</li> 
+		</ul>
+		Să se scrie funcții pentru:
+		<ul> 
+		<li>inițializarea unui vector (cu o alocare initiala de memorie): <cod>void init_vector(vector *a, int nr)</cod></li>
+		<li>adăugarea unui nou element la vector (cu o eventuală realocare a vectorului): <cod>void adauga_vector(vector *a, int n)</cod></li>
+		<li>afișarea unui vector: <cod>void scrie_vector(vector *a)</cod></li>
+		</ul>
+
+		Testaţi programul adăugând pe rând, şi afişând vectorul după fiecare adăugare, numerele de la 0 la 100.
+		<p></p>
+	</div>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+   Problema 5. 
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+		Să se definească o structură pentru un număr complex cu componente reale (de tip <cod>float</cod>) şi funcţii pentru operatorii aritmetici cu numere complexe:  
+		</p><ul>
+		<li>adunarea: <cod>complex adunare(complex a, complex b)</cod></li>
+		<li>scăderea: <cod>complex scadere(complex a, complex b)</cod></li>
+		<li>înmulţirea: <cod>complex inmultire(complex a, complex b)</cod></li> 
+		<li>ridicarea la o puterea întreagă: <cod>complex putere(complex a, int putere)</cod></li> 
+                <li>afişarea sub forma <cod>(re,im)</cod>: <cod>void scrie(complex a)</cod></li>
+		</ul>
+		Folosind funcţiile anterioare, să se scrie un program pentru calulul 
+valorii unui polinom de variabilă complexă cu coeficienţi reali.
+		<p></p>
+	</div>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+   Problema 6. 
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+		Să se scrie un program pentru citirea unor cuvinte și afișarea numărului de apariții al fiecărui cuvânt. <br><br>
+		Problema se va rezolva în două variante diferite:
+		</p><ul>
+		<li>Se va folosi un vector de <cod>char*</cod> pentru cuvinte (<cod>char **</cod>) și un vector
+		de numere întregi. Cei doi vectori se alocă și extind dinamic (se realocă dacă este nevoie).</li>
+		<li>Se va defini o structură <cod>Pereche</cod> ce conține un cuvânt și numărul lui de apariții
+		și un vector de astfel de perechi. Vectorul se alocă și se extinde dinamic.</li>
+		</ul>
+		<p></p>
+	</div>
+</div>
+
+  
+  <h4 class="test_exemplu">
+     Exemplu:
+  </h4>
+  <table class="tabel_exemple">
+      <tbody>
+         <tr>
+            <td class="celula_header">
+               Intrare
+            </td>
+            <td class="celula_header">
+               Ieşire
+            </td>
+         </tr>
+         <tr>
+            <td class="celula_exemplu">
+               unu doi<br>
+				trei doi trei trei
+            </td>
+            <td class="celula_exemplu">
+               unu 1<br>
+			   doi 2<br>
+			   trei 3<br>
+            </td>
+         </tr>
+        
+      </tbody>
+   </table>
+
+﻿﻿</body></html>

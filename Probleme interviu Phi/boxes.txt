@@ -1,0 +1,33 @@
+#include <stdexcept>
+#include <iostream>
+
+class Boxes
+{
+public:
+    static int minimalNumberOfBoxes(int products, int availableLargeBoxes, int availableSmallBoxes)
+    {
+        //throw std::logic_error("Waiting to be implemented");
+        int auxLarge , auxSmall;
+        if(availableLargeBoxes*5 <= products) {
+        	auxLarge = availableLargeBoxes;
+		}
+		else {
+			auxLarge = products / 5;
+		}
+		if(products - auxLarge*5 > availableSmallBoxes) {
+			return -1;
+		}
+		else {
+			auxSmall = products - auxLarge*5;
+			return (auxLarge + auxSmall);
+		}
+	
+    }
+};
+
+#ifndef RunTests
+int main()
+{
+    std::cout << Boxes::minimalNumberOfBoxes(16, 2, 8);
+}
+#endif

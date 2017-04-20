@@ -1,0 +1,420 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+
+
+<title>~/Desktop/working/PC_lab10_rez/toate.c.html</title>
+<meta name="Generator" content="Vim/7.1">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head><body bgcolor="#ffffff" text="#000000"><font face="monospace">
+<font color="#8080ff">/*</font><br>
+<font color="#8080ff">&nbsp;* Problema 1A </font><br>
+<font color="#8080ff">&nbsp;*</font><br>
+<font color="#8080ff">&nbsp;</font><font color="#8080ff">*/</font><br>
+<br>
+<font color="#ff40ff">#include </font><font color="#ff6060">&lt;stdio.h&gt;</font><br>
+<font color="#ff40ff">#include </font><font color="#ff6060">&lt;stdlib.h&gt;</font><br>
+<br>
+<font color="#00ff00">struct</font>&nbsp;multime {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">unsigned</font>&nbsp;<font color="#00ff00">char</font>&nbsp;a;<br>
+};<br>
+<br>
+<font color="#00ff00">void</font>&nbsp;init(<font color="#00ff00">struct</font>&nbsp;multime *m)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m-&gt;a = <font color="#ff6060">0</font>;<br>
+}<br>
+<br>
+<font color="#00ff00">void</font>&nbsp;add(<font color="#00ff00">struct</font>&nbsp;multime *m, <font color="#00ff00">int</font>&nbsp;x)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m-&gt;a = m-&gt;a | (<font color="#ff6060">1</font>&nbsp;&lt;&lt; x);<br>
+}<br>
+<br>
+<font color="#00ff00">void</font>&nbsp;del(<font color="#00ff00">struct</font>&nbsp;multime *m, <font color="#00ff00">int</font>&nbsp;x)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m-&gt;a = m-&gt;a &amp; ~(<font color="#ff6060">1</font>&nbsp;&lt;&lt; x);<br>
+}<br>
+<br>
+<font color="#00ff00">int</font>&nbsp;contains(<font color="#00ff00">struct</font>&nbsp;multime *m, <font color="#00ff00">int</font>&nbsp;x)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">return</font>&nbsp;m-&gt;a &amp; (<font color="#ff6060">1</font>&nbsp;&lt;&lt; x);<br>
+}<br>
+<br>
+<font color="#00ff00">void</font>&nbsp;print(<font color="#00ff00">struct</font>&nbsp;multime *m)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">int</font>&nbsp;i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"{ "</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">for</font>&nbsp;(i = <font color="#ff6060">0</font>; i &lt; <font color="#ff6060">8</font>; i++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">if</font>&nbsp;(contains(m, i))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"</font><font color="#ff40ff">%d</font><font color="#ff6060">&nbsp;"</font>, i);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"}</font><font color="#ff40ff">\n</font><font color="#ff6060">"</font>);<br>
+}<br>
+<br>
+<font color="#00ff00">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">struct</font>&nbsp;multime m;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;init(&amp;m);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(&amp;m, <font color="#ff6060">3</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(&amp;m, <font color="#ff6060">5</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(&amp;m, <font color="#ff6060">2</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(&amp;m, <font color="#ff6060">7</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(&amp;m);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;del(&amp;m, <font color="#ff6060">2</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;del(&amp;m, <font color="#ff6060">7</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(&amp;m);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">return</font>&nbsp;<font color="#ff6060">0</font>;<br>
+}<br>
+<br>
+<font color="#8080ff">/*</font><br>
+<font color="#8080ff">&nbsp;* Problema 1B</font><br>
+<font color="#8080ff">&nbsp;*</font><br>
+<font color="#8080ff">&nbsp;</font><font color="#8080ff">*/</font><br>
+<br>
+<font color="#ff40ff">#include </font><font color="#ff6060">&lt;stdio.h&gt;</font><br>
+<font color="#ff40ff">#include </font><font color="#ff6060">&lt;stdlib.h&gt;</font><br>
+<br>
+<font color="#00ff00">struct</font>&nbsp;multime {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">int</font>&nbsp;n;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">unsigned</font>&nbsp;<font color="#00ff00">char</font>&nbsp;*a;<br>
+};<br>
+<br>
+<font color="#00ff00">void</font>&nbsp;init(<font color="#00ff00">struct</font>&nbsp;multime *m, <font color="#00ff00">int</font>&nbsp;n)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">int</font>&nbsp;i, size = n / (<font color="#ff6060">8</font>&nbsp;* <font color="#8a4b08">sizeof</font>(<font color="#00ff00">unsigned</font>&nbsp;<font color="#00ff00">char</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m-&gt;n = n;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">if</font>&nbsp;(n % (<font color="#ff6060">8</font>&nbsp;* <font color="#8a4b08">sizeof</font>(<font color="#00ff00">unsigned</font>&nbsp;<font color="#00ff00">char</font>)) != <font color="#ff6060">0</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m-&gt;a = (<font color="#00ff00">unsigned</font>&nbsp;<font color="#00ff00">char</font>&nbsp;*) malloc (size * <font color="#8a4b08">sizeof</font>(<font color="#00ff00">unsigned</font>&nbsp;<font color="#00ff00">char</font>));<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">for</font>&nbsp;(i = <font color="#ff6060">0</font>; i &lt; size; i++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m-&gt;a[i] = <font color="#ff6060">0</font>;<br>
+}<br>
+<br>
+<font color="#00ff00">void</font>&nbsp;add(<font color="#00ff00">struct</font>&nbsp;multime *m, <font color="#00ff00">int</font>&nbsp;x)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">int</font>&nbsp;idx, cnt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;idx = x / (<font color="#ff6060">8</font>&nbsp;* <font color="#8a4b08">sizeof</font>(<font color="#00ff00">unsigned</font>&nbsp;<font color="#00ff00">char</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cnt = x % (<font color="#ff6060">8</font>&nbsp;* <font color="#8a4b08">sizeof</font>(<font color="#00ff00">unsigned</font>&nbsp;<font color="#00ff00">char</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m-&gt;a[idx] = m-&gt;a[idx] | (<font color="#ff6060">1</font>&nbsp;&lt;&lt; cnt);<br>
+}<br>
+<br>
+<font color="#00ff00">void</font>&nbsp;del(<font color="#00ff00">struct</font>&nbsp;multime *m, <font color="#00ff00">int</font>&nbsp;x)<br>
+{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">int</font>&nbsp;idx, cnt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;idx = x / (<font color="#ff6060">8</font>&nbsp;* <font color="#8a4b08">sizeof</font>(<font color="#00ff00">unsigned</font>&nbsp;<font color="#00ff00">char</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cnt = x % (<font color="#ff6060">8</font>&nbsp;* <font color="#8a4b08">sizeof</font>(<font color="#00ff00">unsigned</font>&nbsp;<font color="#00ff00">char</font>)); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m-&gt;a[idx] = m-&gt;a[idx] &amp; ~(<font color="#ff6060">1</font>&nbsp;&lt;&lt; cnt);<br>
+}<br>
+<br>
+<font color="#00ff00">int</font>&nbsp;contains(<font color="#00ff00">struct</font>&nbsp;multime *m, <font color="#00ff00">int</font>&nbsp;x)<br>
+{&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">int</font>&nbsp;idx, cnt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;idx = x / (<font color="#ff6060">8</font>&nbsp;* <font color="#8a4b08">sizeof</font>(<font color="#00ff00">unsigned</font>&nbsp;<font color="#00ff00">char</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cnt = x % (<font color="#ff6060">8</font>&nbsp;* <font color="#8a4b08">sizeof</font>(<font color="#00ff00">unsigned</font>&nbsp;<font color="#00ff00">char</font>)); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">return</font>&nbsp;m-&gt;a[idx] &amp; (<font color="#ff6060">1</font>&nbsp;&lt;&lt; cnt);<br>
+}<br>
+<br>
+<font color="#00ff00">void</font>&nbsp;print(<font color="#00ff00">struct</font>&nbsp;multime *m)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">int</font>&nbsp;i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"{ "</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">for</font>&nbsp;(i = <font color="#ff6060">0</font>; i &lt; m-&gt;n; i++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">if</font>&nbsp;(contains(m, i))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"</font><font color="#ff40ff">%d</font><font color="#ff6060">&nbsp;"</font>, i);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"}</font><font color="#ff40ff">\n</font><font color="#ff6060">"</font>);<br>
+}<br>
+<br>
+<font color="#00ff00">void</font>&nbsp;delete(<font color="#00ff00">struct</font>&nbsp;multime *m)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;free(m-&gt;a);<br>
+}<br>
+<br>
+<font color="#00ff00">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">struct</font>&nbsp;multime m;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;init(&amp;m, <font color="#ff6060">200</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(&amp;m, <font color="#ff6060">3</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(&amp;m, <font color="#ff6060">35</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(&amp;m, <font color="#ff6060">112</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(&amp;m, <font color="#ff6060">199</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(&amp;m);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;del(&amp;m, <font color="#ff6060">35</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;del(&amp;m, <font color="#ff6060">199</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(&amp;m);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delete(&amp;m);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">return</font>&nbsp;<font color="#ff6060">0</font>;<br>
+}<br>
+<br>
+<font color="#8080ff">/*</font><br>
+<font color="#8080ff">&nbsp;* Problema 2</font><br>
+<font color="#8080ff">&nbsp;*</font><br>
+<font color="#8080ff">&nbsp;</font><font color="#8080ff">*/</font><br>
+<br>
+<font color="#ff40ff">#include </font><font color="#ff6060">&lt;stdio.h&gt;</font><br>
+<font color="#ff40ff">#include </font><font color="#ff6060">&lt;math.h&gt;</font><br>
+<br>
+<font color="#00ff00">double</font>&nbsp;integrala(<font color="#00ff00">double</font>&nbsp;(*func)(<font color="#00ff00">double</font>&nbsp;x), <font color="#00ff00">double</font>&nbsp;a, <font color="#00ff00">double</font>&nbsp;b, <font color="#00ff00">int</font>&nbsp;n)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">double</font>&nbsp;sum = <font color="#ff6060">0</font>, x1, x2, pas = (a - b) / n;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">int</font>&nbsp;i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">for</font>&nbsp;(i = <font color="#ff6060">1</font>; i &lt; n; i++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x1 = pas * (i - <font color="#ff6060">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x2 = pas * i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8080ff">//aria trapezului = (b + B) * H / 2</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum
+ += (func(x1) + func(x2)) * pas / <font color="#ff6060">2</font>; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">return</font>&nbsp;sum;<br>
+}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+<br>
+<font color="#00ff00">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"Integrala din sin(x) de la 0 la PI = </font><font color="#ff40ff">%.2f</font><font color="#ff40ff">\n</font><font color="#ff6060">"</font>, <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integrala(sin,
+ <font color="#ff6060">0</font>, <font color="#ff6060">M_PI</font>, <font color="#ff6060">100</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"Integrala din cos(x) de la 0 la PI = </font><font color="#ff40ff">%.2f</font><font color="#ff40ff">\n</font><font color="#ff6060">"</font>, <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;integrala(cos,
+ <font color="#ff6060">0</font>, <font color="#ff6060">M_PI</font>, <font color="#ff6060">100</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">return</font>&nbsp;<font color="#ff6060">0</font>;<br>
+}<br>
+<br>
+<font color="#8080ff">/*</font><br>
+<font color="#8080ff">&nbsp;* Problema 3</font><br>
+<font color="#8080ff">&nbsp;*</font><br>
+<font color="#8080ff">&nbsp;</font><font color="#8080ff">*/</font><br>
+<br>
+<font color="#ff40ff">#include </font><font color="#ff6060">&lt;stdio.h&gt;</font><br>
+<font color="#ff40ff">#include </font><font color="#ff6060">&lt;stdlib.h&gt;</font><br>
+<font color="#ff40ff">#include </font><font color="#ff6060">&lt;string.h&gt;</font><br>
+<font color="#ff40ff">#include </font><font color="#ff6060">&lt;ctype.h&gt;</font><br>
+<br>
+<font color="#ff40ff">#define MAX </font><font color="#ff6060">100</font><br>
+<br>
+<font color="#00ff00">typedef</font>&nbsp;<font color="#00ff00">enum</font>&nbsp;{ C, S, A } tip;<br>
+<br>
+<font color="#00ff00">typedef</font>&nbsp;<font color="#00ff00">struct</font>&nbsp;MATERIA {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">char</font>&nbsp;nume[<font color="#ff6060">16</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">int</font>&nbsp;ore_curs;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tip tip_examen;<br>
+} MATERIA;<br>
+<br>
+<font color="#00ff00">int</font>&nbsp;citire_MAT(MATERIA *mat)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">int</font>&nbsp;i, n;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">char</font>&nbsp;ch;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getchar(); <font color="#8080ff">// golim bufferul de "\n"</font><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"Nume: "</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fgets(mat-&gt;nume, <font color="#ff6060">16</font>, <font color="#ff6060">stdin</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n = strlen(mat-&gt;nume);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mat-&gt;nume[n - <font color="#ff6060">1</font>] = <font color="#ff40ff">'\0'</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n--;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">for</font>&nbsp;(i = <font color="#ff6060">0</font>; i &lt; n; i++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">if</font>&nbsp;(!isalpha(mat-&gt;nume[i]) &amp;&amp; !isblank(mat-&gt;nume[i]))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">return</font>&nbsp;-<font color="#ff6060">1</font>;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"Ore curs: "</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#ff6060">"</font><font color="#ff40ff">%d</font><font color="#ff6060">"</font>, &amp;mat-&gt;ore_curs);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">if</font>&nbsp;(mat-&gt;ore_curs &lt;= <font color="#ff6060">0</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">return</font>&nbsp;-<font color="#ff6060">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getchar(); <font color="#8080ff">// golim bufferul de "\n"</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"Tip examen (C / S / A): "</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#ff6060">"</font><font color="#ff40ff">%c</font><font color="#ff6060">"</font>, &amp;ch);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">switch</font>&nbsp;(tolower(ch)) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">case</font>&nbsp;<font color="#ff6060">'c'</font>: mat-&gt;tip_examen = C; <font color="#8a4b08">break</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">case</font>&nbsp;<font color="#ff6060">'s'</font>: mat-&gt;tip_examen = S; <font color="#8a4b08">break</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">case</font>&nbsp;<font color="#ff6060">'a'</font>: mat-&gt;tip_examen = A; <font color="#8a4b08">break</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">default</font>:&nbsp;<font color="#8a4b08">return</font>&nbsp;-<font color="#ff6060">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">return</font>&nbsp;<font color="#ff6060">0</font>;<br>
+}<br>
+<br>
+<font color="#00ff00">void</font>&nbsp;citire_PROGRAMA(MATERIA prog[], <font color="#00ff00">int</font>&nbsp;n)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">int</font>&nbsp;i, ok;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">for</font>&nbsp;(i = <font color="#ff6060">0</font>; i &lt; n; i++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"Introduceti datele pentru materia </font><font color="#ff40ff">%d</font><font color="#ff6060">.</font><font color="#ff40ff">\n</font><font color="#ff6060">"</font>, i);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ok = citire_MAT(&amp;prog[i]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">while</font>&nbsp;(ok == -<font color="#ff6060">1</font>) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"Date gresite. Reintroduceti datele.</font><font color="#ff40ff">\n</font><font color="#ff6060">"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ok
+ = citire_MAT(&amp;prog[i]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+}<br>
+<br>
+<font color="#00ff00">void</font>&nbsp;afisare(<font color="#00ff00">char</font>&nbsp;ch, <font color="#00ff00">int</font>&nbsp;nr, MATERIA prog[], <font color="#00ff00">int</font>&nbsp;n)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">int</font>&nbsp;i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tip tp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">switch</font>&nbsp;(tolower(ch)) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">case</font>&nbsp;<font color="#ff6060">'c'</font>: tp = C; <font color="#8a4b08">break</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">case</font>&nbsp;<font color="#ff6060">'s'</font>: tp = S; <font color="#8a4b08">break</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">case</font>&nbsp;<font color="#ff6060">'a'</font>: tp = A; <font color="#8a4b08">break</font>; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"Materiile care au tipul </font><font color="#ff40ff">%c</font><font color="#ff6060">&nbsp;si numarul de ore egal cu </font><font color="#ff40ff">%d</font><font color="#ff6060">:</font><font color="#ff40ff">\n</font><font color="#ff6060">"</font>, ch, nr);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">for</font>&nbsp;(i = <font color="#ff6060">0</font>; i &lt; n; i++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">if</font>&nbsp;(prog[i].tip_examen == tp &amp;&amp; prog[i].ore_curs == nr)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"</font><font color="#ff40ff">%s</font><font color="#ff40ff">\n</font><font color="#ff6060">"</font>, prog[i].nume);<br>
+}<br>
+<br>
+<font color="#00ff00">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MATERIA PROGRAMA[MAX];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">int</font>&nbsp;n, nr;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">char</font>&nbsp;ch;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"Introduceti numarul de materii: "</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#ff6060">"</font><font color="#ff40ff">%d</font><font color="#ff6060">"</font>, &amp;n);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;citire_PROGRAMA(PROGRAMA, n);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getchar(); <font color="#8080ff">//golim bufferul de "\n"</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"Tipul examenului: "</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#ff6060">"</font><font color="#ff40ff">%c</font><font color="#ff6060">"</font>, &amp;ch);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"Numarul de ore: "</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#ff6060">"</font><font color="#ff40ff">%d</font><font color="#ff6060">"</font>, &amp;nr);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;afisare(ch, nr, PROGRAMA, n);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">return</font>&nbsp;<font color="#ff6060">0</font>;<br>
+}<br>
+<br>
+<font color="#8080ff">/*</font><br>
+<font color="#8080ff">&nbsp;* Problema 4</font><br>
+<font color="#8080ff">&nbsp;*</font><br>
+<font color="#8080ff">&nbsp;</font><font color="#8080ff">*/</font><br>
+<br>
+<font color="#ff40ff">#include </font><font color="#ff6060">&lt;stdio.h&gt;</font><br>
+<font color="#ff40ff">#include </font><font color="#ff6060">&lt;stdlib.h&gt;</font><br>
+<br>
+<font color="#00ff00">typedef</font>&nbsp;<font color="#00ff00">struct</font>&nbsp;MATRICE {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">int</font>&nbsp;n, m;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">int</font>&nbsp;**a;<br>
+} MATRICE;<br>
+<br>
+MATRICE *creaza_MATRICE(<font color="#00ff00">int</font>&nbsp;n, <font color="#00ff00">int</font>&nbsp;m)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">int</font>&nbsp;i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MATRICE *mat;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mat = (MATRICE*) malloc (<font color="#8a4b08">sizeof</font>(MATRICE)); <font color="#8080ff">// alocam memorie pentru structura</font><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mat-&gt;n = n;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mat-&gt;m = m;&nbsp;&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8080ff">// si pentru matricea propriu-zisa</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mat-&gt;a = (<font color="#00ff00">int</font>**) malloc (n * <font color="#8a4b08">sizeof</font>(<font color="#00ff00">int</font>*)); <font color="#8080ff">// pentru pointerii la linii</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">for</font>&nbsp;(i = <font color="#ff6060">0</font>; i &lt; n; i++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mat-&gt;a[i] = (<font color="#00ff00">int</font>*) malloc (m * <font color="#8a4b08">sizeof</font>(<font color="#00ff00">int</font>)); <font color="#8080ff">// si pentru elementele de pe fiecare linie</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">return</font>&nbsp;mat;<br>
+}<br>
+<br>
+<font color="#00ff00">void</font>&nbsp;sterge_MATRICE(MATRICE *a)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">int</font>&nbsp;i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">for</font>&nbsp;(i = <font color="#ff6060">0</font>; i &lt; a-&gt;n; i++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;free(a-&gt;a[i]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;free(a-&gt;a);<br>
+}<br>
+<br>
+MATRICE *citeste_MATRICE(MATRICE *a)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">int</font>&nbsp;i, j;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">for</font>&nbsp;(i = <font color="#ff6060">0</font>; i &lt; a-&gt;n; i++) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">for</font>&nbsp;(j = <font color="#ff6060">0</font>; j &lt; a-&gt;m; j++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"a[</font><font color="#ff40ff">%d</font><font color="#ff6060">][</font><font color="#ff40ff">%d</font><font color="#ff6060">] = "</font>, i, j);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#ff6060">"</font><font color="#ff40ff">%d</font><font color="#ff6060">"</font>, &amp;a-&gt;a[i][j]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">return</font>&nbsp;a;<br>
+}<br>
+<br>
+<font color="#00ff00">void</font>&nbsp;scrie_MATRICE(MATRICE *a)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">int</font>&nbsp;i, j;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">for</font>&nbsp;(i = <font color="#ff6060">0</font>; i &lt; a-&gt;n; i++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">for</font>&nbsp;(j = <font color="#ff6060">0</font>; j &lt; a-&gt;m; j++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"</font><font color="#ff40ff">%d</font><font color="#ff6060">&nbsp;"</font>, a-&gt;a[i][j]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"</font><font color="#ff40ff">\n</font><font color="#ff6060">"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"</font><font color="#ff40ff">\n</font><font color="#ff6060">"</font>);<br>
+}<br>
+<br>
+MATRICE *aduna_MATRICE(MATRICE *a, MATRICE *b)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MATRICE *s;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">int</font>&nbsp;i, j;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">if</font>&nbsp;(a-&gt;n != b-&gt;n || a-&gt;m != b-&gt;m)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">return</font>&nbsp;<font color="#ff6060">NULL</font>;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s = creaza_MATRICE(a-&gt;n, a-&gt;m);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">for</font>&nbsp;(i = <font color="#ff6060">0</font>; i &lt; a-&gt;n; i++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">for</font>&nbsp;(j = <font color="#ff6060">0</font>; j &lt; a-&gt;m; j++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s-&gt;a[i][j]
+ = a-&gt;a[i][j] + b-&gt;a[i][j];<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">return</font>&nbsp;s;<br>
+}<br>
+<br>
+MATRICE *inmulteste_MATRICE(MATRICE *a, MATRICE *b)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MATRICE *s;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">int</font>&nbsp;i, j, k;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">if</font>&nbsp;(a-&gt;m != b-&gt;n)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">return</font>&nbsp;<font color="#ff6060">NULL</font>;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s = creaza_MATRICE(a-&gt;n, b-&gt;m);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">for</font>&nbsp;(i = <font color="#ff6060">0</font>; i &lt; s-&gt;n; i++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">for</font>&nbsp;(j = <font color="#ff6060">0</font>; j &lt; s-&gt;m; j++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s-&gt;a[i][j]
+ = <font color="#ff6060">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">for</font>&nbsp;(k = <font color="#ff6060">0</font>; k &lt; a-&gt;m; k++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s-&gt;a[i][j]
+ += a-&gt;a[i][k] * b-&gt;a[k][j];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">return</font>&nbsp;s;<br>
+}<br>
+<br>
+<font color="#00ff00">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">int</font>&nbsp;n, m;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MATRICE *a, *b, *s, *p;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"Introduceti dimensiunea pentru prima matrice.</font><font color="#ff40ff">\n</font><font color="#ff6060">"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"n = "</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#ff6060">"</font><font color="#ff40ff">%d</font><font color="#ff6060">"</font>, &amp;n);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"m = "</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#ff6060">"</font><font color="#ff40ff">%d</font><font color="#ff6060">"</font>, &amp;m);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a = creaza_MATRICE(n, m); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;citeste_MATRICE(a);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"Introduceti dimensiunea pentru cea de-a 2-a matrice.</font><font color="#ff40ff">\n</font><font color="#ff6060">"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"n = "</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#ff6060">"</font><font color="#ff40ff">%d</font><font color="#ff6060">"</font>, &amp;n);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"m = "</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#ff6060">"</font><font color="#ff40ff">%d</font><font color="#ff6060">"</font>, &amp;m); <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b = creaza_MATRICE(n, m);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;citeste_MATRICE(b);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s = aduna_MATRICE(a, b);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">if</font>&nbsp;(s == <font color="#ff6060">NULL</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"Nu s-a putut calcula suma.</font><font color="#ff40ff">\n</font><font color="#ff6060">"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">else</font>&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"Suma lor este:</font><font color="#ff40ff">\n</font><font color="#ff6060">"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrie_MATRICE(s);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p = inmulteste_MATRICE(a, b);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">if</font>&nbsp;(p == <font color="#ff6060">NULL</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"Nu s-a putut calcula produsul.</font><font color="#ff40ff">\n</font><font color="#ff6060">"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">else</font>&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"Produsul lor este:</font><font color="#ff40ff">\n</font><font color="#ff6060">"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrie_MATRICE(p);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sterge_MATRICE(a);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sterge_MATRICE(b);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sterge_MATRICE(s);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sterge_MATRICE(p);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8a4b08">return</font>&nbsp;<font color="#ff6060">0</font>;<br>
+}<br>
+</font></body></html>

@@ -1,0 +1,706 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<script type="text/javascript">
+<!--
+function writex(currMenu) {
+	if (document.getElementById) {
+		thisMenu = document.getElementById(currMenu).style;
+		if (thisMenu.display == "block") {
+			thisMenu.display = "none";
+		}
+		else {
+			thisMenu.display = "block";
+		}
+		return false;
+		}
+	else {
+		return true;
+		}
+}
+-->
+</script>
+
+<style type="text/css"> 
+
+.numar_laborator
+	{
+	font-family: Times New Roman;
+	}
+.nume_laborator
+	{
+	font-family: Times New Roman;
+	text-align: center;
+	}
+.titlu_sectiune
+	{
+	font-family: Times New Roman;
+	}
+.text_normal
+	{
+	font-family: Arial;
+	font-size: 1.0em;
+	color: black;
+	}
+.text_hint
+	{
+	font-family: Arial;
+	font-style: italic;
+	font-size: 0.8em;
+	color: rgb(102, 102, 102); 
+	}
+.text_exemplu
+	{
+	font-family: Arial;
+	}
+hr 
+	{
+	height: 1px;
+	}
+.cod
+	{
+	font-family: Courier New;
+	background-color: rgb(204,204,204);
+	color: black;
+	}
+.tabel_exemple
+	{
+	width: 100%;
+	color: black;
+	font-size: 1.0em;
+	font-family: Courier New;
+	border: 1 px black solid;
+	border-spacing: 0px;
+	border-collapse: collapse;
+	text-align: left;
+	}
+.celula_header
+	{
+	color: black;
+	font-family: Arial;
+	background-color: rgb(204,204,204);
+	width: 33%;
+	border: 2px groove black;
+	}
+.celula_exemplu
+	{
+	valign: top;
+	color: black;
+	font-family: Courier New;
+	width: 33%;
+	border: 2px groove black;
+	vertical-align: top;
+	}
+cod
+	{
+	font-family: Courier New;
+	background-color: rgb(204,204,204);
+	color: black;
+	}
+
+imp {
+	font-weight: bold;
+	color: red;
+	}
+
+</style>
+</head><body onload="javascript:writex('menu1');writex('menu1')">
+
+<div style="color: rgb(153, 153, 153);" id="google_header" class="google_header">
+<p><font size="4">&nbsp;</font><font face="Courier New" size="4"><span style="font-family: Times New Roman;">Programarea Calculatoarelor, seria CC</span></font></p>
+<p></p>
+</div>
+
+<h1 class="numar_laborator">Laborator 4 </h1>
+<h1 class="nume_laborator">Tablouri</h1>
+
+<h3 class="titlu_sectiune">În acest laborator veţi învăţa să: </h3>
+<ul>
+   <li class="text_normal">
+      Să folosiți corect tablouri unidimensionare și bidimensionale în C.
+   </li>
+   <li class="text_normal">
+      Să interclasați 2 vectori.
+   </li>
+
+</ul>
+<br>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 1 - problemă rezolvată.
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p> Program care citește un număr <cod>N</cod> și <cod>N</cod> note (între 1 și 10) și afișează procentul notelor sub 5. </p>
+	  <p> <b>Rezolvare:</b> </p>
+	  <p> Să incepem prin identificarea pașilor ce îi avem de parcurs pentru a rezolva problemei: </p>
+	  <ul>
+	  	<li> citrea numărului <cod>N</cod> și a vectorului de note și stocarea lor </li>
+		<li> pentru a calcula procentul de note sub 5, va trebui să cunoaștem numărul de note sub 5 </li>
+		<li> afișarea rezultatului calculat	</li>
+	  </ul>
+	  <p> Fie <cod>V</cod> vectorul în care sunt stocate notele. Pseudocodul care calculează procentul de note sub 5 va fi: </p>
+	  <p class="cod">
+	  n5 = 0 <br>
+	  pentru i de la 1 la  N cu pasul 1<br>
+	  &nbsp;&nbsp;&nbsp;&nbsp; dacă (V[i] &lt; 5) atunci <br>
+	  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; n5 = n5 + 1 <br>
+	  procent = n5 * 100 / N <br>
+	  afișează procent	  
+	  </p>
+	  <p> Programul <cod>C</cod> care implementează algoritmul descris mai sus va fi: </p>
+	  <p class="cod">
+	  <span class="lnr">&nbsp;1 </span><font color="#ff40ff">#include </font><font color="#ff6060">&lt;stdio.h&gt;</font><br>
+	  <span class="lnr">&nbsp;2 </span><br>
+	  <span class="lnr">&nbsp;3 </span><font color="#00ff00">int</font>&nbsp;main(<font color="#00ff00">void</font>)<br>
+	  <span class="lnr">&nbsp;4 </span>{<br>
+		  <span class="lnr">&nbsp;5 </span>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">int</font>&nbsp;N, v[<font color="#ff6060">100</font>], i, n5;<br>
+			  <span class="lnr">&nbsp;6 </span>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">float</font>&nbsp;procent;<br>
+			  <span class="lnr">&nbsp;7 </span><br>
+			  <span class="lnr">&nbsp;8 </span>&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"N = "</font>);&nbsp;&nbsp;&nbsp;&nbsp; <font color="#8080ff">/*</font><font color="#8080ff">&nbsp;afisam un mesaj pentru utilizator </font><font color="#8080ff">*/</font><br>
+			  <span class="lnr">&nbsp;9 </span>&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#ff6060">"</font><font color="#ff40ff">%d</font><font color="#ff6060">"</font>, &amp;N);&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8080ff">/*</font><font color="#8080ff">&nbsp;citim numarul de note ce vor fi introduse de la </font><br>
+																																																											<span class="lnr">10 </span><font color="#8080ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tastatura
+ </font><font color="#8080ff">*/</font><br>
+			  <span class="lnr">11 </span>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ffff00">for</font>&nbsp;(i = <font color="#ff6060">0</font>; i &lt; N; i++) {<br>
+				  <span class="lnr">12 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf(<font color="#ff6060">"v[</font><font color="#ff40ff">%d</font><font color="#ff6060">] = "</font>, i);<br>
+					  <span class="lnr">13 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; scanf(<font color="#ff6060">"</font><font color="#ff40ff">%d</font><font color="#ff6060">"</font>, &amp;v[i]);&nbsp;&nbsp;&nbsp;&nbsp; <font color="#8080ff">/*</font><font color="#8080ff">&nbsp;citim a i-a nota </font><font color="#8080ff">*/</font>&nbsp;&nbsp;<br>
+					  <span class="lnr">14 </span>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+					  <span class="lnr">15 </span><br>
+					  <span class="lnr">16 </span>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8080ff">/*</font><font color="#8080ff">&nbsp;in n5 vom numara cate note mai mici ca 5 au fost citite </font><font color="#8080ff">*/</font><br>
+					  <span class="lnr">17 </span>&nbsp;&nbsp;&nbsp;&nbsp;n5 = <font color="#ff6060">0</font>; <font color="#8080ff">/*</font><font color="#8080ff">&nbsp;initializam n5 </font><font color="#8080ff">*/</font><br>
+					  <span class="lnr">18 </span>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ffff00">for</font>&nbsp;(i = <font color="#ff6060">0</font>; i &lt; N; i++)&nbsp;&nbsp;&nbsp;&nbsp; <font color="#8080ff">/*</font><font color="#8080ff">&nbsp;parcurgem vectorul de note </font><font color="#8080ff">*/</font><br>
+					  <span class="lnr">19 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#ffff00">if</font>&nbsp;(v[i] &lt; <font color="#ff6060">5</font>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#8080ff">/*</font><font color="#8080ff">&nbsp;si daca gasim o nota mai mica decat 5 </font><font color="#8080ff">*/</font><br>
+					  <span class="lnr">20 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n5++;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <font color="#8080ff">/*</font><font color="#8080ff">&nbsp;vom incrementa n5 </font><font color="#8080ff">*/</font><br>
+					  <span class="lnr">21 </span><br>
+					  <span class="lnr">22 </span>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#8080ff">/*</font><font color="#8080ff">&nbsp;aplicam formula de calculare a procentului: cum n5, 100 si N sunt de tip</font><br>
+																								  <span class="lnr">23 </span><font color="#8080ff">&nbsp;&nbsp;&nbsp;&nbsp; * int, daca nu am converti una din ele la float, s-ar face impartire </font><br>
+																								  <span class="lnr">24 </span><font color="#8080ff">&nbsp;&nbsp;&nbsp;&nbsp; * intreaga </font><font color="#8080ff">*/</font>&nbsp;<br>
+					  <span class="lnr">25 </span>&nbsp;&nbsp;&nbsp;&nbsp;procent = (<font color="#00ff00">float</font>)n5 * <font color="#ff6060">100</font>&nbsp;/ N; <br>
+					  <span class="lnr">26 </span><br>
+<span class="lnr">27 </span>&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"procent = </font><font color="#ff40ff">%.3f</font><font color="#ff6060">\n"</font>, procent);<br>
+					<span class="lnr">28 </span><br>
+					  <span class="lnr">29 </span>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ffff00">return</font>&nbsp;<font color="#ff6060">0</font>;<br>
+
+					  <span class="lnr">30 </span>}<br>
+					  
+	</p>
+	</div>                    
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 2. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      	<p>
+         Program care citește un șir de numere (pozitive și negative) și
+ afișează media aritmetică a numerelor pozitive și media aritmetică a 
+numerelor negative. (Atenție la situația când toate numerele au același 
+semn!). 
+		</p>
+	<h4 class="test_exemplu">
+	 Exemplu:
+	</h4>
+	<table class="tabel_exemple">
+	  <tbody>
+		 <tr>
+		    <td class="celula_header">
+		       Intrare
+		    </td>
+		    <td class="celula_header">
+		       Ieşire
+		    </td>
+		 </tr>
+		 <tr>
+		    <td class="celula_exemplu">
+			5<br>
+		    -2 3 5 -7 11
+		    </td>
+		    <td class="celula_exemplu">
+		 	MP = 6.33<br>
+			MN = -4.5
+		    </td>
+		 </tr> 
+		 <tr>
+		    <td class="celula_exemplu">
+			5<br>
+			2 3 5 7 11
+		    </td>
+		    <td class="celula_exemplu">
+		 	MP = 5.6 <br>
+			MN = nu se poate calcula
+		    </td>
+		 </tr> 
+	  </tbody>
+	</table>                    
+   </div>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 3. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+    <p> Program pentru determinarea valorii minime dintre toate valorile
+ maxime pe liniile unei matrice de numere reale (punct in "șa"). </p>
+ 	<h4 class="test_exemplu">
+	 Exemplu:
+	</h4>
+	<table class="tabel_exemple">
+	  <tbody>
+		 <tr>
+		    <td class="celula_header">
+		       Intrare
+		    </td>
+		    <td class="celula_header">
+		       Ieşire
+		    </td>
+		 </tr>
+		 <tr>
+		    <td class="celula_exemplu">
+			4 4 <br>
+		    2  <u>17</u>  1 4 <br>
+			9  2 <u>11</u> 3 <br>
+			1 <u>8</u>  5 6 <br>
+			8  <u>9</u>  3 4
+		    </td>
+		    <td class="celula_exemplu">
+		 	8 
+		    </td>
+		 </tr>
+	  </tbody>
+	</table>   
+   </div>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 4. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+    <p>
+         Se citesc 2 matrice A (<cod>m x n</cod>) și B (<cod>p x q</cod>) de la tastatură. 
+		 Afișați matricea <cod>C = A * B</cod> sau mesajul <i>"nu se poate efectua A * B"</i>.
+	</p>
+	<p> 
+		<cod>C<sub>i, j</sub> = ∑ A<sub>i, k</sub> * B<sub>k, j</sub></cod>, <cod>1 ≤ i ≤ m</cod>, <cod>1 ≤ k ≤ n = p</cod>, <cod>1 ≤ j ≤ q</cod>
+	</p>              
+ 	<h4 class="test_exemplu">
+	 Exemplu:
+	</h4>
+	<table class="tabel_exemple">
+	  <tbody>
+		 <tr>
+		    <td class="celula_header">
+		       Intrare
+		    </td>
+		    <td class="celula_header">
+		       Ieşire
+		    </td>
+		 </tr>
+		 <tr>
+		    <td class="celula_exemplu">
+			2 1<br>
+		    1 <br>
+			2 <br>
+			<br>
+			1 3 <br>
+            1 2 3
+		    </td>
+		    <td class="celula_exemplu">
+		 	2 3 <br>
+			1 2 3 <br>
+			2 4 6
+		    </td>
+		 </tr>
+	  </tbody>
+	</table>  
+   </div>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 5.
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+     Program pentru interclasarea a doi vectori ordonați într-un singur vector ordonat.
+   </div>
+	<div class="text_hint">
+		<p> Hint: Veți parcurge cei 2 vectori in paralel și veți construi un 
+nou vector, la care veți adăuga, pe rând, câte un element din primul sau
+ din al doilea vector (în funcție de care dintre ele este mai mic).
+		</p>
+	</div>
+	<center><img src="PC_lab04_files/merge.gif" height="40%" width="40%"></center>
+	<h4 class="test_exemplu">
+	 Exemplu:
+	</h4>
+	<table class="tabel_exemple">
+	  <tbody>
+		 <tr>
+		    <td class="celula_header">
+		       Intrare
+		    </td>
+		    <td class="celula_header">
+		       Ieşire
+		    </td>
+		 </tr>
+		 <tr>
+		    <td class="celula_exemplu">
+			5 6 <br>
+		    2 4 9 12 14<br>
+			1 3 5 8 9 11
+		    </td>
+		    <td class="celula_exemplu">
+		 	 1 2 3 4 5 8 9 9 11 12 14
+		    </td>
+		 </tr>
+	  </tbody>
+	</table>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 6. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+	Se citește o matrice pătratică A de la tastatură. Afișati toate elementele de sub diagonala secundară, pe coloane.	
+   </div>
+<h4 class="test_exemplu">
+	 Exemplu:
+	</h4>
+	<table class="tabel_exemple">
+	  <tbody>
+		 <tr>
+		    <td class="celula_header">
+		       Intrare
+		    </td>
+		    <td class="celula_header">
+		       Ieşire
+		    </td>
+		 </tr>
+		 <tr>
+		    <td class="celula_exemplu">
+			4	<br> 
+		     1  2  3  4 <br>
+			 5  6  7  8 <br>
+			 9 10 11 12 <br>
+			13 14 15 16
+		    </td>
+		    <td class="celula_exemplu">
+		 	 14 11 15 8 12 16
+		    </td>
+		 </tr>
+	  </tbody>
+	</table>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 7. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         Program pentru afișarea celei mai lungi secvențe de elemente consecutive ordonate crescător dintr-un vector dat.  
+      </p>
+	</div>
+	<h4 class="test_exemplu">
+	 Exemplu:
+	</h4>
+	<table class="tabel_exemple">
+	  <tbody>
+		 <tr>
+		    <td class="celula_header">
+		       Intrare
+		    </td>
+		    <td class="celula_header">
+		       Ieşire
+		    </td>
+		 </tr>
+		 <tr>
+		    <td class="celula_exemplu">
+			  9 <br>
+		      5 3 6  2 4 6  8 4 1  
+		    </td>
+		    <td class="celula_exemplu">
+		 	 2 4 6 8
+		    </td>
+		 </tr>
+	  </tbody>
+	</table>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 8.
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+		Program pentru afișarea secvenței de elemente consecutive de sumă maximă dintr-un vector.
+      </p>
+  </div>
+  <h4 class="test_exemplu">
+     Exemplu:
+  </h4>
+  <table class="tabel_exemple">
+      <tbody>
+         <tr>
+            <td class="celula_header">
+               Intrare
+            </td>
+            <td class="celula_header">
+               Ieşire
+            </td>
+         </tr>
+         <tr>
+            <td class="celula_exemplu">
+			   12 <br>
+               5 0 -1  -4 2 8  3 -1 2  -5 -8 4
+            </td>
+            <td class="celula_exemplu">
+               2 8 3 -1 2
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div>
+
+
+<br>
+<a onclick="javascript:writex('menu1')" id="mypoint" href="#mypoint"><b>Probleme suplimentare</b></a>
+
+<span style="display: none;" class="menu" id="menu1">
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 1. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         Program care citește un șir de numere și verifică dacă acest 
+șir este ordonat crescator sau ordonat descrescator sau nu este ordonat 
+sau este un șir constant. Se afișează un mesaj: <i> "crescator" </i>, <i>"descrescator"</i>,...
+      </p>
+ 	<h4 class="test_exemplu">
+	 Exemplu:
+	</h4>
+	<table class="tabel_exemple">
+	  <tbody>
+		 <tr>
+		    <td class="celula_header">
+		       Intrare
+		    </td>
+		    <td class="celula_header">
+		       Ieşire
+		    </td>
+		 </tr>
+		 <tr>
+		    <td class="celula_exemplu">
+			5<br>
+		    2 3 5 7 11
+		    </td>
+		    <td class="celula_exemplu">
+			crescator
+		    </td>
+		 </tr> 
+		 <tr>
+		    <td class="celula_exemplu">
+			4<br>
+			11 2 2 5
+		    </td>
+		    <td class="celula_exemplu">
+			neordonat
+		    </td>
+		 </tr> 
+ 		 <tr>
+			<td class="celula_exemplu">
+			3<br>
+			3 3 3 
+		    </td>
+		    <td class="celula_exemplu">
+			constant
+		    </td>
+		 </tr> 
+	  </tbody>
+	</table> 
+   </div>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 2. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         Program care citește <cod>n</cod> numere reale <cod>X</cod> și <cod>m + 1</cod> numere întregi <cod>A</cod> și 
+		 afișează numărul de valori din <cod>X</cod> situat în fiecare din cele <cod>m</cod> intervale deschise delimitate 
+		 de valorile din <cod>A</cod>.  </p>
+	  <p>
+	   Se verifică dacă valorile <cod>A</cod> sunt introduse în ordine crescatoare și în caz contrar programul se oprește.
+      </p>
+ 	<h4 class="test_exemplu">
+	 Exemplu:
+	</h4>
+	<table class="tabel_exemple">
+	  <tbody>
+		 <tr>
+		    <td class="celula_header">
+		       Intrare
+		    </td>
+		    <td class="celula_header">
+		       Ieşire
+		    </td>
+ 			<td class="celula_header">
+		       Explicație
+		    </td> 
+		 </tr>
+		 <tr>
+		    <td class="celula_exemplu">
+			7 <br>
+			5.2 4.1 1.1 5 5.9 6.7 3.14 <br>
+			<br>
+			4 <br>
+			2 3 5 7
+		    </td>
+		    <td class="celula_exemplu">
+		 	0 1 3
+		    </td> 
+		    <td class="celula_exemplu">
+		 	Nu sunt numere incluse în intervalul (2, 3). <br>
+			În (3, 4) este inclus 3.14. <br>
+			În (4, 5) sunt incluse 5.2, 4.1, 5.9.
+		    </td> 
+		 </tr>
+	  </tbody>
+	</table>               
+   </div>
+</div>
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 3. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      	<p>
+         Program pentru calculul valorii unui polinom cu coeficienți 
+dați, prin mai multe metode cu următoarea numerotare a coeficienților: 
+		 <cod>P(x) = c<sub>0</sub> * x<sup>n</sup> + c<sub>1</sub> * x<sup>n - 1</sup> + ... + c<sub>n - 1</sub> * x + c<sub>n</sub></cod>
+         </p>
+		<p> Se citesc de la tastatură: <cod>x</cod>, <cod>n</cod>, <cod>c[0]</cod>, ... , <cod>c[n]</cod> </p> 
+		<ul>
+         <li> Ca suma de termeni calculați separat (cu funcția <cod>pow</cod>, din <cod>math.h</cod>)
+         </li>
+         <li>
+            Printr-o relație de recurență de forma: <cod>P(x, k) = P(x, k - 1) * x + c[k]</cod> și <cod>P(x, 0) = c[0]</cod>. <br>
+			De exemplu: pentru <cod>n = 3</cod> și <cod>c = { 1, 2, 3, 4 }</cod>, corespunzătoare polinomului 
+			<cod>P(x) = x<sup>3</sup> + 2 * x<sup>2</sup> + 3 * x + 4</cod>, se poate scrie
+			<cod>P(x) = x * (x * (x * 1 + 2) + 3) + 4</cod>
+         </li>
+         </ul>
+		 <h4 class="test_exemplu">
+		 Exemplu:
+		 </h4>
+		 <table class="tabel_exemple">
+		 <tbody>
+		 <tr>
+		 <td class="celula_header">
+		 Intrare
+		 </td>
+		 <td class="celula_header">
+		 Ieşire
+		 </td>
+		 </tr>
+		 <tr>
+		 <td class="celula_exemplu">
+		 0.5 3<br>
+		 1 2 3 4
+		 </td>
+		 <td class="celula_exemplu">
+		 6.12500
+		 </td>
+		 </tr>
+	  </tbody>
+	</table> 
+   </div>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 4.
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         Fie un vector de numere întregi (inițial toate având valoarea 0) de lungime <cod>N</cod>.
+		 Se citesc de la tastatură un set de <cod>M</cod> tripleți de forma <cod> B E V</cod> fiecare 
+		 având urmatoarea semnificație : toate elementele din vector ale căror poziții (indexate de la 0)
+	   sunt cuprinse între <cod>B</cod> și <cod>E</cod> inclusiv vor fi modificate prin adunare cu <cod>V</cod>. </p>
+	  <p>Afișati vectorul obținut în urma aplicării celor <cod>M</cod> operații. </p>
+  </div>
+  <h4 class="test_exemplu">
+     Exemplu:
+  </h4>
+  <table class="tabel_exemple">
+      <tbody>
+         <tr>
+            <td class="celula_header">
+               Intrare
+            </td>
+            <td class="celula_header">
+               Ieşire
+            </td>
+ 			<td class="celula_header">
+               Explicație
+            </td>   
+         </tr>
+         <tr>
+            <td class="celula_exemplu">
+            5 3 <br>
+			1 2 3 <br>
+			2 4 -1 <br>
+			0 1 2 
+            </td>
+            <td class="celula_exemplu">
+             2 5 2 -1 -1
+            </td>  
+            <td class="celula_exemplu">
+             Inițial: 0 0 0 0 0 <br>
+			 După (1 2 3): 0 3 3 0 0 <br> 
+			 După (2 4 -1): 0 3 2 -1 -1 <br>
+			 După (0 1 2): 2 5 2 -1 -1
+            </td>  
+         </tr>
+
+      </tbody>
+   </table>
+</div>
+
+
+</span>
+
+</body></html>

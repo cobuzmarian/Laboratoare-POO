@@ -1,0 +1,746 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<script type="text/javascript">
+<!--
+function writex(currMenu) {
+	if (document.getElementById) {
+		thisMenu = document.getElementById(currMenu).style;
+		if (thisMenu.display == "block") {
+			thisMenu.display = "none";
+		}
+		else {
+			thisMenu.display = "block";
+		}
+		return false;
+		}
+	else {
+		return true;
+		}
+}
+-->
+</script>
+
+<style type="text/css"> 
+.numar_laborator
+	{
+	font-family: Times New Roman;
+	}
+.nume_laborator
+	{
+	font-family: Times New Roman;
+	text-align: center;
+	}
+.titlu_sectiune
+	{
+	font-family: Times New Roman;
+	}
+.text_normal
+	{
+	font-family: Arial;
+	font-size: 1.0em;
+	font-weight: normal;
+	color: black;
+	}
+.text_hint
+	{
+	font-family: Arial;
+	font-style: italic;
+	font-size: 0.8em;
+	color: rgb(102, 102, 102); 
+	}
+.text_exemplu
+	{
+	font-family: Arial;
+	}
+hr 
+	{
+	height: 1px;
+	}
+.cod
+	{
+	font-family: Courier New;
+	font-weight: normal;
+	background-color: rgb(204,204,204);
+	color: black;
+	}
+.tabel_exemple
+	{
+	width: 100%;
+	color: black;
+	font-size: 1.0em;
+	font-family: Courier New;
+	border: 1 px black solid;
+	border-spacing: 0px;
+	border-collapse: collapse;
+	text-align: left;
+	}
+.celula_header
+	{
+	color: black;
+	font-family: Arial;
+	background-color: rgb(204,204,204);
+	width: 50%;
+	border: 2px groove black;
+	}
+.celula_exemplu
+	{
+	valign: top;
+	color: black;
+	font-family: Courier New;
+	width: 50%;
+	border: 2px groove black;
+	vertical-align: top;
+	}
+cod
+	{
+	font-family: Courier New;
+	background-color: rgb(204,204,204);
+	color: black;
+	}
+</style>
+</head><body onload="javascript:writex('menu1');writex('menu1')">
+<div style="color: rgb(153, 153, 153);" id="google_header" class="google_header">
+<p><font size="4">&nbsp;</font><font face="Courier New" size="4"><span style="font-family: Times New Roman;">Programarea Calculatoarelor, seria CC</span></font></p>
+<p></p>
+</div>
+<h1 class="numar_laborator">Laborator 5 </h1>
+<h1 class="nume_laborator">Definirea şi utilizarea de funcţii</h1>
+<h3 class="titlu_sectiune">În acest laborator veţi învăţa să:</h3>
+<ul>
+   <li class="text_normal">
+      Definiţi funcţii
+   </li>
+   <li class="text_normal">
+      Folosiţi funcţii definite de utilizator
+   </li>
+</ul>
+<br>
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+Problema 1 - problemă rezolvată.
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         Scrieţi o funcţie care să calculeze numărul de cifre ale unui număr întreg nenul dat ca parametru. În funcția <cod>main()</cod> citiți un număr de la tastatură şi afişați rezultatul apelului funcţiei. Antetul funcţiei trebuie să respecte următorul format:
+      </p>
+ 	</div>
+   <div class="cod">
+      <p> 
+         int nrcf(long n)
+      </p>
+   </div>
+   <p> <b>Rezolvare:</b> </p>
+   <div class="text_normal"><p> Programul <cod>C</cod> care implementează cerința problemei de mai sus va fi: </p></div>
+	<p class="cod">
+		<font color="#ffff00">&nbsp;1 </font><font color="#ff40ff">#include </font><font color="#ff6060">&lt;stdio.h&gt;</font><br>
+		<font color="#ffff00">&nbsp;2 </font><br>
+		<font color="#ffff00">&nbsp;3 </font><font color="#00ff00">int</font>&nbsp;nrcf(<font color="#00ff00">long</font>&nbsp;n)<br>
+		<font color="#ffff00">&nbsp;4 </font>{<br>
+		<font color="#ffff00">&nbsp;5 </font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">int</font>&nbsp;nr = <font color="#ff6060">0</font>; <font color="#8080ff">/*</font><font color="#8080ff">&nbsp;declar un contor in care sa numar cifrele </font><font color="#8080ff">*/</font><br>
+		<font color="#ffff00">&nbsp;6 </font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ffff00">while</font>&nbsp;(n) <font color="#8080ff">/*</font><font color="#8080ff">&nbsp;cat timp mai pot obtine o cifra </font><font color="#8080ff">*/</font><br>
+		<font color="#ffff00">&nbsp;7 </font>&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+		<font color="#ffff00">&nbsp;8 </font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n = n/<font color="#ff6060">10</font>; <font color="#8080ff">/*</font><font color="#8080ff">&nbsp;o trunchiez pe ultima </font><font color="#8080ff">*/</font><br>
+		<font color="#ffff00">&nbsp;9 </font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nr++; <font color="#8080ff">/*</font><font color="#8080ff">&nbsp;incrementez contorul </font><font color="#8080ff">*/</font><br>
+		<font color="#ffff00">10 </font>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+		<font color="#ffff00">11 </font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ffff00">return</font>&nbsp;nr; <font color="#8080ff">/*</font><font color="#8080ff">&nbsp;functia intoarce numarul de cifre </font><font color="#8080ff">*/</font><br>
+		<font color="#ffff00">12 </font>}<br>
+		<font color="#ffff00">13 </font><br>
+		<font color="#ffff00">14 </font><br>
+		<font color="#ffff00">15 </font><font color="#00ff00">int</font>&nbsp;main(<font color="#00ff00">void</font>)<br>
+		<font color="#ffff00">16 </font>{<br>
+		<font color="#ffff00">17 </font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">long</font>&nbsp;N;<br>
+		<font color="#ffff00">18 </font>&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"N = "</font>); <font color="#8080ff">/*</font><font color="#8080ff">&nbsp;afisam un mesaj pentru utilizator </font><font color="#8080ff">*/</font><br>
+		<font color="#ffff00">19 </font>&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#ff6060">"</font><font color="#ff40ff">%ld</font><font color="#ff6060">"</font>, &amp;N); <font color="#8080ff">/*</font><font color="#8080ff">&nbsp;citim numarul introdus de la tastatura </font><font color="#8080ff">*/</font><br>
+		<font color="#ffff00">20 </font><br>
+		<font color="#ffff00">21 </font>&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"Numarul </font><font color="#ff40ff">%ld</font><font color="#ff6060">&nbsp;are </font><font color="#ff40ff">%d</font><font color="#ff6060">&nbsp;cifre!</font><font color="#ff40ff">\n</font><font color="#ff6060">"</font>, N, nrcf(N)); <font color="#8080ff">/*</font><font color="#8080ff">&nbsp;afisez numarul de cifre </font><font color="#8080ff">*/</font><br>
+		<font color="#ffff00">22 </font><br>
+		<font color="#ffff00">23 </font>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ffff00">return</font>&nbsp;<font color="#ff6060">0</font>;<br>
+		<font color="#ffff00">24 </font>}<br>
+	
+	</p>
+
+	<h4 class="test_exemplu">
+	 Exemplu:
+	</h4>
+	<table class="tabel_exemple">
+	  <tbody>
+		 <tr>
+		    <td class="celula_header">
+		       Intrare
+		    </td>
+		    <td class="celula_header">
+		       Ieşire
+		    </td>
+		 </tr>
+		 <tr>
+		    <td class="celula_exemplu">
+			1325135
+		    </td>
+		    <td class="celula_exemplu">
+		    7
+			</td>
+		 </tr> 
+		 <tr>
+		    <td class="celula_exemplu">
+		    274
+			</td>
+		    <td class="celula_exemplu">
+		    3
+			</td>
+		 </tr> 
+		 <tr>
+		    <td class="celula_exemplu">
+		    666013
+			</td>
+		    <td class="celula_exemplu">
+		    6
+			</td>
+		 </tr> 
+	  </tbody>
+	</table> 
+</div>
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 2. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         Scrieţi o funcţie care să verifice dacă un număr întreg <cod>n</cod> conţine cifra <cod>c</cod>. Numerele <cod>n</cod> şi <cod>c</cod> sunt date ca parametri. Antetul funcţiei trebuie să respecte următorul format:
+      </p>
+   </div>
+   <div class="cod">
+      <p>
+         int cifra(int n, int c)
+      </p>
+	</div>
+	<h4 class="test_exemplu">
+	 Exemplu:
+	</h4>
+	<table class="tabel_exemple">
+	  <tbody>
+		 <tr>
+		    <td class="celula_header">
+		       Intrare
+		    </td>
+		    <td class="celula_header">
+		       Ieşire
+		    </td>
+		 </tr>
+		 <tr>
+		    <td class="celula_exemplu">
+			13584 3
+		    </td>
+		    <td class="celula_exemplu">
+		    DA
+			</td>
+		 </tr> 
+		 <tr>
+		    <td class="celula_exemplu">
+		    100111 0
+			</td>
+		    <td class="celula_exemplu">
+		    DA
+			</td>
+		 </tr> 
+		 <tr>
+		    <td class="celula_exemplu">
+		    666013 8
+			</td>
+		    <td class="celula_exemplu">
+		    NU
+			</td>
+		 </tr> 
+	  </tbody>
+	</table> 
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 3. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         <b> Ipoteza lui Goldbach: </b> Orice număr par se poate exprima printr-o sumă de două numere prime, nu neapărat distincte. 
+      </p>
+      <p>
+         <b>A.</b> Scrieţi o funcţie care să verifice dacă un număr întreg este prim sau nu. Funcţia va returna valoarea <cod>1</cod> dacă argumentul este număr prim şi <cod>0</cod> în caz contrar. Antetul funcţiei trebuie să respecte următorul format:
+      </p>
+   </div>
+   <div class="cod">
+      <p>
+               int prim(int n)
+      </p>
+   </div>
+   <div class="text_normal">
+      <p>
+         <b>B.</b> Scrieţi un program care verifică ipoteza lui Goldbach prin afişarea tuturor descompunerilor <b>distincte</b>(de ex. nu se vor afișa și <cod>"5+7"</cod> și <cod>"7+5"</cod>) posibile în sumă de numere prime ale unui număr citit de la tastatură. Programul va apela funcţia <cod>prim</cod>.
+      </p>
+   </div>
+   <div class="text_normal">
+      <p>
+         <b>Observaţie:</b> Se va considera pentru această problemă că numărul <cod>1</cod> este prim.
+      </p>
+   </div>
+  <h4 class="test_exemplu">
+     Exemplu:
+  </h4>
+  <table class="tabel_exemple">
+      <tbody>
+         <tr>
+            <td class="celula_header">
+               Intrare
+            </td>
+            <td class="celula_header">
+               Ieşire
+            </td>
+         </tr>
+         <tr>
+            <td class="celula_exemplu">
+               12
+            </td>
+            <td class="celula_exemplu">
+               1+11<br>
+               5+7
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div>
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<!--
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 4. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         Scrieţi o funcţie care să convertească un număr <cod>n</cod> Într-o bază <cod>b</cod> (<cod>1 < b < 11</cod>). Cifrele numărului convertit se vor memora într-un vector <cod>sol[]</cod>. Antetul funcţiei trebuie să respecte următorul format:
+      </p>
+   </div>
+   <div class="cod">
+      <p>
+         void convert( int n, int b, char sol[]) 
+      </p>
+   </div>
+   <div class="text_normal">
+      <p>
+         Pentru verificarea rezultatului, afişaţi şi rezultatul funcţiei <cod>itoa()</cod> (definită în <cod>stdlib.h</cod>):
+      </p>
+   </div>
+   <div class="cod">
+      <p>
+	 char sol_verif[20];<br>
+         printf("%s\n",itoa(n,sol_verif,b)); 
+      </p>
+   </div>
+</div>
+-->
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 4. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         Se citesc de la tastatură patru numere întregi reprezentând două fracţii <cod>x1/y1</cod> şi <cod>x2/y2</cod>.
+ Aduceţi fracţiile la acelaşi numitor (cel mai mic posibil) folosind o 
+funcţie care calculează cel mai mic multiplu comun a două numere 
+întregi. Antetul funcţiei trebuie să respecte următorul format:
+      </p>
+   </div>
+   <div class="cod">
+      <p>
+	 int cmmmc(int a, int b)
+      </p>
+   </div>
+   <div class="text_hint">
+      <p>
+	  Hint: <cod>cmmmc(a, b) = (a * b) / cmmdc(a, b)</cod>
+      </p>
+   </div>
+  <h4 class="test_exemplu">
+     Exemplu:
+  </h4>
+  <table class="tabel_exemple">
+      <tbody>
+         <tr>
+            <td class="celula_header">
+               Intrare
+            </td>
+            <td class="celula_header">
+               Ieşire
+            </td>
+         </tr>
+         <tr>
+            <td class="celula_exemplu">
+               1 2<br>
+               1 11
+            </td>
+            <td class="celula_exemplu">
+               11/22<br>
+               2/22
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div>
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 5. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         Să se scrie un program pentru calculul sumei seriei Taylor pentru funcţia <cod>e<sup>x</sup></cod> până la un termen dat:
+      </p>
+   </div>
+   <div class="cod">
+      <p>
+	 e<sup>x</sup> = 1 + x/1! + x<sup>2</sup>/2! + x<sup>3</sup>/3! + ... + x<sup>n</sup>/n!
+      </p>
+   </div>
+   <div class="text_normal">
+      <p>
+         Se vor defini şi utiliza următoarele funcţii:
+      </p>
+   </div>
+   <ol> 
+	  <li style="font-weight: bold;">
+   	   <div class="text_normal">
+         <p>
+         Funcţie pentru calculul sumei seriei Taylor în punctul <cod>x</cod> până la un termen <cod>n</cod> dat:
+         </p>
+       </div>
+       <div class="cod">
+         <p>
+         double taylor(double x, int n)
+         </p>
+       </div>
+	  </li>
+  <li style="font-weight: bold;"> 
+   <div class="text_normal">
+      <p>
+        Funcţie pentru calculul factorialului unui număr întreg:
+      </p>
+   </div>
+   <div class="cod">
+      <p>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int factorial(int n)
+      </p>
+   </div>
+   </li>
+    <li style="font-weight: bold;"> 
+   <div class="text_normal">
+      <p>
+         Funcţie pentru calculul puterii întregi a unui număr dat:
+      </p>
+   </div>
+   <div class="cod">
+      <p>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double putere(double x, int n)
+      </p>
+   </div>
+   </li>
+   	</ol>
+	<div class="text_normal">
+	<p>
+         Comparaţi rezultatul obţinut cu rezultatul funcţiei <cod>exp(x)</cod> şi cu rezultatul funcţiei <cod>pow(2.718,x)</cod>. 
+    </p>
+	</div>
+</div>
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 6. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         Se citesc <cod>n</cod> puncte de la tastatură, date prin coordonatele lor: <cod>x<sub>i</sub>, y<sub>i</sub>, i=1,n</cod>.
+ Să se afişeze perechea de puncte între care distanţa este maximă (dacă 
+există mai multe astfel de perechi, se poate afişa oricare dintre ele), 
+precum şi această distanţă. Se va defini şi folosi o funcţie pentru 
+calculul distanţei dintre două puncte în plan, care trebuie să respecte 
+următorul antet:
+      </p>
+   </div>
+   <div class="cod">
+      <p>
+         float dist(int x1, int y1, int x2, int y2)  
+      </p>
+   </div>
+	<h4 class="test_exemplu">
+     Exemplu:
+  </h4>
+  <table class="tabel_exemple">
+      <tbody>
+         <tr>
+            <td class="celula_header">
+               Intrare
+            </td>
+            <td class="celula_header">
+               Ieşire
+            </td>
+         </tr>
+         <tr>
+            <td class="celula_exemplu">
+               4<br>
+               0 0<br>
+			   0 1<br>
+			   1 0<br>
+			   1 1
+            </td>
+            <td class="celula_exemplu">
+               [(0,0);(1,1)] formeaza distanta maxima 1.414214
+			</td>
+         </tr>
+		 <tr>
+            <td class="celula_exemplu">
+               3<br>
+               2 -2<br>
+			   3 4<br>
+			   7 8<br>		
+           </td>
+           <td class="celula_exemplu">
+               [(2,-2);(7,8)] formeaza distanta maxima 11.180340
+			</td>
+         </tr>
+      </tbody>
+   </table>
+</div>
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 7. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+        Scrieţi o funcţie care sortează cifrele unui număr astfel:<br>
+		</p><ol type="a">
+ 	 	<li style="font-weight: bold;">
+		 	<span style="font-weight: normal;">descrescător, dacă numărul conţine cifra 0</span>
+		</li>
+        <li style="font-weight: bold;">
+		 	<span style="font-weight: normal;">crescător, dacă numărul nu conţine cifra 0</span>
+		</li>
+	    </ol>
+	 Funcţia trebuie să respecte următorul antet
+      <p></p>    
+   </div>
+   <div class="cod">
+      <p>
+         int transforma(int n)
+      </p>
+   </div>
+   <span class="text_hint">
+	   HINT! Pentru a sorta cifrele, cea mai simpla metoda este sa folositi
+ un vector cu 10 elemente in care sa memorati pentru fiecare cifra, de 
+cate ori apare aceasta in numar. Pentru a afisa numarul sortat, trebuie 
+sa parcurgeti vectorul si sa afisati cifrele in ordine 
+crescatoare/descrescatoare conform cu numarul lor de aparitii.
+   </span>
+  <h4 class="test_exemplu">
+     Exemplu:
+  </h4>
+  <table class="tabel_exemple">
+      <tbody>
+         <tr>
+            <td class="celula_header">
+               Intrare
+            </td>
+            <td class="celula_header">
+               Ieşire
+            </td>
+         </tr>
+         <tr>
+            <td class="celula_exemplu">
+               19430123
+            </td>
+            <td class="celula_exemplu">
+               94332110
+            </td>
+         </tr>
+         <tr>
+            <td class="celula_exemplu">
+               2534562
+            </td>
+            <td class="celula_exemplu">
+               2234556 
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div>
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 8. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         Scrieţi o funcţie care caculează aria intersecţiei a două 
+dreptunghiuri, date prin coordonatele colţurilor stânga-sus şi 
+dreapta-jos. Coordonatele sunt numere întregi pozitive. Funcţia trebuie 
+să respecte următorul antet:
+      </p>
+   </div>
+   <div class="cod">
+      <p>
+         int arie_intersectie(int x11, int y11, int x12, int y12, int x21, int y21, int x22, int y22)
+      </p>
+   </div>
+  <h4 class="test_exemplu">
+     Exemplu:
+  </h4>
+  <table class="tabel_exemple">
+      <tbody>
+         <tr>
+            <td class="celula_header">
+               Intrare
+            </td>
+            <td class="celula_header">
+               Ieşire
+            </td>
+         </tr>
+         <tr>
+            <td class="celula_exemplu">
+               1 10 5 5<br>
+               2 7 4 4
+            </td>
+            <td class="celula_exemplu">
+               4
+            </td>
+         </tr>
+         <tr>
+            <td class="celula_exemplu">
+               1 3 3 1<br>
+               2 4 4 3
+            </td>
+            <td class="celula_exemplu">
+               0
+            </td>
+         </tr>
+      </tbody>
+   </table>   
+</div>
+
+<br>
+<a onclick="javascript:writex('menu1')" id="mypoint" href="#mypoint"><b>Probleme suplimentare</b></a>
+
+<span style="display: none;" class="menu" id="menu1">
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 1.
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         Să se scrie o funcţie care determină ultima cifră diferită de 0
+ a factorialului unui număr natural dat mai mic decât 300. Funcţia 
+trebuie să respecte următorul antet:
+      </p>
+  </div>
+   <div class="cod">
+      <p>
+         int last_nonzero_digit(int n)
+      </p>
+   </div>
+   <div class="text_normal">
+      <p>
+         Observaţie: Nu încercaţi să calculaţi direct numărul <cod>n!</cod> deoarece rezultatul va creşte rapid depăşind limita maximă a oricărui tip de dată întreg.
+      </p>
+  </div>
+  <h4 class="test_exemplu">
+     Exemplu:
+  </h4>
+  <table class="tabel_exemple">
+      <tbody>
+         <tr>
+            <td class="celula_header">
+               Intrare
+            </td>
+            <td class="celula_header">
+               Ieşire
+            </td>
+         </tr>
+         <tr>
+            <td class="celula_exemplu">
+               7<br>
+            </td>
+            <td class="celula_exemplu">
+               4
+            </td>
+         </tr>
+      </tbody>
+   </table>   
+</div>
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 2.
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         Să se scrie o funcţie care determină aria <b>reuniunii</b> a trei dreptunghiuri date prin coordonatele întregi ale colţurile stânga-sus şi dreapta-jos. 
+      </p>
+      <p>
+         Observaţie: Folosiţi funcţia definită în problema 8.
+      </p>
+  </div>
+  <h4 class="test_exemplu">
+     Exemplu:
+  </h4>
+  <table class="tabel_exemple">
+      <tbody>
+         <tr>
+            <td class="celula_header">
+               Intrare
+            </td>
+            <td class="celula_header">
+               Ieşire
+            </td>
+         </tr>
+         <tr>
+            <td class="celula_exemplu">
+               0 0 8 6 <br>
+	       4 2 11 9 <br>
+               2 -2 6 4
+            </td>
+            <td class="celula_exemplu">
+               89
+            </td>
+         </tr>
+      </tbody>
+   </table>   
+  <h4 class="test_exemplu">
+     Explicaţie:
+  </h4>
+	<img src="PC_lab05_files/poza.gif">
+  <div class="text_normal">
+  <p>
+  La această problemă puteți să vă testați sursele folosind evaluatorul de pe inforena.
+  Problema se numește Reuniune și se gasește <a href="http://infoarena.ro/problema/reuniune">aici</a>.
+  </p></div>
+</div>
+</span>
+﻿﻿
+</body></html>

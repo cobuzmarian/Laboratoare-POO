@@ -1,0 +1,883 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<script type="text/javascript">
+<!--
+function writex(currMenu) {
+	if (document.getElementById) {
+		thisMenu = document.getElementById(currMenu).style;
+		if (thisMenu.display == "block") {
+			thisMenu.display = "none";
+		}
+		else {
+			thisMenu.display = "block";
+		}
+		return false;
+		}
+	else {
+		return true;
+		}
+}
+-->
+</script>
+
+
+<style type="text/css"> 
+
+
+
+.numar_laborator
+
+	{
+
+	font-family: Times New Roman;
+
+	}
+
+.nume_laborator
+
+	{
+
+	font-family: Times New Roman;
+
+	text-align: center;
+
+	}
+
+.titlu_sectiune
+
+	{
+
+	font-family: Times New Roman;
+
+	}
+
+.text_normal
+
+	{
+
+	font-family: Arial;
+
+	font-size: 1.0em;
+
+	color: black;
+
+	}
+
+.text_hint
+
+	{
+
+	font-family: Arial;
+
+	font-style: italic;
+
+	font-size: 0.8em;
+
+	color: rgb(102, 102, 102); 
+
+	}
+
+.text_exemplu
+
+	{
+
+	font-family: Arial;
+
+	}
+
+hr 
+
+	{
+
+	height: 1px;
+
+	}
+
+.cod
+
+	{
+
+	font-family: Courier New;
+
+	background-color: rgb(204,204,204);
+
+	color: black;
+
+	}
+
+.tabel_exemple
+
+	{
+
+	width: 100%;
+
+	color: black;
+
+	font-size: 1.0em;
+
+	font-family: Courier New;
+
+	border: 1 px black solid;
+
+	border-spacing: 0px;
+
+	border-collapse: collapse;
+
+	text-align: left;
+
+	}
+
+.celula_header
+
+	{
+
+	color: black;
+
+	font-family: Arial;
+
+	background-color: rgb(204,204,204);
+
+	width: 50%;
+
+	border: 2px groove black;
+
+	}
+
+.celula_exemplu
+
+	{
+
+	valign: top;
+
+	color: black;
+
+	font-family: Courier New;
+
+	width: 50%;
+
+	border: 2px groove black;
+
+	vertical-align: top;
+
+	}
+
+cod
+
+	{
+
+	font-family: Courier New;
+
+	background-color: rgb(204,204,204);
+
+	color: black;
+
+	}
+
+
+
+</style>
+
+</head><body onload="javascript:writex('menu1');writex('menu1')">
+
+<div style="color: rgb(153, 153, 153);" id="google_header" class="google_header">
+
+<p><font size="4">&nbsp;</font><font face="Courier New" size="4"><span style="font-family: Times New Roman;">Programarea Calculatoarelor, seria CC</span></font></p>
+<p></p>
+</div>
+
+
+
+<h1 class="numar_laborator">Laborator 6 </h1>
+
+<h1 class="nume_laborator">Funcții cu vectori</h1>
+
+<h3 class="titlu_sectiune">În acest laborator veţi învăţa să: </h3>
+
+<ul>
+	<li class="text_normal">	
+		Definiţi funcţii care primesc ca argumente vectori.
+	</li>
+</ul>
+<br>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+	Vectori
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+			Atunci când declarați o variablilă, compilatorul va fi informat despre 2 lucruri: numele
+			variabilei si tipul ei, de exemplu <cod>int n</cod>. Astfel compilatorul va rezerva o 
+			zonă de memorie pentru aceasta variabilă (4 octeți pentru o arhitectură pe 32 biți). 
+		</p>
+		<p>
+			Atunci când se face o atribuire <cod>n = 7</cod>, la zona de memorie rezervată variabilei 			
+			<cod>n</cod> va fi scrisă noua valoare. 
+		</p>
+		<p>
+			Pentru ca o funcție să poată modifica valoarea variabilei <cod>n</cod>
+			ea va avea nevoie de adresa la care se află, de exemplu, pentru a citi variabila am scrie
+			<cod>scanf("%d", <b>&amp;</b>n);</cod>
+		</p>
+
+		<p>
+			Atunci când declarați un vector, de exemplu <cod>int v[100]</cod>, variabila <cod>v</cod> va 
+			reține adresa primului element al vectorului, deci începutul zonei de memorie care a fost 
+			rezervată. Adresa celui de-al <cod>i</cod>-lea element va fi <cod>&amp;v[i]</cod>, lucru care poate
+			fi scris și ca <cod>v + i</cod>. 
+		</p>
+		<p>
+			Dacă vrem să modificăm elementele din <cod>v</cod> în interiorul unei funcții va trebui să
+			trimitem ca parametru adresa sa de început, deci chiar <cod>v</cod>.
+		</p>
+		<p> 
+			Să luăm ca exemplu o funcție care adaugă un întreg <cod>x</cod> tuturor elementelor din 
+			vectorul <cod>v</cod>, de <cod>n</cod> elemente.
+		</p>
+		<div class="cod">
+			<p>
+			void add(int v[], int n, int x) <br> 
+			{ <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;int i;<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;for (i = 0; i &lt; n; i++) <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v[i] = v[i] + x;<br>
+			}
+			</p>
+		</div>
+		<p>
+		În loc de <cod>int v[]</cod> am fi putut folosi și <cod>int * v</cod>, <cod>v</cod> fiind, după
+		cum am spus, un pointer la primul element.
+		</p>
+		<p>
+		Pentru a apela funcția vom scrie <cod>add(v, n, x)</cod>.
+		</p>
+		<!--
+		<p> 
+			Să presupunem că vrem să scrie o funcție care incrementează un întreg, va trebui deci
+			să ținem cont că funcția va primi ca argument adresa întregului pe care vrem să-l incrementăm,
+			deci un <cod>int *</cod>.
+		</p>
+		<div class="cod">
+			<p>
+			void inc(int * p_n) <br>
+			{ <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;*p_n = *p_n + 1; // prin *p_n ne referim la valoarea de la respectiva adresa <br>
+			}
+			</p>
+		</div>
+		<p>
+			Pentru a apela funcția pentru un întreg definit ca <cod>int n</cod> vom scrie <cod>inc(<b>&</b>n)</cod>.
+		</p>
+		-->
+</div>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Problema 1.
+
+</h3>
+
+<div style="margin-left: 40px;">
+<div class="text_normal">
+		<p>
+		Rulați următorul program și încercați să înțelegeți de ce afișează 
+respectivele valori. Este important să întrebați dacă nu înțelegeți 
+ceva.
+		</p>
+		<div class="cod">
+<font color="#ff40ff">#include </font><font color="#ff6060">&lt;stdio.h&gt;</font><br>
+<br>
+<font color="#00ff00">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">int</font>&nbsp;a[] = {<font color="#ff6060">0</font>, <font color="#ff6060">1</font>, <font color="#ff6060">2</font>, <font color="#ff6060">3</font>, <font color="#ff6060">4</font>, <font color="#ff6060">5</font>, <font color="#ff6060">6</font>, <font color="#ff6060">7</font>, <font color="#ff6060">8</font>};<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">unsigned</font>&nbsp;<font color="#00ff00">long</font>&nbsp;<font color="#00ff00">int</font>&nbsp;adr0, adr1, adr2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#00ff00">int</font>&nbsp;*p1, *p2;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"a = </font><font color="#ff40ff">%p</font><font color="#ff40ff">\n</font><font color="#ff6060">a + 1 = </font><font color="#ff40ff">%p</font><font color="#ff40ff">\n</font><font color="#ff6060">a + 3 = </font><font color="#ff40ff">%p</font><font color="#ff40ff">\n\n</font><font color="#ff6060">"</font>, a, a + <font color="#ff6060">1</font>, a + <font color="#ff6060">3</font>);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"sizeof(a) = </font><font color="#ff40ff">%d</font><font color="#ff40ff">\n</font><font color="#ff6060">"</font>, <font color="#ffff00">sizeof</font>(a));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"sizeof(a + 1) = </font><font color="#ff40ff">%d</font><font color="#ff40ff">\n</font><font color="#ff6060">"</font>, <font color="#ffff00">sizeof</font>(a + <font color="#ff6060">1</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"sizeof(a + 3) = </font><font color="#ff40ff">%d</font><font color="#ff40ff">\n\n</font><font color="#ff6060">"</font>, <font color="#ffff00">sizeof</font>(a + <font color="#ff6060">3</font>));<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;adr0 = (<font color="#00ff00">unsigned</font>&nbsp;<font color="#00ff00">long</font>&nbsp;<font color="#00ff00">int</font>) a;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;adr1 = (<font color="#00ff00">unsigned</font>&nbsp;<font color="#00ff00">long</font>&nbsp;<font color="#00ff00">int</font>) (a + <font color="#ff6060">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;adr2 = (<font color="#00ff00">unsigned</font>&nbsp;<font color="#00ff00">long</font>&nbsp;<font color="#00ff00">int</font>) a + <font color="#ff6060">1</font>;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"adr0 = </font><font color="#ff40ff">%lu</font><font color="#ff40ff">\n</font><font color="#ff6060">adr1 = </font><font color="#ff40ff">%lu</font><font color="#ff40ff">\n</font><font color="#ff6060">adr2 = </font><font color="#ff40ff">%lu</font><font color="#ff40ff">\n\n</font><font color="#ff6060">"</font>, adr0, adr1, adr2);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;p1 = a + <font color="#ff6060">4</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;p2 = &amp;(a[<font color="#ff6060">4</font>]);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"p1 = </font><font color="#ff40ff">%p</font><font color="#ff6060">&nbsp;</font><font color="#ff40ff">\t</font><font color="#ff6060">&nbsp;*p1 = </font><font color="#ff40ff">%d</font><font color="#ff40ff">\n</font><font color="#ff6060">"</font>, p1, *p1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"p2 = </font><font color="#ff40ff">%p</font><font color="#ff6060">&nbsp;</font><font color="#ff40ff">\t</font><font color="#ff6060">&nbsp;*p2 = </font><font color="#ff40ff">%d</font><font color="#ff40ff">\n</font><font color="#ff6060">"</font>, p2, *p2);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"a + 4 = </font><font color="#ff40ff">%p</font><font color="#ff6060">&nbsp;</font><font color="#ff40ff">\t</font><font color="#ff6060">&nbsp;a[4] = </font><font color="#ff40ff">%d</font><font color="#ff40ff">\n</font><font color="#ff6060">"</font>, a + <font color="#ff6060">4</font>, a[<font color="#ff6060">4</font>]);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*p1 = *p1 + <font color="#ff6060">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#ff6060">"</font><font color="#ff40ff">\n</font><font color="#ff6060">a[4] = </font><font color="#ff40ff">%d</font><font color="#ff40ff">\n</font><font color="#ff6060">"</font>, a[<font color="#ff6060">4</font>]);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#ffff00">return</font>&nbsp;<font color="#ff6060">0</font>;<br>
+}<br>
+<br>
+
+
+		</div>
+</div>
+</div>
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Problema 2. 
+
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+			Sa se scrie o functie care sorteaza un vector folosind bubble sort.
+		Functia va primi ca parametri vectorul care trebuie sortat, precum si numarul
+		de elemente. 
+		</p>
+
+<h4 class="test_exemplu">
+     Exemplu:
+</h4>
+
+<table class="tabel_exemple">
+	<tbody>
+
+		<tr>
+			<td class="celula_header">
+				Intrare
+			</td>
+			<td class="celula_header">
+				Ieşire
+			</td>
+		</tr>
+
+		<tr>
+			<td class="celula_exemplu">
+				9 12 3 1
+			</td>
+			<td class="celula_exemplu">
+				1 3 9 12
+			</td>
+		</tr>
+
+		<tr>
+			<td class="celula_exemplu">
+			        10 -2 5 17 3 8
+			</td>
+			<td class="celula_exemplu">
+				-2 3 5 8 10 17
+			</td>
+		</tr>
+
+
+	</tbody>
+</table>
+	</div>
+
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Problema 3. 
+
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+			Să se scrie o funcție care calculează valorile unghiurilor unui
+		triunghi, în funcție de lungimile laturilor. Funcția va primi 2 argumente:
+		un vector cu datele de intrare (lungimile laturilor) și unul cu rezultate (unghiurile).
+		</p>
+	</div>
+
+	<div class="text_hint">
+		<p>
+			HINT: Funcțiile trigonometrice sunt declarate în <cod>math.h</cod>.
+		</p>
+	</div>
+
+
+
+<h4 class="test_exemplu">
+     Exemplu:
+</h4>
+
+<table class="tabel_exemple">
+	<tbody>
+
+		<tr>
+			<td class="celula_header">
+				Intrare
+			</td>
+			<td class="celula_header">
+				Ieşire
+			</td>
+		</tr>
+
+		<tr>
+			<td class="celula_exemplu">
+				10.0 10.0 10.0
+			</td>
+			<td class="celula_exemplu">
+				60.00 60.00 60.00
+			</td>
+		</tr>
+
+		<tr>
+			<td class="celula_exemplu">
+				2 2 2.82
+			</td>
+			<td class="celula_exemplu">
+				45.00 45.00 90.00
+			</td>
+		</tr>
+
+		<tr>
+			<td class="celula_exemplu">
+				3.0 5.2 6.0
+			</td>
+			<td class="celula_exemplu">
+				30.00 90.00 60.00
+			</td>
+		</tr>
+
+	</tbody>
+</table>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+   Problema 4. 
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+			Să se scrie o funcție pentru extragerea elementelor comune din doi
+		vectori (neordonați) într-un al treilea vector. Funcția are 5 argumente:
+		adresa (numele) și dimensiunea vectorilor de intrare, adresa vectorului
+		rezultat.
+		</p>
+		<p>
+			Funcția întoarce dimensiunea vectorului rezultat.
+		</p>
+
+
+<h4 class="test_exemplu">
+     Exemplu:
+</h4>
+
+<table class="tabel_exemple">
+	<tbody>
+
+		<tr>
+			<td class="celula_header">
+				Intrare
+			</td>
+			<td class="celula_header">
+				Ieşire
+			</td>
+		</tr>
+
+		<tr>
+			<td class="celula_exemplu">
+				5 <br>
+				4 1 5 7 10 <br>
+				4 <br>
+				1 10 3 4 
+			</td>
+			<td class="celula_exemplu">
+				3 <br>
+				4 1 10
+			</td>
+		</tr>
+
+	</tbody>
+</table>
+	</div>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+   Problema 5. 
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+			Funcție pentru compararea a doi vectori de caractere, echivalentă
+		ca rezultat cu funcția <cod>strcmp</cod>. Funcția primește doi vectori
+ de caractere
+		și are un rezultat întreg (negativ - daca primul șir este mai mic, 
+zero - dacă sunt egale sau pozitiv - dacă primul șir este mai mare). 
+		Program care verifică funcția, pentru șiruri citite de la tastatură în
+ doi vectori.		
+		</p>
+	</div>
+
+	<div class="text_hint">
+		<p>
+			HINT: Pentru a citi un vector de caractere, de exemplu <cod>char sir[100]</cod> folosiți <cod>scanf("%s", sir)</cod>.
+		</p>
+
+
+
+<h4 class="test_exemplu">
+     Exemplu:
+</h4>
+
+<table class="tabel_exemple">
+	<tbody>
+
+		<tr>
+			<td class="celula_header">
+				Intrare
+			</td>
+			<td class="celula_header">
+				Ieşire
+			</td>
+		</tr>
+
+		<tr>
+			<td class="celula_exemplu">
+				abcd <br>
+				acdf
+			</td>
+			<td class="celula_exemplu">
+				1
+			</td>
+		</tr>
+
+		<tr>
+			<td class="celula_exemplu">
+				abcd <br>
+				abcd
+			</td>
+			<td class="celula_exemplu">
+				0
+			</td>
+		</tr>
+
+		<tr>
+			<td class="celula_exemplu">
+				bcde <br>
+				zdg 
+			</td>
+			<td class="celula_exemplu">
+				-1
+			</td>
+		</tr>
+
+	</tbody>
+</table>
+	</div>
+
+</div>
+
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+   Problema 6. 
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+			Să se scrie o funcție care primește ca parametru un vector <b>v</b> și o valoare <b>x</b>
+		cu prototipul: <cod>void transform(int v[], int n, int x)</cod>. Funcția modifică vectorul <b>v</b>
+		astfel încât elementele mai mici ca <b>x</b> se află la începutul vectorului și elementele 
+		mai mari sau egale cu <b>x</b> la sfârșitul lui.
+		</p>
+		<p>
+			Nu se vor folosi sortări!
+		</p>
+
+
+<h4 class="test_exemplu">
+     Exemplu:
+</h4>
+
+<table class="tabel_exemple">
+	<tbody>
+
+		<tr>
+			<td class="celula_header">
+				Intrare
+			</td>
+			<td class="celula_header">
+				Ieşire
+			</td>
+		</tr>
+
+		<tr>
+			<td class="celula_exemplu">
+				10 5<br>
+				7 2 8 1 3  9 7 5 6 1
+			</td>
+			<td class="celula_exemplu">
+				1 2 3 1 8 9 7 5 6 7
+			</td>
+		</tr>
+
+	</tbody>
+</table>
+	</div>
+</div>
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+   Problema 7. 
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+		Să se scrie un program care citește o matrice <b>A</b>(<b>m</b> x <b>n</b>) și 
+		copiază elementele matricei în spirală într-un vector <b>V</b>. Veți folosi 
+		urmatoarele funcții:
+		</p>
+		<p>
+		<cod>void spirala (int A[][100], int m, int n, int V[]);</cod> // copiază elementele lui <b>A</b> în <b>V</b>, în spirală
+		</p>
+		<p>
+		<cod>void afisare (int V[], int dim);</cod> // afișează un vector <b>V</b>, de dimensiune <b>dim</b>
+		</p>
+
+
+<h4 class="test_exemplu">
+     Exemplu:
+</h4>
+
+<table class="tabel_exemple">
+	<tbody>
+
+		<tr>
+			<td class="celula_header">
+				Intrare
+			</td>
+			<td class="celula_header">
+				Ieşire
+			</td>
+		</tr>
+
+		<tr>
+			<td class="celula_exemplu">
+				3 4<br>
+				1 2 3 4 <br>
+				5 6 7 8 <br>
+				9 10 11 12
+			</td>
+			<td class="celula_exemplu">
+				1 5 9 10 11 12 8 4 3 2 6 7
+			</td>
+		</tr>
+
+	</tbody>
+</table>
+	</div>
+</div>
+
+<br>
+<a onclick="javascript:writex('menu1')" id="mypoint" href="#mypoint"><b>Probleme suplimentare</b></a>
+<span style="display: none;" class="menu" id="menu1">
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Problema 1.
+
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+			Funcție echivalentă cu funcția de bibliotecă <cod>itoa</cod> care 
+		convertește un întreg într-un șir de cifre într-o bază de numerație dată.
+		</p>
+		<p>
+		Antetul funcției <cod>itoa</cod> este <cod>char * itoa ( int value, char * str, int base );</cod>
+		</p>
+
+
+<h4 class="test_exemplu">
+     Exemplu:
+</h4>
+
+<table class="tabel_exemple">
+	<tbody>
+
+		<tr>
+			<td class="celula_header">
+				Intrare
+			</td>
+			<td class="celula_header">
+				Ieşire
+			</td>
+		</tr>
+
+		<tr>
+			<td class="celula_exemplu">
+				27 2 
+			</td>
+			<td class="celula_exemplu">
+				b11011
+			</td>
+		</tr>
+
+		<tr>
+			<td class="celula_exemplu">
+				98526 16
+			</td>
+			<td class="celula_exemplu">
+				0x180DE
+			</td>
+		</tr>
+
+	</tbody>
+</table>
+
+	</div>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Problema 2. 
+
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+			Sa se scrie un program care sorteaza trigonometric un set de puncte. 
+		Se dau numarul de puncte, precum si coordonatele lor (x[i],y[i]).
+		</p>
+
+
+<h4 class="test_exemplu">
+     Exemplu:
+</h4>
+
+<table class="tabel_exemple">
+	<tbody>
+
+		<tr>
+			<td class="celula_header">
+				Intrare
+			</td>
+			<td class="celula_header">
+				Ieşire
+			</td>
+		</tr>
+
+		<tr>
+			<td class="celula_exemplu">
+				4<br>
+				10.0 20.5<br>
+				5.0  10.0<br>
+				0.0  30<br>
+				-5.0 -38.0
+			</td>
+			<td class="celula_exemplu">
+				5.0 10.0<br>
+				10.0 20.5<br>
+				0.0 30<br>
+				-5.0 -38.0
+			</td>
+		</tr>
+
+		<tr>
+			<td class="celula_exemplu">
+				3<br>
+				-20.0 -20.0<br>
+				-25.0 30.0<br>
+				15.6  -10.2<br>
+			</td>
+			<td class="celula_exemplu">
+				-25.0 30.0<br>
+				-20.0 -20.0<br>
+				15.6 -10.2
+			</td>
+		</tr>
+
+	</tbody>
+</table>
+	</div>
+</div>
+</span>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<!--
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+   Problema 8. [BONUS] Pointeri la funcții.
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+		Să se scrie o funcție pentru calculul integralei definite, pe un interval 
+		dat <b>[a,b]</b> a unei funcții oarecare (cu rezultat real) <b>f(x)</b>, prin 
+		metoda trapezelor, cu un număr dat de pași <b>n</b>. 
+		</p>
+		<p>
+		Funcția primește ca argument adresa funcției de integrat și numărul de pași și
+		va avea antetul <cod>float integrala( float (*func) (float x), float a, float b, int n );</cod>.
+		</p>
+		<p>
+	   	Programul principal va apela funcția de calcul a integralei pentru două
+		funcții diferite și un <b>n</b> suficient de mare.
+  	 	Se pot integra functiile <b>sin(x)</b> si <b>cos(x)</b> pe intervalul <b>[0, PI]</b>. 
+		</p>
+	</div>
+</div>
+-->
+
+
+
+﻿﻿</body></html>

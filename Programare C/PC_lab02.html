@@ -1,0 +1,1384 @@
+<html><head>
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<style type="text/css"> 
+
+
+
+.numar_laborator
+
+	{
+
+	font-family: Times New Roman;
+
+	}
+
+.nume_laborator
+
+	{
+
+	font-family: Times New Roman;
+
+	text-align: center;
+
+	}
+
+.titlu_sectiune
+
+	{
+
+	font-family: Times New Roman;
+
+	}
+
+.text_normal
+
+	{
+
+	font-family: Arial;
+
+	font-size: 1.0em;
+
+	color: black;
+
+	}
+
+.text_hint
+
+	{
+
+	font-family: Arial;
+
+	font-style: italic;
+
+	font-size: 0.8em;
+
+	color: rgb(102, 102, 102); 
+
+	}
+
+.text_exemplu
+
+	{
+
+	font-family: Arial;
+
+	}
+
+hr 
+
+	{
+
+	height: 1px;
+
+	}
+
+.cod
+
+	{
+
+	font-family: Courier New;
+
+	background-color: rgb(204,204,204);
+
+	color: black;
+
+	}
+
+.tabel_exemple
+
+	{
+
+	width: 100%;
+
+	color: black;
+
+	font-size: 1.0em;
+
+	font-family: Courier New;
+
+	border: 1 px black solid;
+
+	border-spacing: 0px;
+
+	border-collapse: collapse;
+
+	text-align: left;
+
+	}
+
+.celula_header
+
+	{
+
+	color: black;
+
+	font-family: Arial;
+
+	background-color: rgb(204,204,204);
+
+	width: 50%;
+
+	border: 2px groove black;
+
+	}
+
+.celula_exemplu
+
+	{
+
+	valign: top;
+
+	color: black;
+
+	font-family: Courier New;
+
+	width: 50%;
+
+	border: 2px groove black;
+
+	vertical-align: top;
+
+	}
+
+cod
+
+	{
+
+	font-family: Courier New;
+
+	background-color: rgb(204,204,204);
+
+	color: black;
+
+	}
+
+
+
+</style>
+
+</head><body><div style="color: rgb(153, 153, 153);" id="google_header" class="google_header">
+
+<p><font size="4">&nbsp;</font><font face="Courier New" size="4"><span style="font-family: Times New Roman;">Programarea Calculatoarelor, seria CC</span></font></p>
+
+<p></p>
+
+</div>
+
+
+
+<h1 class="numar_laborator">Laborator 2 </h1>
+
+<h1 class="nume_laborator">Funcţii de citire-scriere în C</h1>
+
+
+
+<h3 class="titlu_sectiune">În acest laborator veţi învăţa să:</h3>
+
+<ul>
+
+  <li class="text_normal">
+
+      Compilaţi şi rulaţi programe în C, sub Linux, din linia de comandă
+
+   </li>
+
+   <li class="text_normal">
+
+      Editaţi programe folosind mediul integrat de dezvoltare Code::Blocks
+
+   </li>
+
+   <li class="text_normal">
+
+      Faceţi afişare şi citire formatată
+
+   </li>
+
+   <li class="text_normal">
+
+      Folosiţi corect flag-urile de formatare
+
+   </li>
+
+   <li class="text_normal">
+
+      Folosiţi corect specificatorii de format
+
+   </li>
+
+</ul>
+
+<br>
+
+<hr size="1">
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<h3 class="titlu_sectiune">
+
+   Implementarea programelor: editare şi compilare
+
+</h3>
+
+<h4 class="text_exemplu">
+Generalităţi
+</h4>
+	
+<div style="margin-left: 40px;">
+
+   <div class="text_normal">
+
+    <p>
+
+        Atunci când dorim să implementăm un program, primul pas îl 
+reprezintă scrierea instrucţiunilor acestuia într-un limbaj de 
+programare (în acest caz, limbajul C). Pentru a realiza acest lucru se 
+poate folosi orice editor simplu de texte, de exemplu:
+		 
+		</p><ul>
+			<li>
+				Sub Windows: Notepad, Notepad++, EditPlus
+			</li>
+
+			<li>
+				Sub Linux: vim, kate, emacs, gedit, mousepad
+			</li>
+			
+		</ul>
+		
+		<p>
+			Fişierul astfel obţinut este un simplu fişier text şi se numeşte <b>fişier sursă</b>. Conţinutul unui fişier sursă se numeşte <b>cod sursă</b>. Fişierele sursă pentru limbajul C au in mod convenţional extensia <span class="cod"><b>.c</b></span>. 
+		</p>
+		
+		<p>
+			În continuare, pentru a obţine un <b>program executabil</b>, avem nevoie de un <b>compilator</b>
+ specific limbajului care sa "traducă" codul sursă în instrucţiuni 
+specifice procesorului. Conţinutul fişierului executabil rezultat se 
+numeşte <b>cod maşină</b>, iar fişierele compilate (nu neapărat executabile) poartă numele de <b>fişiere binare</b>.
+		</p>
+		
+		<p>
+			Există numeroase compilatoare pentru limbajul C. <u>Cel mai cunoscut si mai răspândit este de departe <span clas="cod"><b>gcc</b></span></u> (denumirea vine de la <b><u>G</u></b>NU <b><u>C</u></b> <b><u>C</u></b>ompiler), care poate fi instalat atât pe Linux, cât şi pe Windows sau Mac OS. 
+		</p>
+			
+		<p>
+			Există, bineînţeles, şi altele:
+			
+			</p><ul>
+				<li>
+					Microsoft C <span class="text_hint">(doar pentru Windows)</span>
+				</li>
+				
+				<li>
+					Borland C Compiler <span class="text_hint">(doar pentru Windows si DOS)</span>
+				</li>
+				
+				<li>
+					LCC <span class="text_hint">(disponibil pentru Windows, Linux şi OS X -- folosit pentru a compila maşinile virtuale pentru Quake III)</span>
+				</li>
+			</ul>
+		<p></p>
+	</div>
+</div>
+
+<h4 class="text_exemplu">
+Cerinţă
+</h4>
+	
+<div style="margin-left: 40px;">
+
+   <div class="text_normal">
+		<p></p>
+			Deschideţi un editor de texte (de exemplu, Mousepad sau GEdit) şi scrieţi următorul cod C:
+		<p>
+		
+		</p><p class="cod">
+		#include&nbsp;&lt;stdio.h&gt;<br>
+		int&nbsp;main(void)<br>
+		{<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;printf("PC&nbsp;2010\n");<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;0;<br>
+		}<br>
+		</p>
+		
+		<p>
+			Salvaţi fişierul în directorul <span class="cod">/home/student/</span> cu numele <span class="cod">exemplu.c</span>.
+		</p>
+		
+		<p>
+			Deschideţi un terminal şi introduceţi comanda:
+		</p>
+		
+		<p class="cod">
+			gcc exemplu.c
+		</p>
+		
+		<p> 
+			Executabilul creat se va numi implicit <span class="cod">a.out</span>. Pentru a-l rula, folosiţi comanda:
+		</p>
+		
+		<p class="cod">
+			./a.out
+		</p>
+		
+		<p>
+			Puteţi specifica voi un nume pentru fişierul executabil cu ajutorul opţiunii <span class="cod">-o</span> astfel:
+		</p>
+		
+		<p class="cod">
+			gcc -o exemplu.exe exemplu.c
+		</p>
+		
+		<p>
+			Cu toate acestea, extensia <span class="cod">.exe</span> este 
+folosită de obicei pentru executabilele de Windows, iar executabilele de
+ Linux nu au, în mod normal extensie! Este bine sa respectaţi aceste 
+convenţii nescrise pentru a vă face mai uşor înţeleşi.
+		</p>
+	</div>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Folosirea unui mediu integrat de dezvoltare (IDE): Code::Blocks
+
+</h3>
+
+<h4 class="text_exemplu">
+Generalităţi
+</h4>
+
+<div style="margin-left: 40px;">
+
+   <div class="text_normal">
+
+	<p>
+		Mai ales la început, vi s-ar putea părea mai uşor să folosiţi un mediu
+ de programare care vă permite să editaţi codul sursă şi să compilaţi şi
+ rulaţi programele direct dintr-o interfaţă grafică. Există <b>foarte</b>
+ multe medii integrate de dezvoltare pentru limbajul C, fiecare cu 
+avantajele şi dezavantajele sale. Dintre cele mai cunoscute, amintim <u>doar câteva</u>: 
+	</p>
+		
+	<ul>
+		<li>
+			Code::Blocks <span class="text_hint">(pentru Windows, Linux şi Mac)</span>
+		</li>
+		<li>
+			DevCpp <span class="text_hint">(preponderent Windows, dar şi Linux)</span>
+		</li>
+		<li>
+			Microsoft Visual Studio <span class="text_hint">(pentru Windows)</span>
+		</li>
+		<li>
+			Eclipse <span class="text_hint">(pentru Windows, Linux şi Mac)</span>
+		</li>
+		<li>
+			KDevelop <span class="text_hint">(preponderent Linux, dar practic Cross-Platform)</span>
+		</li>
+		<li>
+			Anjuta <span class="text_hint">(pentru Linux şi Mac)</span>
+		</li>
+	</ul>
+	
+	<p>
+		Vă încurajăm să le încercaţi în timpul liber pentru a vă forma o părere despre care vi se potriveşte mai bine :).
+	</p>
+	</div>
+</div>
+
+<h4 class="text_exemplu">
+Cerinţă
+</h4>
+
+<div style="margin-left: 40px;">
+
+   <div class="text_normal">
+	<p>
+		În laborator există instalat mediul Code::Blocks. Folosirea acestuia 
+este intuitivă. Deschideţi Code::Blocks şi creaţi un nou fişier (<span class="cod">File -&gt; New -&gt; Empty File</span>). 
+	</p>
+	<p>
+		Copiaţi programul de mai sus şi salvaţi-l. Compilaţi şi rulaţi programul (folosind meniul, iconiţele, shortcut-urile etc).
+	</p>
+	<p>
+		Pentru depanarea programelor va fi necesar să creaţi un nou proiect (<span class="cod">File -&gt; New -&gt; Project</span>). Alegeţi <span class="cod">Console Application</span> şi în fereastra următoare, limbajul C. Completaţi numele proiectului şi calea unde doriţi să fie creat (de exemplu, în <span class="cod">/home/student/</span>).
+	</p>
+	<p>
+		Copiaţi următorul program:
+	</p>
+	<p class="cod">
+		int main()<br>
+		{<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;int a, b, rest;<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;a = 150;<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;b = 84;<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;while (b &gt; 0) {<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rest = a % b;<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a = b;<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b = rest;<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;printf("cmmdc(150, 84) = %d\n", a);<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;getchar();<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br>
+		}<br>
+	</p>
+	<p>
+		Adăugaţi un breakpoint la linia <span class="cod">a = 150;</span> (click la dreapta numărului corespunzător liniei) şi porniţi programul în modul de depanare (debugging) cu ajutorul tastei <span class="cod">F8</span>. Pentru a urmări valorile unor variabile pe parcursul execuţiei programului pas cu pas, faceţi vizibilă fereastra <span class="cod">watch</span>(<span class="cod">Debug -&gt; Debugging Windows -&gt; Watches</span>) şi adăugaţi numele variabilelor pe care vreţi să le monitorizaţi (click dreapta în interiorul ferestrei şi alegeţi <span class="cod">Add Watch</span>). Rulaţi programul instrucţiune cu instrucţiune (cu ajutorul tastei <span class="cod">F7</span>) şi urmăriţi cum se modifică valorile variabilelor.
+	</p>
+	<p>
+		Încercaţi să vă familiarizaţi cu editorul şi cu debuggerul şi cereţi explicaţii suplimentare dacă este cazul.
+	</p>
+   </div>
+
+</div>
+
+<hr size="1">
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<h3 class="titlu_sectiune">
+
+   Despre citirea şi scrierea în C
+
+</h3>
+
+<div style="margin-left: 40px;">
+
+   <div class="text_normal">
+
+      <p>
+
+         Descriptorii de formatare au următorul prototip (ce se afla între <cod>[ ]</cod> este optional):
+
+      </p>
+
+   </div>
+
+   <div class="cod">
+
+      <p> 
+
+         %[flags][lăţime][.precizie][specificatori de lungime]specificatori de tip
+
+      </p>
+
+   </div>
+
+   <div class="text_normal">
+
+      <p>
+
+         <b> A. flags: </b>
+
+      </p>
+
+      <ul>
+
+      <li class="text_normal">
+
+      <cod>-</cod> Valoarea va fi aliniată la stânga
+
+      </li>
+
+      <li class="text_normal">
+
+      <cod>+</cod> (pentru numere: int, float, etc.) Forţează afişarea semnului şi pentru numerele pozitive
+
+      </li>
+
+      <li class="text_normal">
+
+      <cod>#</cod> Modifică suplimentar afişarea (vezi explicaţie la fiecare specificator)
+
+      </li>
+
+      
+
+      <li class="text_normal">
+
+      <cod>0</cod> (pentru numere) Completează cu zerouri până la atingerea lăţimii câmpului
+
+      </li>
+
+      </ul>
+
+      <p>
+
+         <b>B. lăţime</b> şi <b>precizie</b> sunt specificate fie prin întregi, fie prin caracterul <cod>*</cod>, caz în care vor fi trimise ca parametri. De exemplu:
+
+      </p>
+
+	  <p> 
+
+           <cod> printf("%*d", 10, i); </cod>
+
+      </p>
+
+      <p>
+
+         va afişa întregul <cod>i</cod> pe 10 spaţii
+
+      </p>
+
+      <p>
+
+         <b>C. specificatorii de lungime</b>:
+
+      </p>
+
+      <ul>
+
+      <li class="text_normal">
+
+      <cod>hh</cod> char
+
+      </li>
+
+      <li class="text_normal">
+
+      <cod>h&nbsp;</cod> short
+
+      </li>
+
+      <li class="text_normal">
+
+      <cod>l&nbsp;</cod> long
+
+      </li>
+
+      
+
+      <li class="text_normal">
+
+      <cod>ll</cod> long long
+
+      </li>
+
+      <li class="text_normal">
+
+      <cod>L&nbsp;</cod> long double
+
+      </li>
+
+      </ul>
+
+      <p>
+
+         <b>D. specificatorii de tip</b>:
+
+      </p>
+
+      <ul>
+
+      <li class="text_normal">
+
+      <cod>d</cod>, <cod>i</cod> întreg
+
+      </li>
+
+      <li class="text_normal">
+
+      <cod>o</cod> întreg în baza 8
+
+      </li>
+
+      <li class="text_normal">
+
+      <cod>x</cod>, <cod>X</cod> întreg în baza 16 (fără <cod>0x</cod> la Început - folosiţi <cod>#</cod> pentru a afişa şi <cod>0x</cod>) folosind <cod>abcdef</cod> sau <cod>ABCDEF</cod>
+
+      </li>
+
+      
+
+      <li class="text_normal">
+
+      <cod>u</cod> întreg fără semn
+
+      </li>
+
+      <li class="text_normal">
+
+      <cod>c</cod> caracter
+
+      </li>
+
+      <li class="text_normal">
+
+      <cod>s</cod> şir de caractere
+
+      </li>
+
+      <li class="text_normal">
+
+      <cod>f</cod> număr real în format cu virgulă (de exemplu, -56.340000)
+
+      </li>
+
+      <li class="text_normal">
+
+      <cod>e</cod> număr real în format mantisă-exponent (de exemplu -5.634000e+001)
+
+      </li>
+
+      <li class="text_normal">
+
+      <cod>g</cod> număr real în format <cod>%e</cod> daca numărul este mai mic de 1e-4 sau decât precizia specficată, altfel în format <cod>%f</cod>, dar fără 0-uri la sfârşit (de exemplu -56.34)
+
+      </li>
+
+      </ul>
+
+      <p>
+
+         Pentru formatele <cod>f</cod>, <cod>e</cod> şi <cod>g</cod>, folosirea <cod>#</cod> forţează afişarea punctului zecimal, chiar dacă numărul afişat nu are cifre zecimale.
+
+      </p>
+
+      <p>
+
+         Mai găsiţi detalii şi pe <a href="http://www.cplusplus.com/reference/clibrary/cstdio/printf.html"> http://www.cplusplus.com/reference/clibrary/cstdio/printf.html</a>.
+
+      </p>
+
+   </div>
+
+</div>
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Problema 1. 
+
+</h3>
+
+<div style="margin-left: 40px;">
+
+   <div class="text_normal">
+
+      <p>
+
+         Problema generării unor numere aleatoare poate fi considerată 
+iniţial una complicată, dar limbajul C ne pune la dispoziţie biblioteca <cod>stdlib</cod>,
+ cu ajutorul căreia lucrurile vor deveni foarte simple. Funcţiile şi 
+constantele acestei biblioteci sunt declarate în header-ul <cod>stdlib.h</cod> pe care va trebui să-l includeţi la începutul programului pe care îl scrieţi.
+
+      </p>
+
+      <p>
+
+         Utilizând funcţia <cod>rand()</cod> veţi genera numere aleatoare cu valori cuprinse între <cod>0</cod> si <cod>RAND_MAX</cod>, unde <cod>RAND_MAX</cod> este o constanta definită în <cod>stdlib.h</cod>, având în general valoarea maximă a tipului <cod>int</cod>.
+
+      </p>
+
+      <p>
+
+         Valorile returnate de această funcţie sunt de fapt termenii 
+unui şir de numere generat după o anumită formula ce foloseşte ca punct 
+de plecare o valoare dată. Din cauza acestui aspect, pentru aceeasi 
+valoare iniţială fixată, programul va genera la fiecare rulare aceleaţi 
+numere aleatoare. Pentru a evita acest lucru, biblioteca pune la 
+dispozitie funcţia <cod>srand()</cod> care primeşte ca parametru un număr întreg reprezentând valoarea iniţiala utilizată în calcularea şirului de numere aleatoare.
+
+      </p>
+
+      <p>
+
+         Astfel, paşii pentru rezolvarea problemei noastre sunt următorii :
+
+      </p><ul>
+
+      <li class="text_normal"> fixarea valorii utilizate în generarea numerelor:<br>
+
+         <cod>srand( seed ); // unde seed este o valoare de tip intreg;</cod>
+
+      </li>
+
+      <li class="text_normal"> obţinerea unui număr pseudoaleator: <br> 
+
+          <cod> n = rand(); // unde n este numarul intreg generat aleator;</cod>
+
+      </li>
+
+      </ul> 
+
+      <p>
+
+         Notă: pentru a garanta că la fiecare rulare a programului valoarea seed este unică, recomandăm apelarea funcţiei <cod>srand</cod> cu ora locală a calculatorului în secunde. (Acest lucru va fi prezentat în laboratoarele următoare)
+
+      </p> 
+
+      <h4 class="text_exemplu">
+
+      Problema:
+
+      </h4>
+
+      <p>
+
+      </p><ul>
+
+      <li> Afişati pe ecran 5 rânduri, fiecare conţinând 3 numere întregi, separate prin spaţiu, generate în mod aleator.</li>
+
+      <li> Rulaţi programul de mai multe ori cu aceeasi valoare seed. Ce observaţi ? </li>
+
+      <li> Schimbaţi valoarea seed şi rulaţi din nou. Ce observaţi ?</li>
+
+      </ul>
+
+      <p></p>
+
+   </div>
+
+</div>
+
+
+
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Problema 2. 
+
+</h3>
+
+<div style="margin-left: 40px;">
+
+   <div class="text_normal">
+
+      <p>
+
+         Scrieţi un program care citeşte şi afişează 3 numere de tip <cod>float</cod> folosind, succesiv, descriptorii <cod>%f</cod>, <cod>%e</cod> şi <cod>%g</cod> pentru cele 3 valori. Folosiţi următoarele date de intrare:
+
+      </p>
+
+   </div>
+
+   <div class="cod">
+
+      <p> 
+
+         1e2 1e2 1e2 <br>
+
+         23.22e+03 23.22e+3 23.22e+03 <br>
+
+         21 1201 122234215001 <br>
+
+      </p>
+
+   </div>
+
+      <h4 class="text_exemplu">
+
+      Observaţii:
+
+      </h4>
+
+      <p>
+
+      </p><ul>
+
+      <li class="text_normal"> nu contează în ce format introducem 
+datele de intrare (normal sau exponenţial), atâta timp cât ele sunt 
+scrise corect, vor fi citite de către <cod>scanf()</cod></li>
+
+      <li class="text_normal"> <cod>%g</cod> afişeaza, în funcţie de mărimea numărului, fie în format <cod>%f</cod> (dar fără zerouri la sfârşit), fie în format <cod>%e</cod>, scopul fiind să ocupe cât mai puţin spaţiu numărul afişat </li>
+
+      </ul>
+
+</div>
+
+
+
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Problema 3. 
+
+</h3>
+
+<div style="margin-left: 40px;">
+
+   <div class="text_normal">
+
+      <p>
+
+         Programul următor afişează valorile funcţiei <cod>sin(x)</cod> pentru valori ale lui <cod>x</cod> între <cod>0</cod> şi <cod>2*PI</cod>, cu pasul <cod>PI/10</cod>.
+
+      </p>
+
+   </div>
+
+   <div class="cod">
+
+      <p> 
+
+         #include &lt;stdio.h&gt; <br>
+
+         #include &lt;math.h&gt; <br><br>
+
+         int main() <br>
+
+         { <br>
+
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double x, PI = M_PI;<br>
+
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (x=0;x&lt;=2*PI;x=x+PI/10) <br>
+
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf ("%lf \n", sin(x)); <br>
+
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getchar(); <br>
+
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 0; <br>
+
+         }
+
+      </p>
+
+   </div>
+
+   <div class="text_normal">
+
+      <p> 
+
+         Modificaţi programul astfel încat pentru fiecare <cod>x</cod> între <cod>0</cod> şi <cod>2*PI</cod> cu pasul <cod>PI/20</cod> să fie afişate valorile lui <cod>x</cod> şi ale funcţiilor <cod>sin(x)</cod>, <cod>cos(x)</cod>
+ sub formă de tabel.
+
+         Adăugati apoi un cap de tabel şi modificaţi programul astfel 
+încat fiecare coloană din tabel să aibă 8 caractere, iar numerele să fie
+ afişate cu cel mult 3 zecimale şi semnul <cod>+</cod> să apară în faţa numerelor pozitive.
+
+      </p>
+
+   </div>
+
+</div>
+
+
+
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Problema 4. 
+
+</h3>
+
+<div style="margin-left: 40px;">
+
+   <div class="text_normal">
+
+      <p>
+
+         Scrieţi un program care să determine cadranul în care se află 
+un punct dat prin coordonatele sale (întregi sau reale). Se va afişa un 
+număr între 1 şi 4 sau mesajul <cod>punct pe axe</cod>.
+
+      </p>
+
+  </div>
+
+</div>
+
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Problema 5. 
+
+</h3>
+
+<div style="margin-left: 40px;">
+
+   <div class="text_normal">
+
+      <p>
+
+         Scrieţi un program care să verifice dacă 3 numere întregi date a,b,c pot forma lungimile laturilor unui triunghi.
+
+      </p>
+
+   </div>
+
+   <h4 class="text_exemplu">
+
+      Exemplu:
+
+   </h4>
+
+   <table class="tabel_exemple">
+
+      <tbody>
+
+         <tr>
+
+            <td class="celula_header">
+
+               Intrare
+
+            </td>
+
+            <td class="celula_header">
+
+               Ieşire
+
+            </td>
+
+         </tr>
+
+         <tr>
+
+            <td class="celula_exemplu">
+
+               a=10<br>
+
+               b=10<br>
+
+               c=20<br>
+
+            </td>
+
+            <td class="celula_exemplu">
+
+               DA<br>
+
+            </td>
+
+         </tr>
+
+         <tr>
+
+            <td class="celula_exemplu">
+
+               a=10<br>
+
+               b=5<br>
+
+               c=30<br>
+
+            </td>
+
+            <td class="celula_exemplu">
+
+               NU<br>
+
+            </td>
+
+         </tr>
+
+         <tr>
+
+            <td class="celula_exemplu">
+
+               a=5<br>
+
+               b=10<br>
+
+               c=10<br>
+
+            </td>
+
+            <td class="celula_exemplu">
+
+               DA<br>
+
+            </td>
+
+         </tr>
+
+      </tbody>
+
+   </table>
+
+</div>
+
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Problema 6. 
+
+</h3>
+
+<div style="margin-left: 40px;">
+
+   <div class="text_normal">
+
+      <p>
+
+         Scrieţi un program care citeşte 3 numere date reprezentând 
+lungimile laturilor unui triunghi şi care afişează tipul de triunghi cu 
+aceste laturi: <cod>oarecare</cod>, <cod>isoscel</cod>, <cod>echilateral</cod>, <cod>dreptunghic</cod> sau <cod>dreptunghic isoscel</cod>.
+
+      </p>
+
+  </div>
+
+   <h4 class="text_exemplu">
+
+      Exemplu:
+
+   </h4>
+
+   <table class="tabel_exemple">
+
+      <tbody>
+
+         <tr>
+
+            <td class="celula_header">
+
+               Intrare
+
+            </td>
+
+            <td class="celula_header">
+
+               Ieşire
+
+            </td>
+
+         </tr>
+
+         <tr>
+
+            <td class="celula_exemplu">
+
+               a=10<br>
+
+               b=10<br>
+
+               c=10<br>
+
+            </td>
+
+            <td class="celula_exemplu">
+
+               echilateral<br>
+
+            </td>
+
+         </tr>
+
+         <tr>
+
+            <td class="celula_exemplu">
+
+               a=4<br>
+
+               b=5<br>
+
+               c=3<br>
+
+            </td>
+
+            <td class="celula_exemplu">
+
+               dreptunghic<br>
+
+            </td>
+
+         </tr>
+
+         <tr>
+
+            <td class="celula_exemplu">
+
+               a=5<br>
+
+               b=10<br>
+
+               c=10<br>
+
+            </td>
+
+            <td class="celula_exemplu">
+
+               isoscel<br>
+
+            </td>
+
+         </tr>
+
+      </tbody>
+
+   </table>
+
+</div>
+
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Problema 7. 
+
+</h3>
+
+<div style="margin-left: 40px;">
+
+   <div class="text_normal">
+
+      <p>
+
+         Scrieţi un program care determină minimul şi maximul dintre 4 numere, folosing doar instructiunea <cod>if</cod>.
+
+      </p>
+
+   </div>
+
+</div>
+
+
+
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Problema 8. 
+
+</h3>
+
+<div style="margin-left: 40px;">
+
+   <div class="text_normal">
+
+      <p>
+
+         Se citesc 3 numere de la tastatură. Afişaţi-le în ordine crescătoare, folosind doar instrucţiunea <cod>if</cod>.
+
+      </p>
+
+   </div>
+
+</div>
+
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Problema 9. 
+
+</h3>
+
+<div style="margin-left: 40px;">
+
+   <div class="text_normal">
+
+      <p>
+
+         Scrieţi un program care va citi de la tastatură 3 intregi, <cod>h</cod>, <cod>m</cod>, <cod>s</cod>, 
+
+reprezentând ora, minutul şi secunda dintr-un anumit moment al zilei. Afişarea se va face sub forma <cod>HH:MM:SS</cod> (2 cifre pentru fiecare, chiar daca valorile sunt mai mici decat 10).
+
+   </p><h4 class="text_exemplu">
+
+      Exemplu:
+
+   </h4>
+
+   <table class="tabel_exemple">
+
+      <tbody>
+
+         <tr>
+
+            <td class="celula_header">
+
+               Intrare
+
+            </td>
+
+            <td class="celula_header">
+
+               Ieşire
+
+            </td>
+
+         </tr>
+
+         <tr>
+
+            <td class="celula_exemplu">
+
+               h=15<br>
+
+               m=42 <br>
+
+               s=3 <br>
+
+            </td>
+
+            <td class="celula_exemplu">
+
+               15:42:03<br>
+
+            </td>
+
+         </tr>
+
+      </tbody>
+
+   </table>
+
+   </div>
+
+</div>
+
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Problema 10. 
+
+</h3>
+
+<div style="margin-left: 40px;">
+
+   <div class="text_normal">
+
+      <p>
+
+         În programul anterior observaţi că dacă în loc de a introduce o valoare numerică
+
+tastaţi altceva (o literă, de exemplu) programul se comporta anormal. Încercati să
+
+modificaţi programul astfel încat să aveţi protecţie la datele eronate.
+
+      </p>
+
+<div class="text_hint">
+
+      <p>
+
+         HINT: <cod>scanf</cod> returnează numărul de argumente citite, care se potrivesc cu formatul căutat. Astfel,
+
+<cod>scanf("%d",&amp;a)</cod> va returna 1 dacă a citit un întreg sau 0 altfel.
+
+      </p>
+
+   </div>
+
+   <h4 class="text_exemplu">
+
+      Exemplu:
+
+   </h4>
+
+   <table class="tabel_exemple">
+
+      <tbody>
+
+         <tr>
+
+            <td class="celula_header">
+
+               Intrare
+
+            </td>
+
+            <td class="celula_header">
+
+               Ieşire
+
+            </td>
+
+         </tr>
+
+         <tr>
+
+            <td class="celula_exemplu">
+
+               h=1a<br>
+
+               m=42 <br>
+
+               s=3 <br>
+
+            </td>
+
+            <td class="celula_exemplu">
+
+               Date incorect introduse!<br>
+
+            </td>
+
+         </tr>
+
+         <tr>
+
+            <td class="celula_exemplu">
+
+               h=11<br>
+
+               m=4.2 <br>
+
+               s=3 <br>
+
+            </td>
+
+            <td class="celula_exemplu">
+
+               Date incorect introduse!<br>
+
+            </td>
+
+         </tr>
+
+      </tbody>
+
+   </table>
+
+   </div>
+
+</div>
+
+</body></html>

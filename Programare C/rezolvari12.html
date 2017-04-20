@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>~/pc-materiale/Rezolvari/2010_2011/lab12/rezolvari12p2.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/pc-materiale/Rezolvari/2010_2011/lab12/rezolvari12p3.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/pc-materiale/Rezolvari/2010_2011/lab12/rezolvari12p4.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"></head><body bgcolor="#ffffff" text="#000000">Pentru fisierele sursa cu rezolvarile, verificati arhiva.
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><br>
+<font color="#0000c0">&nbsp;* Problema 2</font><br>
+<font color="#0000c0">&nbsp;*</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#c000c0">#include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<font color="#c000c0">#include </font><font color="#c00000">&lt;string.h&gt;</font><br>
+<font color="#c000c0">#include </font><font color="#c00000">&lt;ctype.h&gt;</font><br>
+<br>
+<font color="#008000">void</font>&nbsp;strtolower(<font color="#008000">char</font>&nbsp;*s)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;i, n;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>&nbsp;(i = <font color="#c00000">0</font>, n = strlen(s); i &lt; n; i++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s[i] = tolower(s[i]);<br>
+}<br>
+<br>
+<font color="#008000">int</font>&nbsp;main(<font color="#008000">int</font>&nbsp;argc, <font color="#008000">char</font>&nbsp;*argv[])<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">FILE</font>&nbsp;*f = fopen(argv[argc - <font color="#c00000">2</font>], <font color="#c00000">"r"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">char</font>&nbsp;buffer[<font color="#c00000">1000</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;o_i = <font color="#c00000">0</font>, o_n = <font color="#c00000">0</font>, o_c = <font color="#c00000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;nr = <font color="#c00000">0</font>, i, ct = <font color="#c00000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>&nbsp;(i = <font color="#c00000">1</font>; i &lt; argc - <font color="#c00000">2</font>; i++) { <font color="#0000c0">// parcurgem lista de optiuni</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">switch</font>&nbsp;(argv[i][<font color="#c00000">1</font>]) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">case</font>&nbsp;<font color="#c00000">'i'</font>&nbsp;: o_i = <font color="#c00000">1</font>; <font color="#804000">break</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">case</font>&nbsp;<font color="#c00000">'n'</font>&nbsp;: o_n = <font color="#c00000">1</font>; <font color="#804000">break</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">case</font>&nbsp;<font color="#c00000">'c'</font>&nbsp;: o_c = <font color="#c00000">1</font>; <font color="#804000">break</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(o_i)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strtolower(argv[argc - <font color="#c00000">1</font>]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">while</font>&nbsp;(fgets(buffer, <font color="#c00000">1000</font>, f) != <font color="#c00000">NULL</font>) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nr++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(o_i)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strtolower(buffer);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(strstr(buffer, argv[argc - <font color="#c00000">1</font>])) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ct++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(o_n) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c00000">&nbsp;: "</font>, nr);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">%s</font><font color="#c00000">"</font>, buffer);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(o_c)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c00000">&nbsp;lines</font><font color="#c000c0">\n</font><font color="#c00000">"</font>, ct);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fclose(f);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><br>
+<font color="#0000c0">&nbsp;* Problema 3</font><br>
+<font color="#0000c0">&nbsp;*</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#c000c0">#include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<font color="#c000c0">#include </font><font color="#c00000">&lt;string.h&gt;</font><br>
+<br>
+<font color="#c000c0">#define MAXN </font><font color="#c00000">1000</font><br>
+<br>
+<font color="#008000">typedef</font>&nbsp;<font color="#008000">struct</font>&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">char</font>&nbsp;nume[<font color="#c00000">100</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">char</font>&nbsp;prenume[<font color="#c00000">100</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">float</font>&nbsp;n_a, n_e, n_f;<br>
+} STUDENT;<br>
+<br>
+<font color="#008000">int</font>&nbsp;main(<font color="#008000">int</font>&nbsp;argc, <font color="#008000">char</font>&nbsp;*argv[])<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">char</font>&nbsp;buffer[<font color="#c00000">1000</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;i, n = <font color="#c00000">0</font>, np = <font color="#c00000">0</font>, nr_elevi;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">float</font>&nbsp;max;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STUDENT st[MAXN];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">FILE</font>&nbsp;*f = fopen(argv[<font color="#c00000">1</font>], <font color="#c00000">"r"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fscanf(f, <font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c00000">"</font>, &amp;nr_elevi);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//while (fscanf(f, "%s%s%f%f", st[n].nume, st[n].prenume, &amp;st[n].n_a, &amp;st[n].n_e) == 4) {</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>(n = <font color="#c00000">0</font>; n &lt; nr_elevi; n++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fscanf(f, <font color="#c00000">"</font><font color="#c000c0">%s%s%f%f</font><font color="#c00000">"</font>, st[n].nume, st[n].prenume, &amp;st[n].n_a, &amp;st[n].n_e);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// calcul si afisare nota finala</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;st[n].n_f = (st[n].n_a + <font color="#c00000">2</font>&nbsp;* st[n].n_e) / <font color="#c00000">3</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"Nota finala </font><font color="#c000c0">%s</font><font color="#c00000">&nbsp;</font><font color="#c000c0">%s</font><font color="#c00000">: </font><font color="#c000c0">%.2f</font><font color="#c00000">&nbsp;"</font>, st[n].nume, st[n].prenume, st[n].n_f);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// verificare promovat</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(st[n].n_f &gt;= <font color="#c00000">5</font>&nbsp;&amp;&amp; st[n].n_a &gt;= <font color="#c00000">5</font>&nbsp;&amp;&amp; st[n].n_e &gt;= <font color="#c00000">5</font>) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;np++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"promovat</font><font color="#c000c0">\n</font><font color="#c00000">"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">else</font>&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"nepromovat</font><font color="#c000c0">\n</font><font color="#c00000">"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// verificare nota maxima</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(st[n].n_f &gt; max)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max
+ = st[n].n_f;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//n++;</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c00000">&nbsp;studenti promovati.</font><font color="#c000c0">\n</font><font color="#c000c0">%.2f%%</font><font color="#c00000">(procent de promovabilitate)</font><font color="#c000c0">\n</font><font color="#c00000">"</font>, np, np * <font color="#c00000">100.0</font>&nbsp;/ n);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"Nota maxima = </font><font color="#c000c0">%.2f</font><font color="#c00000">. Studenti care au obtinut nota maxima:</font><font color="#c000c0">\n</font><font color="#c00000">"</font>, max);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>&nbsp;(i = <font color="#c00000">0</font>; i &lt; n; i++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(st[i].n_f == max)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">%s</font><font color="#c00000">&nbsp;</font><font color="#c000c0">%s</font><font color="#c000c0">\n</font><font color="#c00000">"</font>, st[i].nume, st[i].prenume);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fclose(f);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><br>
+<font color="#0000c0">&nbsp;* Problema 4</font><br>
+<font color="#0000c0">&nbsp;*</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#c000c0">#include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<font color="#c000c0">#include </font><font color="#c00000">&lt;string.h&gt;</font><br>
+<br>
+<font color="#008000">int</font>&nbsp;main(<font color="#008000">int</font>&nbsp;argc, <font color="#008000">char</font>&nbsp;*argv[])<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">FILE</font>&nbsp;*cod, *in, *out;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">char</font>&nbsp;c[<font color="#c00000">128</font>]; <font color="#0000c0">// pentru fiecare caracter ii vom retine codul</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">char</font>&nbsp;chi, cho, buffer[<font color="#c00000">1000</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;i, n;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cod = fopen(argv[<font color="#c00000">1</font>], <font color="#c00000">"r"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in = fopen(argv[<font color="#c00000">2</font>], <font color="#c00000">"r"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out = fopen(argv[<font color="#c00000">3</font>], <font color="#c00000">"w"</font>);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>&nbsp;(i = <font color="#c00000">0</font>; i &lt; <font color="#c00000">128</font>; i++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c[i] = i; <font color="#0000c0">// daca nu exista codificare, caracterul ramane la fel</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">while</font>&nbsp;(fgets(buffer, <font color="#c00000">1000</font>, cod) != <font color="#c00000">NULL</font>) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(sscanf(buffer, <font color="#c00000">"</font><font color="#c000c0">%c</font><font color="#c00000">&nbsp;</font><font color="#c000c0">%c</font><font color="#c00000">"</font>, &amp;chi, &amp;cho)==<font color="#c00000">2</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c[chi]
+ = cho;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">while</font>&nbsp;(fgets(buffer, <font color="#c00000">1000</font>, in) != <font color="#c00000">NULL</font>) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>&nbsp;(i = <font color="#c00000">0</font>, n = strlen(buffer); i &lt; n; i++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fprintf(out,
+ <font color="#c00000">"</font><font color="#c000c0">%c</font><font color="#c00000">"</font>, c[buffer[i]]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fclose(cod);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fclose(in);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fclose(out);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+<br>
+</font><br>
+</body></html>

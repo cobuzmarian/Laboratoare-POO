@@ -1,0 +1,420 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>~/pc-materiale/Rezolvari/2010_2011/lab3/rezolvari3p01.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/pc-materiale/Rezolvari/2010_2011/lab3/rezolvari3p02.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/pc-materiale/Rezolvari/2010_2011/lab3/rezolvari3p03.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/pc-materiale/Rezolvari/2010_2011/lab3/rezolvari3p04.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/pc-materiale/Rezolvari/2010_2011/lab3/rezolvari3p05.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/pc-materiale/Rezolvari/2010_2011/lab3/rezolvari3p06.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/pc-materiale/Rezolvari/2010_2011/lab3/rezolvari3p07.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/pc-materiale/Rezolvari/2010_2011/lab3/rezolvari3p08.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/pc-materiale/Rezolvari/2010_2011/lab3/rezolvari3p09.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/pc-materiale/Rezolvari/2010_2011/lab3/rezolvari3p10.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"></head><body bgcolor="#ffffff" text="#000000">Pentru fisierele sursa cu rezolvarile, verificati arhiva.
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><font color="#0000c0">*</font><br>
+<font color="#0000c0">&nbsp;* Problema 1</font><br>
+<font color="#0000c0">&nbsp;*</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#0000c0">// Pentru functia printf()</font><br>
+<font color="#c000c0">#include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<br>
+<font color="#008000">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;i;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>&nbsp;( i = <font color="#c00000">32</font>; i &lt; <font color="#c00000">127</font>; i++ )<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;( i % <font color="#c00000">10</font>&nbsp;== <font color="#c00000">1</font>&nbsp;)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">%c</font><font color="#c00000">&nbsp;= </font><font color="#c000c0">%d</font><font color="#c000c0">\n</font><font color="#c00000">"</font>, i, i );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">%c</font><font color="#c00000">&nbsp;= </font><font color="#c000c0">%d</font><font color="#c00000">&nbsp;"</font>, i, i );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+<br>
+<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><font color="#0000c0">*</font><br>
+<font color="#0000c0">&nbsp;* Problema 2</font><br>
+<font color="#0000c0">&nbsp;*</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#0000c0">//Pentru functiile scanf() si printf()</font><br>
+<font color="#c000c0"># include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<br>
+<font color="#008000">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;i, n, m;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#c00000">"</font><font color="#c000c0">%d%d</font><font color="#c00000">"</font>, &amp;n, &amp;m);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>&nbsp;(i = <font color="#c00000">1</font>; i &lt;= n; i++){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">%6d</font><font color="#c00000">"</font>, i);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// conditie de test pentru trecerea la linie noua</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(i % m == <font color="#c00000">0</font>) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">\n</font><font color="#c00000">"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// conditie de test pentru intreruperea afisarii</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(i % (<font color="#c00000">24</font>&nbsp;* m) == <font color="#c00000">0</font>){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fflush(<font color="#c00000">stdin</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getchar();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><font color="#0000c0">*</font><br>
+<font color="#0000c0">&nbsp;* Problema 3</font><br>
+<font color="#0000c0">&nbsp;*</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#0000c0">// Pentru functiile scanf() si printf()</font><br>
+<font color="#c000c0">#include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<br>
+<font color="#008000">int</font>&nbsp;main ()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">float</font>&nbsp;x, sx = <font color="#c00000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">double</font>&nbsp;y, sy = <font color="#c00000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;n, i;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf (<font color="#c00000">"n = "</font>); scanf (<font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c00000">"</font>, &amp;n);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf (<font color="#c00000">"x = "</font>); scanf (<font color="#c00000">"</font><font color="#c000c0">%f</font><font color="#c00000">"</font>, &amp;x);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf (<font color="#c00000">"y = "</font>); scanf (<font color="#c00000">"</font><font color="#c000c0">%lf</font><font color="#c00000">"</font>, &amp;y);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>&nbsp;(i = <font color="#c00000">0</font>; i &lt; n; i++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// reactualizam sumele partiale sx si sy</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sx += x;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sy += y;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//testam daca am parcurs n/10 termeni</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(i % (n / <font color="#c00000">10</font>) == <font color="#c00000">0</font>) printf(<font color="#c00000">"</font><font color="#c000c0">%f</font><font color="#c00000">&nbsp;</font><font color="#c000c0">%e</font><font color="#c000c0">\n</font><font color="#c000c0">%lf</font><font color="#c00000">&nbsp;</font><font color="#c000c0">%e</font><font color="#c000c0">\n\n</font><font color="#c00000">"</font>, sx, sx, sy, sy);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">%f</font><font color="#c00000">&nbsp;</font><font color="#c000c0">%e</font><font color="#c000c0">\n</font><font color="#c000c0">%lf</font><font color="#c00000">&nbsp;</font><font color="#c000c0">%e</font><font color="#c000c0">\n</font><font color="#c00000">"</font>, sx, sx, sy, sy);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+<br>
+<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><font color="#0000c0">*</font><br>
+<font color="#0000c0">&nbsp;* Problema 4</font><br>
+<font color="#0000c0">&nbsp;*</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#0000c0">// Pentru functiile printf() si scanf()</font><br>
+<font color="#c000c0">#include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<br>
+<font color="#008000">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;a, b, s, aux;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// se citeste un numar</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c00000">"</font>, &amp;a);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// se verifica daca numarul este egal cu 0</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(a == <font color="#c00000">0</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">do</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//se citeste un alt numar</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c00000">"</font>, &amp;b);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// se calculeaza suma cifrelor primului numar din pereche, adica suma cifrelor lui a</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aux = a;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>&nbsp;( s = <font color="#c00000">0</font>; aux &gt; <font color="#c00000">0</font>; aux /= <font color="#c00000">10</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s
+ += aux % <font color="#c00000">10</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// se verifica conditia</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(b == a % s)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c00000">&nbsp;</font><font color="#c000c0">%%</font><font color="#c00000">&nbsp;</font><font color="#c000c0">%d</font><font color="#c00000">&nbsp;= </font><font color="#c000c0">%d</font><font color="#c00000">&nbsp;</font><font color="#c000c0">\n</font><font color="#c00000">"</font>, a, s, b);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// se actualizeaza valoarea lui a</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a = b;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <font color="#804000">while</font>&nbsp;(a != <font color="#c00000">0</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+<br>
+<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><font color="#0000c0">*</font><br>
+<font color="#0000c0">&nbsp;* Problema 5</font><br>
+<font color="#0000c0">&nbsp;*</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#0000c0">// Pentru functiile printf() si scanf()</font><br>
+<font color="#c000c0">#include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<br>
+<font color="#008000">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;i, j, p, k;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf( <font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c00000">"</font>, &amp;p );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>( i = <font color="#c00000">1</font>; i &lt; p - <font color="#c00000">1</font>; i++ )<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>( j = i; j &lt; p - i; j++ ) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;k
+ = p - i - j;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// verificam daca cele 3 numere pot forma laturile unui triunghi.</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;( k &gt;= j &amp;&amp; k &lt;= i + j &amp;&amp; i &lt;= k + j &amp;&amp; j &lt;= k + i )<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(
+ <font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c00000">&nbsp;</font><font color="#c000c0">%d</font><font color="#c00000">&nbsp;</font><font color="#c000c0">%d</font><font color="#c000c0">\n</font><font color="#c00000">"</font>, i, j, k );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+<br>
+<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><font color="#0000c0">*</font><br>
+<font color="#0000c0">&nbsp;* Problema 6</font><br>
+<font color="#0000c0">&nbsp;*</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#0000c0">// Pentru printf() si scanf()</font><br>
+<font color="#c000c0">#include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<br>
+<font color="#008000">int</font>&nbsp;main ()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;n, m, i, c, nf, mf, nmf;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf (<font color="#c00000">"</font><font color="#c000c0">%d%d</font><font color="#c00000">"</font>, &amp;n, &amp;m);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//metoda 1: folosirea relatiei de recurenta</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c = <font color="#c00000">1</font>; <font color="#0000c0">// C(n,0)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>&nbsp;(i = <font color="#c00000">1</font>; i &lt;= m; i++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c = c * (n - i + <font color="#c00000">1</font>) / i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf (<font color="#c00000">"C(</font><font color="#c000c0">%d</font><font color="#c00000">, </font><font color="#c000c0">%d</font><font color="#c00000">) = </font><font color="#c000c0">%d</font><font color="#c000c0">\n</font><font color="#c00000">"</font>, n, m, c);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//metoda 2: folosind relatia de calcul</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>&nbsp;(nf = <font color="#c00000">1</font>, i = <font color="#c00000">1</font>; i &lt;= n; i++) nf *= i;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#0000c0">//calculul lui n!</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>&nbsp;(mf = <font color="#c00000">1</font>, i = <font color="#c00000">1</font>; i &lt;= m; i++) mf *= i;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#0000c0">//calculul lui m!</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>&nbsp;(nmf = <font color="#c00000">1</font>, i = <font color="#c00000">1</font>; i &lt;= n - m; i++) nmf *= i; <font color="#0000c0">//calculul lui (n - m)!</font><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf (<font color="#c00000">"C(</font><font color="#c000c0">%d</font><font color="#c00000">, </font><font color="#c000c0">%d</font><font color="#c00000">) = </font><font color="#c000c0">%d</font><font color="#c000c0">\n</font><font color="#c00000">"</font>, n, m, nf / (mf * nmf));<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><font color="#0000c0">*</font><br>
+<font color="#0000c0">&nbsp;* Problema 7</font><br>
+<font color="#0000c0">&nbsp;*</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#0000c0">// Pentru functiile printf() si scanf()</font><br>
+<font color="#c000c0">#include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<font color="#0000c0">// Pentru functia pow()</font><br>
+<font color="#c000c0">#include </font><font color="#c00000">&lt;math.h&gt;</font><br>
+<br>
+<font color="#008000">int</font>&nbsp;main() <br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">float</font>&nbsp;x, s1 = <font color="#c00000">0</font>, s2 = <font color="#c00000">0</font>, t = <font color="#c00000">1</font>, eps = <font color="#c00000">0.0001</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;n, i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#c00000">"</font><font color="#c000c0">%f</font><font color="#c00000">&nbsp;</font><font color="#c000c0">%d</font><font color="#c00000">"</font>, &amp;x, &amp;n);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>&nbsp;( i = <font color="#c00000">0</font>; i &lt; n; i++)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#0000c0">/*</font><font color="#0000c0">&nbsp;Ca suma a unui numar dat de termeni </font><font color="#0000c0">*/</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s1 += t;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t = t * x / (i + <font color="#c00000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t = <font color="#c00000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>&nbsp;( i = <font color="#c00000">0</font>; t &gt; eps; i++)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#0000c0">/*</font><font color="#0000c0">&nbsp;Ca suma a termenilor mai mari decat un epsilon dat</font><font color="#0000c0">*/</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s2 += t;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t = t * x / (i + <font color="#c00000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">%f</font><font color="#c00000">&nbsp;&nbsp;&nbsp;&nbsp; </font><font color="#c000c0">%f</font><font color="#c00000">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#c000c0">%f</font><font color="#c00000">&nbsp;&nbsp;&nbsp;&nbsp; </font><font color="#c000c0">%f</font><font color="#c000c0">\n</font><font color="#c00000">"</font>, s1, s2, exp(x), pow(<font color="#c00000">2.718</font>, x));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+<font color="#0000c0">//pentru mai multe detalii despre functia pow() accesati <a href="http://www.cplusplus.com/reference/clibrary/cmath/pow/">http://www.cplusplus.com/reference/clibrary/cmath/pow/</a></font><br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><font color="#0000c0">*</font><br>
+<font color="#0000c0">&nbsp;* Problema 8</font><br>
+<font color="#0000c0">&nbsp;*</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#0000c0">// Pentru functiile scanf() si printf()</font><br>
+<font color="#c000c0">#include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<font color="#0000c0">// Pentru functiile fabs() si sqrt()</font><br>
+<font color="#c000c0">#include </font><font color="#c00000">&lt;math.h&gt;</font><br>
+<br>
+<font color="#008000">int</font>&nbsp;main ()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">float</font>&nbsp;x, r1, r2, EPS = <font color="#c00000">0.001</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;i;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#c00000">"</font><font color="#c000c0">%f</font><font color="#c00000">"</font>, &amp;x);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r1 = r2 = x / <font color="#c00000">2</font>&nbsp;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">do</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r1 = r2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r2 = ( r1 + x/r1 ) / <font color="#c00000">2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <font color="#804000">while</font>&nbsp;( fabs( r1 - r2 ) &gt; EPS );<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"rad(</font><font color="#c000c0">%2.0f</font><font color="#c00000">)&nbsp;&nbsp;=&nbsp;&nbsp;</font><font color="#c000c0">%.3f</font><font color="#c00000">&nbsp;&nbsp;|&nbsp;&nbsp;</font><font color="#c000c0">%.3f</font><font color="#c00000">&nbsp;</font><font color="#c000c0">\n</font><font color="#c00000">"</font>, x, r2, sqrt(x));<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>(i = <font color="#c00000">1</font>; i &lt;= <font color="#c00000">20</font>; i++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"rad(</font><font color="#c000c0">%d</font><font color="#c00000">) = </font><font color="#c000c0">%.3f</font><font color="#c000c0">\n</font><font color="#c00000">"</font>, <font color="#c00000">2</font>&nbsp;* i, sqrt(<font color="#c00000">2</font>&nbsp;* i));<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+<font color="#0000c0">//mai multe detalii despre functia sqrt() gasiti accesand <a href="http://www.cplusplus.com/reference/clibrary/cmath/sqrt/">http://www.cplusplus.com/reference/clibrary/cmath/sqrt/</a></font><br>
+<br>
+<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><font color="#0000c0">*</font><br>
+<font color="#0000c0">&nbsp;* Problema 9</font><br>
+<font color="#0000c0">&nbsp;*</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#0000c0">// Pentru printf() si scanf()</font><br>
+<font color="#c000c0">#include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<font color="#0000c0">// Pentru sqrt(x)</font><br>
+<font color="#c000c0">#include </font><font color="#c00000">&lt;math.h&gt;</font><br>
+<br>
+<font color="#008000">int</font>&nbsp;main ()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;n, i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;p = <font color="#c00000">1</font>, q = <font color="#c00000">1</font>; <font color="#0000c0">// cu p si q generez sirul lui fibonacci</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;prim, d, rad, aux;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf (<font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c00000">"</font>, &amp;n);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(n &lt;= <font color="#c00000">3</font>) { <font color="#0000c0">// primii 3 termeni sunt 0,1,1</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf (<font color="#c00000">"Nu exista numere prime</font><font color="#c000c0">\n</font><font color="#c00000">"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf (<font color="#c00000">"Numerele prime din sirul Fibonacci sunt: "</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>&nbsp;(i = <font color="#c00000">4</font>; i &lt;= n; i++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aux = p;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p = q;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;q = aux + q; <font color="#0000c0">// calculam in q termenii sirului Fib. , tinand cont ca ultimii doi termeni sunt p si q</font><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(q == <font color="#c00000">2</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf
+ (<font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c00000">&nbsp;"</font>, q);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">else</font>&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// daca restul impartirii lui q la 2 este 0, atunci q nu poate fi numar prim</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prim
+ = q % <font color="#c00000">2</font>&nbsp;== <font color="#c00000">0</font>&nbsp;? <font color="#c00000">0</font>&nbsp;: <font color="#c00000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//luam partea intreaga a radicalului</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rad
+ = (<font color="#008000">int</font>)(sqrt(q));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d
+ = <font color="#c00000">3</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">while</font>&nbsp;(prim &amp;&amp; d &lt;= rad) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(q % d == <font color="#c00000">0</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prim
+ = <font color="#c00000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d
+ += <font color="#c00000">2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(prim)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf
+ (<font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c00000">&nbsp;"</font>, q);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">\n</font><font color="#c00000">"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><font color="#0000c0">*</font><br>
+<font color="#0000c0">&nbsp;* Problema 10</font><br>
+<font color="#0000c0">&nbsp;*</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#c000c0">#include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<br>
+<font color="#008000">int</font>&nbsp;main ()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;n, limit = <font color="#c00000">10</font>, nr_cf = <font color="#c00000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;s = <font color="#c00000">0</font>; <font color="#0000c0">// suma cifrelor</font><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf (<font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c00000">"</font>, &amp;n);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//intuitiv:&nbsp;&nbsp;&nbsp;&nbsp; intre 0 si 9 exista 10 numere de 1 cifra</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intre
+ 10 si 99 exista 90 de numere de 2 cifre</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//comparam pe rand numarul n cu 10^1, 10^2 etc. pana cand n il depaseste pe limit (o putere a lui 10)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">while</font>&nbsp;(n &gt;= limit) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//actualizam suma</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s += nr_cf * (limit - limit/<font color="#c00000">10</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//odata cu cresterea limitei crestem si numarul de cifre</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nr_cf++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//actualizam limita prin inmultirea cu 10</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;limit *= <font color="#c00000">10</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;limit /= <font color="#c00000">10</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//se va mai adauga la suma diferenta de cifre dintre n ultima limita</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s += nr_cf * (n - limit + <font color="#c00000">1</font>);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf (<font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c000c0">\n</font><font color="#c00000">"</font>, s);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+<br>
+</font><br>
+</body></html>

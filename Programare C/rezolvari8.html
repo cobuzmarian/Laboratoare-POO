@@ -1,0 +1,250 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>~/pc-materiale/Rezolvari/2010_2011/lab8/rezolvari8p2.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/pc-materiale/Rezolvari/2010_2011/lab8/rezolvari8p3.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/pc-materiale/Rezolvari/2010_2011/lab8/rezolvari8p4.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/pc-materiale/Rezolvari/2010_2011/lab8/rezolvari8p5.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/pc-materiale/Rezolvari/2010_2011/lab8/rezolvari8p6.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"></head><body bgcolor="#ffffff" text="#000000">Pentru fisierele sursa cu rezolvarile, verificati arhiva.
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><br>
+<font color="#0000c0">&nbsp;* Problema 2</font><br>
+<font color="#0000c0">&nbsp;*</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#c000c0">#include</font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<font color="#c000c0">#include</font><font color="#c00000">&lt;stdlib.h&gt;</font><br>
+<font color="#c000c0">#include</font><font color="#c00000">&lt;string.h&gt;</font><br>
+<br>
+<br>
+<font color="#008000">char</font>&nbsp;*my_strdup(<font color="#008000">char</font>&nbsp;*s)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">char</font>&nbsp;*p = (<font color="#008000">char</font>&nbsp;*) malloc(strlen(s) + <font color="#c00000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strcpy(p, s);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;p;<br>
+}<br>
+<br>
+<font color="#008000">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">char</font>&nbsp;buf[<font color="#c00000">512</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">char</font>&nbsp;*p;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#c00000">"</font><font color="#c000c0">%s</font><font color="#c00000">"</font>, buf);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p = my_strdup(buf);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">%s</font><font color="#c00000">"</font>, p);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><br>
+<font color="#0000c0">&nbsp;* Problema 3</font><br>
+<font color="#0000c0">&nbsp;*</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#c000c0">#include</font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<font color="#c000c0">#include</font><font color="#c00000">&lt;stdlib.h&gt;</font><br>
+<font color="#c000c0">#include</font><font color="#c00000">&lt;string.h&gt;</font><br>
+<br>
+<font color="#008000">char</font>&nbsp;*my_replace(<font color="#008000">char</font>&nbsp;*s, <font color="#008000">char</font>&nbsp;*s1, <font color="#008000">char</font>&nbsp;*s2)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">/*</font><font color="#0000c0">in vectorul auxiliar se aloca memorie(din sirul total se scaote sirul care trebuie inlocuit</font><br>
+<font color="#0000c0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;si se aduaga dimensiunea sirului cu care este inlocuit </font><font color="#0000c0">*/</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">char</font>&nbsp;*aux = (<font color="#008000">char</font>&nbsp;*) malloc((<font color="#804000">sizeof</font>(s) - <font color="#804000">sizeof</font>(s1)) + <font color="#804000">sizeof</font>(s2) + <font color="#c00000">1</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;i = strstr(s, s1) - s, j = strlen(s1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strncpy(aux, s, i);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strcat(aux, s2);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strncat(aux, (s + i + j), (strlen(s) - i - j));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;aux;<br>
+}<br>
+<br>
+<br>
+<font color="#008000">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">char</font>&nbsp;*s, *s1, *s2;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s = (<font color="#008000">char</font>*)malloc(<font color="#c00000">10</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s1 = (<font color="#008000">char</font>*)malloc(<font color="#c00000">10</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s2 = (<font color="#008000">char</font>*)malloc(<font color="#c00000">10</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">char</font>&nbsp;*aux;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#c00000">"</font><font color="#c000c0">%s%s%s</font><font color="#c00000">"</font>, s, s1, s2);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aux = my_replace(s, s1, s2);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">%s</font><font color="#c000c0">\n</font><font color="#c00000">"</font>, aux);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><br>
+<font color="#0000c0">&nbsp;* Problema 4</font><br>
+<font color="#0000c0">&nbsp;*</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#c000c0">#include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<font color="#c000c0">#include </font><font color="#c00000">&lt;stdlib.h&gt;</font><br>
+<br>
+<font color="#008000">int</font>&nbsp;main(){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;i, *v, n, cap, nr;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n = <font color="#c00000">0</font>; <font color="#0000c0">//initial sunt 0 elemente in vector</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cap = <font color="#c00000">5</font>; <font color="#0000c0">//capacitatea initiala</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v = (<font color="#008000">int</font>*) malloc(cap * <font color="#804000">sizeof</font>(<font color="#008000">int</font>));<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c00000">"</font>, &amp;nr);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">while</font>&nbsp;(nr != <font color="#c00000">0</font>&nbsp;) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(cap == n) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cap
+ *= <font color="#c00000">2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v
+ = realloc(v, cap * <font color="#804000">sizeof</font>(<font color="#008000">int</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v[n++]
+ = 
+nr;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c00000">"</font>, &amp;nr);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>(i = <font color="#c00000">0</font>; i &lt; n; i++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c00000">&nbsp;"</font>, v[i]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">\n</font><font color="#c00000">"</font>);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><br>
+<font color="#0000c0">&nbsp;* Problema 5</font><br>
+<font color="#0000c0">&nbsp;*</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#c000c0">#include</font><font color="#c00000">&lt;stdlib.h&gt;</font><br>
+<font color="#c000c0">#include</font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<font color="#c000c0">#include</font><font color="#c00000">&lt;string.h&gt;</font><br>
+<br>
+<font color="#008000">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;n, i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">char</font>&nbsp;(*cuvinte_u)[<font color="#c00000">20</font>] = <font color="#c00000">NULL</font>, (*cuvinte)[<font color="#c00000">20</font>]; <font color="#0000c0">// un pointer la un sir de 20 caractere</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;*aparitii;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c000c0">\n</font><font color="#c00000">"</font>, &amp;n);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cuvinte = (<font color="#008000">char</font>&nbsp;(*)[<font color="#c00000">20</font>]) malloc(n * <font color="#804000">sizeof</font>(<font color="#008000">char</font>[<font color="#c00000">20</font>]));<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i = <font color="#c00000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">while</font>&nbsp;(i &lt; n) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#c00000">"</font><font color="#c000c0">%s</font><font color="#c00000">"</font>, cuvinte[i]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;dim = <font color="#c00000">4</font>, unice = <font color="#c00000">0</font>, k;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cuvinte_u = (<font color="#008000">char</font>&nbsp;(*)[<font color="#c00000">20</font>]) malloc(dim * <font color="#804000">sizeof</font>(<font color="#008000">char</font>[<font color="#c00000">20</font>]));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aparitii = (<font color="#008000">int</font>&nbsp;*) malloc(dim * <font color="#804000">sizeof</font>(<font color="#008000">int</font>));<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>&nbsp;(i = <font color="#c00000">0</font>; i &lt; n; i++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;found = <font color="#c00000">0</font>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// variabila care va indica daca am gasit cuvantul in vectorul de aparitii unice</font><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>&nbsp;(k = <font color="#c00000">0</font>; k &lt; unice; k++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(strcmp(cuvinte_u[k], cuvinte[i]) == <font color="#c00000">0</font>) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aparitii[k]++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;found
+ = <font color="#c00000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(found != <font color="#c00000">1</font>) {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#0000c0">//in cazul in care vucantul nu a fost gasit in vectorul de valori unice</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(unice &gt;= dim) {&nbsp;&nbsp;&nbsp;&nbsp; <font color="#0000c0">//in cazul in care dimensiunea vectorului unic nu a ajuns la limita</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dim
+ *= <font color="#c00000">2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aparitii
+ = (<font color="#008000">int</font>&nbsp;*) realloc(aparitii, dim * <font color="#804000">sizeof</font>(<font color="#008000">int</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cuvinte_u
+ = (<font color="#008000">char</font>&nbsp;(*)[<font color="#c00000">20</font>]) realloc(cuvinte_u, dim * <font color="#804000">sizeof</font>(<font color="#008000">char</font>[<font color="#c00000">20</font>]));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strcpy(cuvinte_u[unice],
+ cuvinte[i]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aparitii[unice]
+ = <font color="#c00000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unice++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>&nbsp;(i = <font color="#c00000">0</font>; i &lt; unice; i++)&nbsp;&nbsp;&nbsp;&nbsp; { <font color="#0000c0">//afisarea rezultatelor</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">%s</font><font color="#c00000">&nbsp;</font><font color="#c000c0">%d</font><font color="#c000c0">\n</font><font color="#c00000">"</font>, cuvinte_u[i], aparitii[i]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//dealocare de memorie</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;free(aparitii);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;free(cuvinte_u);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;free(cuvinte);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><br>
+<font color="#0000c0">&nbsp;* Problema 6</font><br>
+<font color="#0000c0">&nbsp;*</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#c000c0">#include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<font color="#c000c0">#include </font><font color="#c00000">&lt;stdlib.h&gt;</font><br>
+<br>
+<font color="#008000">int</font>&nbsp;main(){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;n1, *vim1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;n0, *vi;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;i, j, k, n, *p;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim1 = (<font color="#008000">int</font>*) malloc(n1 * <font color="#804000">sizeof</font>(<font color="#008000">int</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vi = (<font color="#008000">int</font>*) malloc(n * <font color="#804000">sizeof</font>(<font color="#008000">int</font>));<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vim1[<font color="#c00000">0</font>] = <font color="#c00000">1</font>; n1 = <font color="#c00000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vi[<font color="#c00000">0</font>] = <font color="#c00000">1</font>; vi[<font color="#c00000">1</font>] = <font color="#c00000">1</font>; n0 = <font color="#c00000">2</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#c00000">"</font><font color="#c000c0">%d%d</font><font color="#c00000">"</font>, &amp;n, &amp;k);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i = <font color="#c00000">1</font>;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">while</font>&nbsp;(i &lt; n) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p = vim1; vim1 = vi; vi = p;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n1 = n0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n0++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vi = (<font color="#008000">int</font>*)realloc(vi, n0 * <font color="#804000">sizeof</font>(<font color="#008000">int</font>));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vi[<font color="#c00000">0</font>] = <font color="#c00000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>(j = <font color="#c00000">1</font>; j &lt; n0; j++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vi[j]
+ = vim1[j] + vim1[j - <font color="#c00000">1</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vi[n0 - <font color="#c00000">1</font>] = <font color="#c00000">1</font>;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c000c0">\n</font><font color="#c00000">"</font>, vi[k]);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+</font><br>
+</body></html>

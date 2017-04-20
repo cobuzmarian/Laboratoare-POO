@@ -1,0 +1,610 @@
+<html><head>
+
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<style type="text/css"> 
+
+.numar_laborator
+	{
+	font-family: Times New Roman;
+	}
+.nume_laborator
+	{
+	font-family: Times New Roman;
+	text-align: center;
+	}
+.titlu_sectiune
+	{
+	font-family: Times New Roman;
+	}
+.text_normal
+	{
+	font-family: Arial;
+	font-size: 1.0em;
+	color: black;
+	}
+.text_hint
+	{
+	font-family: Arial;
+	font-style: italic;
+	font-size: 0.8em;
+	color: rgb(102, 102, 102); 
+	}
+.text_exemplu
+	{
+	font-family: Arial;
+	}
+hr 
+	{
+	height: 1px;
+	}
+.cod
+	{
+	font-family: Courier New;
+	background-color: rgb(204,204,204);
+	color: black;
+	}
+.tabel_exemple
+	{
+	width: 100%;
+	color: black;
+	font-size: 1.0em;
+	font-family: Courier New;
+	border: 1 px black solid;
+	border-spacing: 0px;
+	border-collapse: collapse;
+	text-align: left;
+	}
+.celula_header
+	{
+	color: black;
+	font-family: Arial;
+	background-color: rgb(204,204,204);
+	width: 50%;
+	border: 2px groove black;
+	}
+.celula_exemplu
+	{
+	valign: top;
+	color: black;
+	font-family: Courier New;
+	width: 50%;
+	border: 2px groove black;
+	vertical-align: top;
+	}
+cod
+	{
+	font-family: Courier New;
+	background-color: rgb(204,204,204);
+	color: black;
+	}
+
+</style>
+</head><body>
+
+<div style="color: rgb(153, 153, 153);" id="google_header" class="google_header">
+<p><font size="4">&nbsp;</font><font face="Courier New" size="4"><span style="font-family: Times New Roman;">Programarea Calculatoarelor, seria CC</span></font></p>
+<p></p>
+</div>
+
+<h1 class="numar_laborator">Laborator 8 </h1>
+<h1 class="nume_laborator">Programe cu date alocate dinamic</h1>
+
+<h3 class="titlu_sectiune">În acest laborator veţi învăţa să:</h3>
+<ul>
+   <li class="text_normal">
+      Alocaţi dinamic memorie folosind funcţiile <cod>malloc</cod>, <cod>calloc</cod> şi <cod>realloc</cod>
+   </li>
+   <li class="text_normal">
+      Folosiţi funcţia <cod>strdup</cod> pentru a clona şiruri de caractere
+   </li>
+   <li class="text_normal">
+      Eliberaţi memoria alocată folosind funcţia <cod>free</cod>. 
+   </li>
+</ul>
+<br>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Funcţii pentru alocarea memoriei (din stdlib.h): 
+</h3>
+
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         <b>malloc</b>:
+      </p>
+   </div>
+</div>
+<div style="margin-left: 80px;">
+   <div class="cod">
+      <p>
+         type* ptr = malloc(size_t size);
+      </p>
+   </div>
+   <div class="text_normal">
+      <p>
+         Unde <cod>size_t</cod> este un tip întreg fără semn (unsigned), dependent de arhitectură (pentru arhitectura 32bit, acesta este unsigned int).
+      </p>
+      <p>
+         Funcţia alocă o zonă continuă de memorie având dimensiunea de <cod>size</cod> octeţi şi returnează un pointer <cod>void*</cod> cu adresa de început a zonei de memorie alocată. Pentru a schimba tipul acestui pointer se foloseşte operatorul <b>cast</b>.
+      </p>
+   </div>
+  <h4 class="test_exemplu">
+     Exemplu:
+  </h4>
+   <div class="cod">
+      <p>
+         int *a = malloc( 100 * sizeof(int) );
+      </p>
+   </div>
+<ul>
+   <li class="text_normal">
+      Am alocat o zonă de memorie de 100 de elemente de tip <cod>int</cod></li>
+   <li class="text_normal">
+      Tipului pointerului returnat de funcție, <cod>void*</cod>, i se face <b>cast</b> automat în <cod>int*</cod>. 
+   </li>
+   <li class="text_normal">
+      Funcţia <cod>sizeof(type)</cod> returnează numărul de octeţi ocupaţi de tipul <cod>type</cod>
+   </li>
+</ul>
+</div>
+
+<div style="margin-left: 40px;">
+   <hr size="1">
+   <div class="text_normal">
+      <p>
+         <b>calloc</b>:
+      </p>
+   </div>
+</div>
+<div style="margin-left: 80px;">
+   <div class="cod">
+      <p>
+         type* ptr = calloc(size_t num, size_t size);
+      </p>
+   </div>
+   <div class="text_normal">
+      <p>
+         Funcţia alocă spaţiu de memorie pentru un vector cu <cod>num</cod> elemente, fiecare element avâdn dimensiunea <cod>size</cod> de octeţi şi returnează un pointer <cod>void*</cod> cu adresa de început a zonei de memorie alocată. <b>Atenţie!</b> Toţi biţii din această zonă de memorie sunt setaţi pe <cod>0</cod>.
+      </p>
+   </div>
+  <h4 class="test_exemplu">
+     Exemplu:
+  </h4>
+   <div class="cod">
+      <p>
+         int *a = calloc( 100, sizeof(int) );
+      </p>
+   </div>
+<ul>
+   <li class="text_normal">
+      Am alocat o zonă de memorie de 100 de elemente de tip <cod>int</cod></li>
+   <li class="text_normal">
+      Toţi biţii din această zonă de memorie au valoarea <cod>0</cod> 
+   </li>
+</ul>
+</div>
+
+<div style="margin-left: 40px;">
+   <hr size="1">
+   <div class="text_normal">
+      <p>
+         <b>realloc</b>:
+      </p>
+   </div>
+</div>
+<div style="margin-left: 80px;">
+   <div class="cod">
+      <p>
+         type* ptr = realloc(void* old_ptr, size_t size);
+      </p>
+   </div>
+   <div class="text_normal">
+      <p>
+         Unde <cod>old_ptr</cod> este adresa de început a zonei de memorie pe care dorim să o realocăm, <cod>size</cod> reprezintă noua dimensiune a zonei de memorie (în octeţi), iar <cod>ptr</cod> este adresa de început a zonei de memorie după realocare.
+      </p>
+      <p>
+         Funcţia realizează modificarea dimensiunii zonei de memorie referite de <cod>old_ptr</cod>.
+      </p>
+   </div>
+  <h4 class="test_exemplu">
+     Exemplu:
+  </h4>
+   <div class="cod">
+      <p>
+         int *a = malloc( 100 * sizeof(int) ); <br>
+         a = realloc( a,  200 * sizeof(int) );
+      </p>
+   </div>
+<ul>
+   <li class="text_normal">
+      Am alocat o zonă de memorie de 100 de elemente de tip <cod>int</cod></li>
+   <li class="text_normal">
+      Am mărit zona de memorie pentru 200 de elemente întregi
+   </li>
+   <li class="text_normal">
+      <b>Atenţie!</b> După realocare, cele 100 de numere întregi aflate iniţial în vectorul <cod>a</cod> au rămas nemodificate.
+   </li>
+</ul>
+</div>
+
+<div style="margin-left: 40px;">
+   <hr size="1">
+   <div class="text_normal">
+      <p>
+         <b>free</b>:
+      </p>
+   </div>
+</div>
+<div style="margin-left: 80px;">
+   <div class="cod">
+      <p>
+         void free(void* ptr);
+      </p>
+   </div>
+   <div class="text_normal">
+      <p>
+         Unde <cod>ptr</cod> reprezintă adresa zonei de memorie pe care dorim să o eliberăm. 
+      </p>
+   </div>
+</div>
+
+<div style="margin-left: 40px;">
+   <hr size="1">
+   <div class="text_normal">
+      <p>
+         <b>strdup</b>:
+      </p>
+   </div>
+</div>
+<div style="margin-left: 80px;">
+   <div class="cod">
+      <p>
+         char *strdup( char *s );
+      </p>
+   </div>
+   <div class="text_normal">
+      <p>
+         Unde <cod>s</cod> reprezintă un string (şir de caractere terminat cu <cod>'\0'</cod>).  
+      </p>
+      <p>
+         Funcţia alocă o nouă zonă de memroie la care se copiază octeţii şirului <cod>s</cod>. Se returnează un pointer către începutul zonei de memorie unde s-a făcut copierea.
+      </p>
+   </div>
+</div>
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 1. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+      	  Copiaţi şi rulaţi următorul program şi scrieţi câte un 
+comentariu în care să explicaţi ce face fiecare instrucţiune. Este 
+foarte important să înţelegeţi cum să folosiţi pointerii în C. Dacă nu 
+înţelegeţi ceva din program, întrebaţi asistenţii.   
+      </p>
+   </div>
+   <div class="cod">
+      <p> 
+# include &lt;stdio.h&gt;<br>
+# include &lt;stdlib.h&gt;<br>
+# include &lt;string.h&gt;<br>
+<br>
+int main ()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char c = 'a', *p, s[100];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p = &amp;c;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf ("%c %c %c", *p, *p+1, *p+2);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s[0] = 'A'; s[1] = 'B'; s[2] = 'C'; s[3] = '\0';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p = s;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf ("\n%s %s %c %s", s, p, *(p+1), p+1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strcpy (s, "\nacesta este un exemplu de lucru cu pointeri");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf ("%s", s);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p += 17;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (; *p != '\0'; ++p) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (*p == 'e')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*p = 'E';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (*p == ' ')<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*p = '\n';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf ("%s\n", s);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br>
+}<br>
+<br>
+      </p>
+   </div>
+   <div class="text_normal">
+      <p>
+      	  Programul va afişa următoarele linii:
+      </p>
+   </div>
+   <div class="cod">
+      <p>
+a b c<br>
+ABC ABC B BC<br>
+acesta este un exemplu de lucru cu pointeri<br>
+acesta este un exEmplu<br>
+dE<br>
+lucru<br>
+cu<br>
+pointEri<br>
+ 
+      </p>
+   </div> 
+</div>
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 2. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         Să se scrie o funcţie cu acelaşi efect şi antet ca şi funcţia <cod>strdup</cod> şi să se verifice. Un exemplu de utilizare al funcţiei strdup este următorul:
+      </p>
+   </div>
+   <div class="cod">
+      <p>
+      char buf[512];    // aici se citeşte un şir<br>
+      char *p;        // adresă şir alocat dinamic<br>
+      scanf("%s",buf);  // citire şir<br>
+      p=strdup(sir);    // alocă memorie şi copiază şir la adresa p<br>
+      </p>
+   </div>
+   <div class="text_normal">
+      <p>
+         Funcţia declarată trebuie să respecte următorul antet:   
+      </p>
+   </div>
+   <div class="cod">
+      <p>
+         char* my_strdup (char *s)   
+      </p>
+   </div>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 3. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         Scrieţi o funcţie care înlocuieşte într-un şir <cod>s</cod> prima apariţie a unui subşir dat <cod>s1</cod> printr-un şir dat <cod>s2</cod>, folosind un vector intermediar alocat dinamic, în care se construieşte şirul rezultat. Se caută <cod>s1</cod> în <cod>s</cod>, se copiază în vectorul auxiliar caracterele anteriorare lui <cod>s1</cod> şi se concatenează cu <cod>s2</cod> şi cu caracterele de după <cod>s1</cod> (din <cod>s</cod>). În final se copiază din vectorul auxiliar în <cod>s</cod>. 
+      </p>
+      <p>
+         Funcţia declarată trebuie să respecte următorul antet:
+      </p>
+   </div>
+   <div class="cod">
+      <p>
+         char* my_replace(char *s, char *s1, char *s2) 
+      </p>
+   </div>
+</div>
+
+ <h4 class="test_exemplu">
+     Exemplu:
+  </h4>
+  <table class="tabel_exemple">
+      <tbody>
+         <tr>
+            <td class="celula_header">
+               Intrare
+            </td>
+            <td class="celula_header">
+               Ieşire
+            </td>
+         </tr>
+         <tr>
+            <td class="celula_exemplu">
+               imi nu-mi<br>
+			   mie imi plac pointerii 
+            </td>
+            <td class="celula_exemplu">
+               mie nu-mi plac pointerii
+            </td>
+         </tr>
+      </tbody>
+   </table>
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 4. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         Să se scrie un program care citește numere de la tastatură până la întâlnirea numărului <cod>0</cod> și care le stochează într-un vector alocat dinamic, ce va fi realocat dacă este
+	nevoie. La final, se va afișa vectorul stocat, pentru verificare.
+      </p>
+      <p>
+		Pentru acest lucru, vom avea nevoie de următoarele variabile:
+		</p><ul>
+			<li> <cod>int *v</cod>: vectorul în care se rețin numerele </li>
+			<li> <cod>int cap</cod>: capacitatea curentă a vectorului v</li>
+			<li> <cod>int n</cod>: numărul efectiv de numere stocate în v</li>
+		</ul>
+      <p></p>
+	<p> Se va porni cu o capacitate ințială (de exemplu, <cod>cap = 5</cod>) și, în momentul în care citim un nou număr și nu mai există spațiu pentru a fi stocat (<cod>cap == n</cod>), se
+	va crește capacitatea (fie printr-un anumit număr, fie se va dubla) și se va realoca vectorul <cod>v</cod> cu această noua capacitate.
+	</p>
+   </div>
+</div>
+
+
+<h4 class="test_exemplu">
+     Exemplu:
+</h4>
+
+<table class="tabel_exemple">
+	<tbody>
+
+		<tr>
+			<td class="celula_header">
+				Intrare
+			</td>
+			<td class="celula_header">
+				Ieşire
+			</td>
+		</tr>
+
+		<tr>
+			<td class="celula_exemplu">
+				1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 0
+			</td>
+			<td class="celula_exemplu">
+				1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 
+			</td>
+		</tr>
+
+	</tbody>
+</table>
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 5. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         Să se scrie un program pentru citirea unor cuvinte (de la 
+tastatură) şi afişarea numărului de apariţii al fiecărui cuvânt. 
+Cuvintele au maxim 19 litere fiecare.
+      </p>
+      <p>
+         Se va folosi un vector de pointeri la cuvinte şi un vector de numere întregi. Variante:   
+      </p>
+   <ul>
+   <li class="text_normal">
+      Cei doi vectori au o dimensiune maximă şi nu se mai extind.   
+   </li>
+   <li class="text_normal">
+      Cei doi se alocă şi se extind dinamic (se realocă dacă este nevoie).
+   </li>
+   </ul>
+   </div>   
+</div>
+
+ <h4 class="test_exemplu">
+     Exemplu:
+  </h4>
+  <table class="tabel_exemple">
+      <tbody>
+         <tr>
+            <td class="celula_header">
+               Intrare
+            </td>
+            <td class="celula_header">
+               Ieşire
+            </td>
+         </tr>
+         <tr>
+            <td class="celula_exemplu">
+               6<br>
+               ana are<br>
+               mere are mere mere
+            </td>
+            <td class="celula_exemplu">
+               ana 1<br>
+               are 2<br>
+               mere 3<br>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 6. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         <b>Liniarizarea unei matrici.</b> Să considerăm următoarea problemă: dorim să calculăm <cod>C(n,k)</cod> folosind relaţia de recurenţă: <br><br><cod>C(n,k) = C(n-1,k) + C(n-1,k-1)</cod>
+      </p>
+      <p>
+         Să considerăm că am ales să rezolvăm problema în următorul mod: definim o matrice <cod>c</cod> de dimensiuni suficient de mari, în care elementul <cod>c[i][j]</cod> reprezintă valoarea <cod>C(i,j)</cod>. Vom iniţializa linia 1 a matricei (<cod>C(1,0) = C(1,1) = 1</cod>) şi vom calcula, pe rând, aplicând relaţia de recurenţă, valorile <cod>C(i,j)</cod> până când am obţinut valoarea cerută de problemă: <cod>C(n,k)</cod>.
+      </p>
+      <p>
+         Acest algoritm rezolvă problema, dar prezintă un dezavantaj. 
+Pentru calculul unei valori, trebuie păstrată în memorie o matrice de 
+dimensiuni relativ mari, care ocupă multă memorie. În plus, observăm că 
+pentru a calcula <cod>C(i,j)</cod>, care se va afla pe linia <cod>i</cod> în matrice, avem nevoie doar de valori de pe linia <cod>i-1</cod>.
+ Astfel, putem aduce o economie de memorie majoră în program dacă în loc
+ să păstrăm întreaga matrice în memorie, păstrăm doar doi vectori <cod>vim1[]</cod> şi <cod>vi[]</cod> care să reprezinte liniile <cod>i-1</cod>, respectiv <cod>i</cod> din matrice.
+      </p>
+      <p>
+         Avem acum două optiuni:
+      </p>
+   <ul>
+   <li class="text_normal">
+      După terminarea calulului valorilor de pe o linie, în vectorul <cod>vi[]</cod>, putem să le copiem pe toate în vectorul <cod>vim1[]</cod> şi să continuăm calculul următoarei linii în <cod>vi[]</cod>. Această metodă, însă, presupune ca după fiecare linie să copiem <cod>"n"</cod>
+ elemente dintr-un vector în altul, şi introduce un cost de eficienţă 
+inutil (ceea ce am economisit la capitolul memorie, irosim la capitolul 
+rapiditate a programului).
+   </li>
+   <li class="text_normal">
+      Metoda mai rapidă şi mai elegantă este ca, în loc să copiem conţinutul lui <cod>vi[]</cod> în <cod>vim1[]</cod>,
+ să interschimbăm doar variabilele de tip pointer care indică către 
+începutul acestor şiruri. Altfel spus, nu mutăm efectiv valorile prin 
+memorie, ci doar le interschimbăm "rolul". În acest mod, se efectuează 
+în loc de mutarea a <cod>"n"</cod> elemente, doar cele trei instrucţiuni ale interschimbării de variabilă. 
+   </li>
+   </ul>
+      <p>
+         Să se scrie un program care calculează valoarea lui <cod>C(n,k)</cod>
+ prin metoda descrisă mai sus, reducând matricea la doi vectori, şi 
+schimbând după fiecare pas, rolul jucat de aceşti doi vectori. 
+      </p>
+   </div>   
+</div>
+ <h4 class="test_exemplu">
+     Exemplu:
+  </h4>
+  <table class="tabel_exemple">
+      <tbody>
+         <tr>
+            <td class="celula_header">
+               Intrare
+            </td>
+            <td class="celula_header">
+               Ieşire
+            </td>
+         </tr>
+         <tr>
+            <td class="celula_exemplu">
+               5 3<br>
+            </td>
+            <td class="celula_exemplu">
+               10
+            </td>
+         </tr>
+         <tr>
+            <td class="celula_exemplu">
+               12 11<br>
+            </td>
+            <td class="celula_exemplu">
+               12
+            </td>
+         </tr>
+      </tbody>
+   </table>
+
+</body></html>

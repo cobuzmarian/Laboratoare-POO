@@ -1,0 +1,56 @@
+#include <stdexcept>
+#include <iostream>
+
+class TreeNode
+{
+public:
+    TreeNode(TreeNode* leftChild, TreeNode* rightChild)
+    {
+        this->leftChild = leftChild;
+        this->rightChild = rightChild;
+    }
+
+    TreeNode* getLeftChild() const
+    {
+        return this->leftChild;
+    }
+
+    TreeNode* getRightChild() const
+    {
+        return this->rightChild;
+    }
+
+private:
+    TreeNode* leftChild;
+    TreeNode* rightChild;
+};
+
+class TreeHeight
+{
+public:
+    static int calculateHeight(const TreeNode& root)
+    {
+    	
+        //throw std::logic_error("Waiting to be implemented");
+        int leftHeight = calculateHeight(root->getLeftChild());
+        int rightHeight = calculateHeight(root->getLeftChild());
+        if(leftHeight > rightHeight) {
+        	return (leftHeight+1);
+		}
+		else {
+			return (rightHeight+1);
+		}
+    }
+};
+
+#ifndef RunTests
+int main()
+{
+    TreeNode* leaf1 = new TreeNode(NULL, NULL);
+    TreeNode* leaf2 = new TreeNode(NULL, NULL);
+    TreeNode* node = new TreeNode(leaf1, NULL);
+    TreeNode* root = new TreeNode(node, leaf2);
+
+    std::cout << TreeHeight::calculateHeight(*root);
+}
+#endif

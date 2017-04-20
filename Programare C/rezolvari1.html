@@ -1,0 +1,413 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+ 
+ 
+ 
+<style type="text/css"> 
+ 
+ 
+ 
+.numar_laborator
+ 
+	{
+ 
+	font-family: Times New Roman;
+ 
+	}
+ 
+.nume_laborator
+ 
+	{
+ 
+	font-family: Times New Roman;
+ 
+	text-align: center;
+ 
+	}
+ 
+.titlu_sectiune
+ 
+	{
+ 
+	font-family: Times New Roman;
+ 
+	}
+ 
+.text_normal
+ 
+	{
+ 
+	font-family: Arial;
+ 
+	font-șize: 1.0em;
+ 
+	color: black;
+ 
+	}
+ 
+.text_hint
+ 
+	{
+ 
+	font-family: Arial;
+ 
+	font-style: italic;
+ 
+	font-șize: 0.8em;
+ 
+	color: rgb(102, 102, 102); 
+ 
+	}
+ 
+.text_exemplu
+ 
+	{
+ 
+	font-family: Arial;
+ 
+	}
+ 
+hr 
+ 
+	{
+ 
+	height: 1px;
+ 
+	}
+ 
+.cod
+ 
+	{
+ 
+	font-family: Courier New;
+ 
+	background-color: rgb(204,204,204);
+ 
+	color: black;
+ 
+	}
+ 
+.tabel_exemple
+ 
+	{
+ 
+	width: 100%;
+ 
+	color: black;
+ 
+	font-șize: 1.0em;
+ 
+	font-family: Courier New;
+ 
+	border: 1 px black solid;
+ 
+	border-spacing: 0px;
+ 
+	border-collapse: collapse;
+ 
+	text-align: left;
+ 
+	}
+ 
+.celula_header
+ 
+	{
+ 
+	color: black;
+ 
+	font-family: Arial;
+ 
+	background-color: rgb(204,204,204);
+ 
+	width: 50%;
+ 
+	border: 2px groove black;
+ 
+	}
+ 
+.celula_exemplu
+ 
+	{
+ 
+	valign: top;
+ 
+	color: black;
+ 
+	font-family: Courier New;
+ 
+	width: 50%;
+ 
+	border: 2px groove black;
+ 
+	vertical-align: top;
+ 
+	}
+ 
+cod
+ 
+	{
+ 
+	font-family: Courier New;
+ 
+	background-color: rgb(204,204,204);
+ 
+	color: black;
+ 
+	}
+ 
+ 
+ 
+</style> 
+ 
+</head><body>
+<div style="color: rgb(153, 153, 153);" id="google_header" class="google_header"> 
+ 
+<p><font șize="4">&nbsp;</font><font șize="4" face="Courier New"><span style="font-family: Times New Roman;">Programarea Calculatoarelor, seria CC</span></font></p> 
+ 
+<p></p> 
+ 
+</div> 
+ 
+ 
+ 
+<h1 class="numar_laborator">Laborator 1 </h1> 
+ 
+<h1 class="nume_laborator">Soluții</h1> 
+ 
+ <div style="margin-left: 40px;"><div class="text_normal">
+ <ol>
+<li> Interschimbul valorilor a două variabile <span class="cod">a</span> şi <span class="cod">b</span>.<br></li>
+<span class="cod">
+start<br>
+citește a;<br>
+citește b;<br>
+aux = a;<br>
+a = b;<br>
+b = aux;<br>
+scrie a;<br>
+scrie b;<br>
+stop.<br><br>
+</span>
+
+<li>Rezolvarea ecuaţiei de gradul 2: <span class="cod">ax<sup>2</sup>+bx+c=0</span>.<br></li>
+<span class="cod">
+start<br>
+citește a;<br>
+citește b;<br>
+citește c;<br>
+dacă (a != 0) atunci<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrie "Ecuatia nu este de gradul II";<br>
+altfel<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delta = b * b - 4 * a * c;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dacă (delta &lt; 0 ) atunci<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrie
+ "Ecuația nu are rădăcini reale."<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;altfel<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dacă (delta == 0) atunci<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrie
+ "x1 = x2 = ", - b / (2 * a);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;altfel<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrie
+ "x1 = ", (- b - sqrt(delta)) / (2 * a);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrie
+ "x2 = ", (- b + sqrt(delta)) / (2 * a);<br>
+stop.<br><br>
+</span>
+
+<li>Să se afişeze în ordine crescătoare valorile a trei variabile: <span class="cod">a</span>, <span class="cod">b</span> şi <span class="cod">c</span>.</li>
+<span class="cod">
+start<br>
+citește a;<br>
+citește b;<br>
+citește c;<br>
+dacă (a &lt; b și b &lt; c) atunci<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrie a, " ", b, " ", c;<br>
+dacă (a &lt; c și c &lt; b) atunci<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrie a, " ", c, " ", b;<br>
+dacă (b &lt; a și a &lt; c) atunci<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrie b, " ", a, " ", c;<br>
+dacă (b &lt; c și c &lt; a) atunci<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrie b, " ", c, " ", a;<br>
+dacă (c &lt; a și a &lt; b) atunci<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrie c, " ", a, " ", b;<br>
+dacă (c &lt; b și b &lt; a) atunci<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrie c, " ", b, " ", a;<br>
+stop.<br><br>
+</span>
+
+		<li> 
+			Să se calculeze şi să se afişeze suma: <span class="cod">S= 1 + 1*2 + 1*2*3 + ... n!</span>.
+		</li>
+<span class="cod">
+start<br>
+citește n;<br>
+p = 1;<br>
+s = 0;<br>
+pentru i de la 1 la n cu pasul 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p = p * i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s = s + p;<br>
+scrie s;<br>
+stop.<br><br>
+</span>
+
+		<li> 
+			Să se calculeze şi să se afişeze suma cifrelor unui număr natural <span class="cod">n</span>.
+		</li>
+<span class="cod">
+start<br>
+citește n;<br>
+s = 0;<br>
+cât timp (n != 0) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s = s + n % 10;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n = n / 10;<br>
+scrie s;<br>
+stop.<br><br>
+</span>
+
+		<li> 
+			Să se calculeze şi să se afişeze inversul unui număr natural <span class="cod">n</span>.
+		</li> 
+<span class="cod">
+start<br>
+citește n;<br>
+inv = 0;<br>
+cât timp (n != 0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;inv = inv * 10 + n % 10;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n = n / 10;<br>
+scrie inv;<br>
+stop.<br><br>
+</span>
+
+		<li> 
+			Să se afişeze dacă un număr natural dat <span class="cod">n</span> este prim.
+		</li> 
+<span class="cod">
+start<br>
+citește n;<br>
+prim = 1;<br>
+pentru d de la 2 la (int)(n / 2) cu pasul 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dacă (n % d == 0) atunci<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prim = 0;<br>
+dacă (prim == 1) atunci<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrie "Numărul ", n, " este prim.";<br>
+altfel<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrie "Numărul ", n, " nu este prim.";<br>
+stop.<br><br>
+</span>
+
+		<li> 
+			Să se afişeze primele <span class="cod">n</span> numere naturale prime.
+		</li> 
+<span class="cod">
+start<br>
+citește n;<br>
+i = 0;<br>
+nr = 2;<br>
+cât timp (i &lt; n)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dacă ( Prim(nr) == 1) atunci<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrie nr;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i = i + 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nr = nr + 1;<br>
+stop.<br><br>
+</span>
+
+		<li> 
+			Să se descompună în factori primi un număr dat <span class="cod">n</span>.
+		</li> 
+<span class="cod">
+start<br>
+citește n;<br>
+d = 2;<br>
+cât timp (n != 1)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f = 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cât timp (n % d == 0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f = f + 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n = n / d;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dacă (f != 0) atunci<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrie d, " la puterea ", f;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d = d + 1;<br>
+stop.<br><br>
+</span>
+
+		<li> 
+			Să se calculeze valoarea minimă, respectiv maximă, dintr-o secvenţă de <span class="cod">n</span> numere reale.
+		</li> 
+<span class="cod">
+start<br>
+citește n;<br>
+citește nr;<br>
+max = nr;<br>
+min = nr;<br>
+pentru i de la 1 la n - 1 cu pasul 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;citește nr;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dacă (nr &lt; min) atunci<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min = nr;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dacă (nr &gt; max) atunci<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max = nr;<br>
+scrie "min = ", min, " max = ", max;<br>
+stop.<br><br>
+</span>
+
+		<li> 
+			Să se afişeze toate numerele naturale mai mici decât <span class="cod">1000</span> care se pot scrie în două moduri diferite ca sumă de pătrate.
+		</li> 
+<span class="cod">	
+start<br>
+pentru i de la 1 la 1000 cu pasul 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nr = 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pentru k de la 1 la i - 1 cu pasul 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dacă
+ (sqrt(k) == (int)sqrt(k) și sqrt(i-k) == (int)sqrt(i-k)) atunci<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nr
+ ++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dacă (nr == 4) atunci<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrie i;<br>
+stop.<br><br>
+</span>
+
+		<li> 
+			Se dă o secvenţă de <span class="cod">n</span> numere întregi pozitive. Să se afişeze cele mai mari numere de 2 cifre care nu se află în secvenţa respectivă. 
+		</li>
+<span class="cod">
+start<br>
+citește n;<br>
+pentru i de la 10 la 99 cu pasul 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v[i] = 0;<br>
+pentru i de la 1 la n cu pasul 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;citește nr;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dacă (nr &gt; 9 și nr &lt; 100)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v[nr] = 1;<br>
+i = 99;<br>
+cât timp (v[i] != 0 și i &gt; 0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i = i - 1;<br>
+dacă (i &gt; 9) atunci<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrie i, " ";<br>
+i = i - 1;<br>
+cât timp (v[i] != 0 și i &gt; 0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i = i - 1;<br>
+dacă (i &gt; 9) atunci<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrie i, " ";<br>
+stop.<br><br>
+</span>
+
+		<li> 
+			Se dă o secvenţă de <span class="cod">n</span> numere întregi, ale căror valori sunt cuprinse în intervalul <span class="cod">[0,100]</span>. Să se afişeze valorile care apar cel mai des. (se vor foloși vectori) 
+		</li> 
+<span class="cod">
+start<br>
+citește n;<br>
+pentru i de la 0 la 100 cu pasul 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v[i] = 0;<br>
+pentru i de la 1 la n cu pasul 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;citește nr;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v[nr] = v[nr] + 1;<br>
+pentru i de la 0 la 100 cu pasul 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dacă (v[i] &gt; max) atunci<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max = v[i];<br>
+pentru i de la 0 la 100 cu pasul 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dacă (v[i] == max) atunci<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scrie i;<br>
+stop.<br><br>
+</span>
+
+</ol></div></div>
+</body></html>

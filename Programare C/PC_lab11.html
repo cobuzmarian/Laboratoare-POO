@@ -1,0 +1,229 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css"> 
+.numar_laborator
+	{
+	font-family: Times New Roman;
+	}
+.nume_laborator
+	{
+	font-family: Times New Roman;
+	text-align: center;
+	}
+.titlu_sectiune
+	{
+	font-family: Times New Roman;
+	}
+.text_normal
+	{
+	font-family: Arial;
+	font-size: 1.0em;
+	color: black;
+	}
+.text_hint
+	{
+	font-family: Arial;
+	font-style: italic;
+	font-size: 0.8em;
+	color: rgb(102, 102, 102); 
+	}
+.text_exemplu
+	{
+	font-family: Arial;
+	}
+hr 
+	{
+	height: 1px;
+	}
+.cod
+	{
+	font-family: Courier New;
+	background-color: rgb(204,204,204);
+	color: black;
+	}
+.tabel_exemple
+	{
+	width: 100%;
+	color: black;
+	font-size: 1.0em;
+	font-family: Courier New;
+	border: 1 px black solid;
+	border-spacing: 0px;
+	border-collapse: collapse;
+	text-align: left;
+	}
+.celula_header
+	{
+	color: black;
+	font-family: Arial;
+	background-color: rgb(204,204,204);
+	width: 50%;
+	border: 2px groove black;
+	}
+.celula_exemplu
+	{
+	valign: top;
+	color: black;
+	font-family: Courier New;
+	width: 50%;
+	border: 2px groove black;
+	vertical-align: top;
+	}
+cod
+	{
+	font-family: Courier New;
+	background-color: rgb(204,204,204);
+	color: black;
+	}
+</style>
+</head><body bgcolor="#ffffff">
+<div style="color: rgb(153, 153, 153);" id="google_header" class="google_header">
+<p><font size="4">&nbsp;</font><font face="Courier New" size="4"><span style="font-family: Times New Roman;">Programarea Calculatoarelor, seria CC</span></font></p>
+<p></p>
+</div>
+<h1 class="numar_laborator">Laborator 11 </h1>
+<h1 class="nume_laborator">Programare generică</h1>
+<h3 class="titlu_sectiune">În acest laborator veţi învăţa să: </h3>
+<ul>
+<li>Folosiți tipuri, funcții și pointeri generici.<br>
+</li></ul>
+<br>
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 1 - Problemă rezolvată.
+</h3>
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+		Scrieți un program care citește un <cod>n</cod> de la tastatură și creează un vector (cu dimensiunea <cod>n</cod>) de numere întregi generate aleator și îl sortează ulterior folosind funcția de bibliotecă <cod>void qsort</cod> din <cod>stdlib.h</cod>: <br><br>
+		  <cod>void qsort ( void * base, size_t num, size_t size, int ( * comparator ) ( const void *, const void * ) )</cod>
+		</p><ul>
+		<li><cod>base</cod> este adresa primului element din vector</li>
+		<li><cod>num</cod> este numărul de elemente din vector</li>
+		<li><cod>size</cod> este dimensiunea unui element</li>
+		<li><cod>comparator</cod> este funcția ce compară 2 elemente din vector</li>
+		</ul>
+		Implementați o funcție de comparare în care să apelați <cod>qsort</cod> cu parametrii corespunzători.
+		<br>
+		Rezolvare:
+		<p></p>
+		<div class="cod">
+		
+<pre width="80"><font color="#a020f0">#include &lt;stdio.h&gt;</font>
+<font color="#a020f0">#include &lt;stdlib.h&gt;</font>
+<font color="#a020f0">#include &lt;time.h&gt;</font>
+
+<strong><font color="#228b22">#define MAX_VALUE 200</font></strong>
+
+<strong><font color="#4169e1"><a name="cmp"></a>int cmp(const void * a, const void *b)</font></strong>
+{
+    <font color="#4169e1">return</font> (*(int*)a - *(int*)b);
+}
+
+<strong><font color="#4169e1"><a name="main"></a>int main(void)</font></strong>
+{
+    int N, i;
+    int *v;
+    printf(<font color="#666666">"Introduceti dimensiunea vectorului:\n"</font>);
+    scanf(<font color="#666666">"%d"</font>, &amp;N);
+
+    v = calloc(N, <font color="#4169e1">sizeof</font>(int));
+    <font color="#4169e1">if</font> (!v) printf(<font color="#666666">"Nu am putut aloca memorie pentru v!\n"</font>);
+
+    srand(time(NULL));
+    <font color="#4169e1">for</font> (i = 0; i &lt; N; ++i)
+        v[i] = (rand() % MAX_VALUE)+1;
+
+    <font color="#4169e1">for</font> (i = 0; i &lt; N; ++i)
+        printf(<font color="#666666">"%d "</font>, *(v+i));
+    printf(<font color="#666666">"\n"</font>);
+
+    qsort(v, N, <font color="#4169e1">sizeof</font>(int), cmp);
+
+    <font color="#4169e1">for</font> (i = 0; i &lt; N; ++i)
+        printf(<font color="#666666">"%d "</font>, *(v+i));
+    printf(<font color="#666666">"\n"</font>);
+
+    free(v);
+    <font color="#4169e1">return</font> 0;
+}
+</pre>
+</div></div>
+</div>
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 2.
+</h3>
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+		Completați programul de la problema 1 astfel încât să se afișeze poziția pe care apare un întreg <cod>x</cod> citit de la tastatură în vectorul sortat. Veți folosi funcția <cod>void *bsearch</cod> din <cod>stdlib.h</cod>: <br><br>
+	  	<cod>void *bsearch ( const void * key, void * base, size_t num, size_t size, int ( * comparator ) ( const void *, const void * ) )</cod>
+		</p><ul>
+		<li><cod>key</cod> este adresa cheii căutate</li>
+		<li><cod>base</cod> este adresa primului element din vector</li>
+		<li><cod>num</cod> este numărul de elemente din vector</li>
+		<li><cod>size</cod> este dimensiunea unui element</li>
+		<li><cod>comparator</cod> este funcția ce compară 2 elemente din vector</li>
+		</ul>
+		Funcția întoarce un pointer către elementul din vector corespunzător cheii căutate sau <cod>NULL</cod> dacă nu a fost găsit un astfel de element.
+		<p></p>
+	</div>
+</div>
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 3.
+</h3>
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p> Se consideră următoarele definiții: <br>
+		</p><div class="cod">
+		typedef struct entry { <br>
+		&nbsp;&nbsp;&nbsp;&nbsp;void * key; <br>
+		&nbsp;&nbsp;&nbsp;&nbsp;void * value; <br>
+		} entry;<br> <br>
+		typedef struct map { <br>
+		&nbsp;&nbsp;&nbsp;&nbsp;entry ** elem; // vectorul de elemente; este alocat si realocat dinamic<br> 
+		&nbsp;&nbsp;&nbsp;&nbsp;int n_elem; // numarul de elemente din vector<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;int cap; // capacitatea vectorului<br>
+		} map;
+		</div>
+		Definiți următoarele funcții:
+		<ul>
+		<li><cod>void init(map *m, int cap);</cod> alocă inițial memorie pentru <cod>cap</cod> elemente de tip <cod>entry*</cod></li>
+		<li><cod>void add(map *m, entry *e);</cod> adaugă la vectorul de elemente din <cod>m</cod> noua intrare (pointerul primit) și eventual realocă pe <cod>m-&gt;elem</cod></li>
+		<li><cod>void print(map *m, void ( *printEntry) ( entry * ) );</cod> afișează pe <cod>m</cod> folosind funcția pentru afișarea unui <cod>entry</cod> primită ca parametru</li>
+		<li><cod>void sort(map *m, int ( * fc ) ( const void *, const void * ) )</cod> sortează elementele din <cod>m</cod> folosind funcția primită ca parametru și funcția de bibliotecă <cod>qsort</cod>. Observație: <cod>fc</cod> va trebui să compare între ele 2 structuri <cod>entry</cod></li>
+		<li><cod>void del(map *m, void *k, int ( * fc2 ) ( const void *, const void * ));</cod> șterge prima apariție cu cheia <cod>k</cod> în <cod>m</cod>.
+ Atenție! Nu veți compara pointerii pentru a testa dacă 2 elemente sunt 
+egale, ci veți folosi funcția primită ca parametru, ce se consideră că 
+întoarce 0 pentru elemente egale. Observație: <cod>fc2</cod> va trebui să compare între ele 2 chei (<cod>void *</cod>).
+		</li><li><cod>void *find(map *m, void *k, int ( * fc2 ) ( const void *, const void * ));</cod> funcție ce întoarce valoarea asociată unei chei. Observație: <cod>fc2</cod> va trebui să compare între ele 2 chei (<cod>void *</cod>).
+		</li></ul>
+		Pentru a testa funcțiile definite vom face următoarea particularizare:
+ vrem să reținem definițiile asociate unor cuvinte. Va trebui să 
+implementați funcțiile: <br>
+		<ul>
+		<li><cod>int compareEntry( const void *, const void *);</cod> ce compară între ele 2 structuri <cod>entry</cod> ținând cont de faptul că în acest caz particular cheie vor fi <cod>char *</cod>. Funcția de comparare nu trebuie să țină cont și de valorile asociate.</li>
+		<li><cod>int compareKey( const void *, const void *);</cod> compară 2 chei (în cazul de față, 2 șiruri de caractere. Funcția va apela <cod>strcmp</cod>.</li>
+		<li><cod>void printEntry( const entry *);</cod> afișează cheia și valoarea asociată pe cazul particular când sunt șiruri de caractere.</li>
+		</ul>
+		În programul principal, afișați un meniu ce va permite următoarele operații la apăsarea respectivelor taste: 
+		<ul>
+		<li><cod>1. Afisare dictionar sortat.</cod></li>
+		<li><cod>2. Cauta cuvant in dictionar.</cod> // se va afisa cuvantul + definitia sau un mesaj corespunzator daca nu a fost gasit</li>
+		<li><cod>3. Adauga cuvant in dictionar.</cod> // se va citi de la tastatura cuvantul si definitia</li>
+		<li><cod>4. Sterge cuvant din dictionar.</cod> // se va citi de la tastatura cuvantul ce se doreste sters</li>
+		<li><cod>0. Iesire din program.</cod></li>
+		</ul>
+		Aveți grijă să alocați memorie pentru fiecare cuvânt și pentru fiecare
+ definiție și să o eliberați atunci când nu mai este nevoie (de ex. la 
+ștergerea unui cuvânt). Puteți să le citiți inițial într-un buffer 
+alocat static și să folosiți funcția <cod>strdup</cod>. 
+		<p></p>
+	</div>
+</div>
+﻿﻿</body></html>

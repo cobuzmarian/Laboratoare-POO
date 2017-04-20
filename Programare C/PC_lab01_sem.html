@@ -1,0 +1,571 @@
+<html><head>
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<style type="text/css"> 
+
+
+
+.numar_laborator
+
+	{
+
+	font-family: Times New Roman;
+
+	}
+
+.nume_laborator
+
+	{
+
+	font-family: Times New Roman;
+
+	text-align: center;
+
+	}
+
+.titlu_sectiune
+
+	{
+
+	font-family: Times New Roman;
+
+	}
+
+.text_normal
+
+	{
+
+	font-family: Arial;
+
+	font-size: 1.0em;
+
+	color: black;
+
+	}
+
+.text_hint
+
+	{
+
+	font-family: Arial;
+
+	font-style: italic;
+
+	font-size: 0.8em;
+
+	color: rgb(102, 102, 102); 
+
+	}
+
+.text_exemplu
+
+	{
+
+	font-family: Arial;
+
+	}
+
+hr 
+
+	{
+
+	height: 1px;
+
+	}
+
+.cod
+
+	{
+
+	font-family: Courier New;
+
+	background-color: rgb(204,204,204);
+
+	color: black;
+
+	}
+
+.tabel_exemple
+
+	{
+
+	width: 100%;
+
+	color: black;
+
+	font-size: 1.0em;
+
+	font-family: Courier New;
+
+	border: 1 px black solid;
+
+	border-spacing: 0px;
+
+	border-collapse: collapse;
+
+	text-align: left;
+
+	}
+
+.celula_header
+
+	{
+
+	color: black;
+
+	font-family: Arial;
+
+	background-color: rgb(204,204,204);
+
+	width: 50%;
+
+	border: 2px groove black;
+
+	}
+
+.celula_exemplu
+
+	{
+
+	valign: top;
+
+	color: black;
+
+	font-family: Courier New;
+
+	width: 50%;
+
+	border: 2px groove black;
+
+	vertical-align: top;
+
+	}
+
+cod
+
+	{
+
+	font-family: Courier New;
+
+	background-color: rgb(204,204,204);
+
+	color: black;
+
+	}
+
+
+
+</style>
+
+</head><body>
+
+<div style="color: rgb(153, 153, 153);" id="google_header" class="google_header">
+
+<p><font size="4">&nbsp;</font><font face="Courier New" size="4"><span style="font-family: Times New Roman;">Programarea Calculatoarelor, seria CC</span></font></p>
+
+<p></p>
+
+</div>
+
+
+
+<h1 class="numar_laborator">Laborator 1 </h1>
+
+<h1 class="nume_laborator">Introducere</h1>
+
+<h3 class="titlu_sectiune">În acest laborator veţi învăţa despre:</h3>
+
+<ul>
+
+   <li class="text_normal">
+
+      Principiile programării structurale
+
+   </li>
+
+   <li class="text_normal">
+
+      Paşii ce trebuie parcurşi pentru rezolvarea unei probleme
+
+   </li>
+
+   <li class="text_normal">
+
+      Structurile specifice progrmării structurale
+
+   </li>
+
+</ul>
+
+<br>
+
+
+
+<hr size="1">
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<h3 class="titlu_sectiune">
+
+   Principiile programării structurale
+
+</h3>
+
+<h4 class="text_exemplu">
+Generalităţi
+</h4>
+	
+<div style="margin-left: 40px;">
+
+   <div class="text_normal">
+
+    <p>
+
+        Să luăm un <b>exemplu cât mai simplu de problemă</b>. Vrem să scriem un program care să ne calculeze automat valorile unei funcţii matematice: <br>
+        
+    </p>
+    
+    <p>
+    
+    	<span class="cod">F(x) = </span>
+    	</p><ul>
+    		<li>
+    			<span class="cod">x<sup>2</sup>-2 </span>, dacă <span class="cod">x&lt;0</span>
+    		</li>
+    		<li>
+    			<span class="cod">3</span>, dacă <span class="cod">x=0</span> 
+			</li>
+			<li>
+				<span class="cod">x+2</span>, dacă <span class="cod">x&gt;0</span>
+			</li>
+    	</ul>
+    
+    <p></p>
+        
+    <p>
+    	
+    	Pentru <b>rezolvarea unei probleme</b>, trebuie să parcurgem următorii paşi:
+    	</p><ol>
+    		<li>
+    			Elaborarea <b>algoritmului</b> de rezolvare al problemei. (* Un <b><u>algoritm</u></b> reprezintă o secvență finită de pași a căror execuție în ordine, duce la rezlvarea unei clase de probleme ).
+    		</li>
+    		<li>
+    			Transpunerea algoritmului în limbaj de programare.
+    		</li>
+    		<li>
+    			Testare. (și în caz de erori, se revine la pasul 1)
+    		</li>
+    	</ol>
+    	
+    <p></p>
+    
+    <p>
+    	
+    	Trebuie să precizăm că există <b>două tipuri de obiecte</b> cu care lucrează algoritmii: 
+    	</p><ol>
+    		<li>
+    			<u><b>variabile</b></u>: care au nume unic, și conținut diferit în funcție de momentul de execuție. Ele sunt caracterizate prin:
+    			<ul>
+    				<li>
+    					Nume
+    				</li>
+    				<li>
+    					Tip
+    				</li>
+    				<li>
+    					Valoarea la un moment dat (depinde de momentul execuției)
+    				</li>
+    				<li>
+    					Locul în memorie (adresa)
+					</li>
+    			</ul>
+    		</li>
+    		<li>
+    			<u><b>date</b></u>: acestea pot fi de asemenea de două tipuri
+    			<ul>
+    				<li>
+    					De intrare: sunt valori pe care algoritmul de primește din exterior
+    				</li>
+    				<li>
+    					De ieșire: sunt rezultatele pe care le calculează algoritmul.
+    				</li>
+    			</ul>
+    		</li>
+    	</ol>
+    	
+    <p></p>
+    </div>
+</div>
+    
+<h4 class="text_exemplu">
+Structurile specifice acestui tip de programare
+</h4>
+
+<div style="margin-left: 40px;">
+
+	<div class="text_normal">
+		<p>
+			Atunci când vorbim despre instrucțiunile specifice programării 
+structurate, trebuie să amintim de teorema de structură a lui Bohm și 
+Jacopini: <b><i>Orice algoritm poate fi compus din numai trei structuri de calcul:</i></b> 
+			</p><ul>
+				<li>
+					<b><i>Structuri secvențiale</i></b> = <u>secvențe</u> - în care instrucțiunile se execută în ordine
+				</li>
+				<li>
+					<b><i>Structuri alternative</i></b> = <u>decizii</u> - decid dacă să se continue execuția pe o ramură sau alta
+				</li>
+				<li>
+					<b><i>Structuri repetitive</i></b> = <u>cicluri</u> - execuția repetată a unui corp de instrucțiuni
+				</li>
+			</ul>
+			Fiecare dintre aceste structuri are o singură intrare și o singură ieșire.
+		<p></p>
+		
+	</div>
+</div>
+
+<h4 class="text_exemplu">
+A) Secvența
+</h4>
+	
+<div style="margin-left: 40px;">
+
+   <div class="text_normal">
+		<p>
+		Există mai multe tipuri de instrucțiuni secvențiale:
+			</p><ul>
+				<li>
+					Atribuirea: operația prin care unei variabile <span class="cod">a</span> i se dă o valoare. <br>
+					<center><img src="PC_lab01_sem_files/assign.png"></center>
+				</li>
+				<li>
+					Operațiile de intrare/ieșire (I/O): se citesc valori de la tastatură sau se afișează valori pe ecran. <br>
+					<center><img src="PC_lab01_sem_files/inputoutput.png"></center>
+				</li>
+			</ul>
+		<p></p>
+		<p>
+		<b>În pseudocod:</b>
+			</p><ul>
+				<li>
+					<span class="cod">a = 3;</span>
+				</li>
+				<li>
+					<span class="cod">citeste a;</span>
+				</li>
+				<li>
+					<span class="cod">scrie a;<span>
+				</span></span></li>
+			</ul>
+		<p></p>
+	</div>
+</div>
+
+<h4 class="text_exemplu">
+B) Decizia
+</h4>
+	
+<div style="margin-left: 40px;">
+
+   <div class="text_normal">
+		<p>
+		Decizia implementează o întrebare ridicată de programator la un moment
+ dat în program. În funcție de răspuns (care poate fi de tipul <span class="cod">DA</span>/<span class="cod">NU</span> se poate continua execuția programului în două moduri.<br>
+		</p><center><img src="PC_lab01_sem_files/if.png"></center>
+		<p></p>
+		<p>
+		<b>În pseudocod:</b>
+		</p><p class="cod">
+			dacă <i>(condiție)</i> atunci<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<i>instrucțiuni-adevărat;</i><br>
+			altfel<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<i>instrucțiuni-fals;</i><br>
+		</p>
+	</div>
+</div>
+		
+<h4 class="text_exemplu">
+C) Structura repetitivă
+</h4>
+	
+<div style="margin-left: 40px;">
+
+   <div class="text_normal">
+		<p>
+			Structurile repetitive se folosesc pentru a exprima faptul că un 
+anume corp de instrucțiuni trebuie repetat de mai multe ori. Exsită trei
+ tipuri de cicluri (structuri repetitive):
+			</p><ul>
+				<li>
+					I) Cu condiție inițială
+				</li>
+				<li>
+					II) Cu condiție finală
+				</li>
+				<li>
+					III) Cu contor
+				</li>
+			</ul>
+		<p></p>
+		<p>
+		<b>I) Ciclul cu condiție inițială:</b> este alcătuit dintr-o condiție 
+logică urmată de un bloc de instrucțiuni. Dacă condiția este falsă, se 
+sare peste blocul aferent de instrucțiuni, iar în caz contrar, se repetă
+ blocul de instrucțiuni atâta timp cât condiția rămâne adevărată.<br>
+		</p><center><img src="PC_lab01_sem_files/while.png"></center>
+		<p></p>
+		<p>
+		<b>În pseudocod:</b>
+		</p><p class="cod">
+			cât timp <i>(conditie)</i><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<i>instrucțiuni;</i><br>
+		</p>
+		<b>II) Ciclul cu condiție finală:</b> este alcătuit dintr-un bloc de 
+instrucțiuni, urmat de o condiție logică. Dacă condiția este falsă, se 
+continuă execuția programului, iar în caz contrar, se repetă blocul de 
+instrucțiuni atâta timp cât condiția rămâne adevărată. Spre deosebire de
+ structura repetitivă cu condiție inițială, se garantează că blocul de 
+instrucțiuni se va repeta cel puțin o dată.<br>
+		<center><img src="PC_lab01_sem_files/dowhile.png"></center>
+		<p></p>
+		<p>
+		<b>În pseudocod:</b>
+		</p><p class="cod">
+			execută {<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<i>instrucțiuni;</i><br>
+			} atata timp cât <i>(condiție)</i>; <br>
+		</p>
+		<b>II) Ciclul cu contor:</b> este alcătuit dintr-un bloc de 
+instrucțiuni, care are atașat un contor. Contorul primește la început o 
+valoare inițială, se execută blocul de instrucțiuni și se incrementează 
+valoarea contorului. Execuția și incrementrea se repetă atâta timp cât 
+contorul nu ajunge la valoarea finală.<br>
+		<center><img src="PC_lab01_sem_files/for.png"></center>
+		<p></p>
+		<p>
+		<b>În pseudocod:</b>
+		</p><p class="cod">
+			pentru <i>contor</i> de la <i>valoarea-inițială</i> pana la <i>valoarea-finală</i> cu pasul <i>pas</i><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<i>instrucțiuni;</i><br>
+		</p>
+	</div>
+</div>
+
+<h4 class="text_exemplu">
+Structurile auxiliare
+</h4>
+	
+<div style="margin-left: 40px;">
+
+   <div class="text_normal">
+		<p>
+			Structurile auxiliare se folosesc pentru a specifica:
+			</p><ul>
+				<li>
+					I) Începerea execuției unui algoritm
+				</li>
+				<li>
+					II) Finalizarea execuției unui algoritm
+				</li>
+				<li>
+					III) O serie de prelucrări nedetaliate
+				</li>
+			</ul>
+		<p></p>
+		<p>
+		</p><center><img src="PC_lab01_sem_files/auxiliary.png"></center>
+		<p></p>
+		<p>
+		<b>În pseudocod:</b>
+		</p><p class="cod">
+			start<br>
+			stop.<br>
+			prelucrări;<br>
+		</p>
+		<p>
+			<b>Observații</b>
+			</p><ul>
+				<li>
+					Un algoritm poate să aibă <b>doar un singur bloc <span class="cod">start</span></b>
+				</li>
+				<li>
+					Un algoritm trebuie să aibă <b>cel putin un bloc <span class="cod">stop</span></b>
+				</li>
+				<li>
+					<b>Orice bloc de tip <span class="cod">prelucrări nedetaliate</span> poate fi înlocuit</b> cu o schemă logică echivalentă
+				</li>
+			</ul>
+		<p></p>
+	</div>
+</div>
+		
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Probleme de seminar
+
+</h3>
+
+<h4 class="text_exemplu">
+Rezolvaţi următoarele probleme folosind pseudocod:
+</h4>
+
+<div style="margin-left: 40px;">
+
+   <div class="text_normal">
+
+	<ol>
+		<li>
+			Interschimbul valorilor a două variabile <span class="cod">a</span> şi <span class="cod">b</span>.
+		</li>
+		<li>
+			Rezolvarea ecuaţiei de gradul 2: <span class="cod">ax<sup>2</sup>+bx+c=0</span>.
+		</li>
+		<li>
+			Să se afişeze în ordine crescătoare valorile a trei variabile: <span class="cod">a</span>, <span class="cod">b</span> şi <span class="cod">c</span>.
+		</li>
+		<li>
+			Să se calculeze şi să se afişeze suma: <span class="cod">S= 1 + 1*2 + 1*2*3 + ... n!</span>.
+		</li>
+		<li>
+			Să se calculeze şi să se afişeze suma cifrelor unui număr natural <span class="cod">n</span>.
+		</li>
+		<li>
+			Să se calculeze şi să se afişeze inversul unui număr natural <span class="cod">n</span>.
+		</li>
+		<li>
+			Să se afişeze dacă un număr natural dat <span class="cod">n</span> este prim.
+		</li>
+		<li>
+			Să se afişeze primele <span class="cod">n</span> numere naturale prime.
+		</li>
+		<li>
+			Să se descompună în factori primi un număr dat <span class="cod">n</span>.
+		</li>
+		<li>
+			Să se calculeze valoarea minimă, respectiv maximă, dintr-o secvenţă de <span class="cod">n</span> numere reale.
+		</li>
+		<li>
+			Să se afişeze toate numerele naturale mai mici decât <span class="cod">1000</span> care se pot scrie în două moduri diferite ca sumă de pătrate.
+		</li>
+		<li>
+			Se dă o secvenţă de <span class="cod">n</span> numere întregi pozitive. Să se afişeze cele mai mari numere de 2 cifre care nu se află în secvenţa respectivă. 
+		</li>
+		<li>
+			Se dă o secvenţă de <span class="cod">n</span> numere întregi, ale căror valori sunt cuprinse în intervalul <span class="cod">[0,100]</span>. Să se afişeze valorile care apar cel mai des. (se vor folosi vectori) 
+		</li>
+	</ol>
+	
+   </div>
+
+</div>
+
+</body></html>

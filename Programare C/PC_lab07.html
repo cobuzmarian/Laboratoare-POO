@@ -1,0 +1,1041 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+
+<style type="text/css"> 
+
+
+
+.numar_laborator
+
+	{
+
+	font-family: Times New Roman;
+
+	}
+
+.nume_laborator
+
+	{
+
+	font-family: Times New Roman;
+
+	text-align: center;
+
+	}
+
+.titlu_sectiune
+
+	{
+
+	font-family: Times New Roman;
+
+	}
+
+.text_normal
+
+	{
+
+	font-family: Arial;
+
+	font-size: 1.0em;
+
+	color: black;
+
+	}
+
+.text_hint
+
+	{
+
+	font-family: Arial;
+
+	font-style: italic;
+
+	font-size: 0.8em;
+
+	color: rgb(102, 102, 102); 
+
+	}
+
+.text_exemplu
+
+	{
+
+	font-family: Arial;
+
+	}
+
+hr 
+
+	{
+
+	height: 1px;
+
+	}
+
+.cod
+
+	{
+
+	font-family: Courier New;
+
+	background-color: rgb(204,204,204);
+
+	color: black;
+
+	}
+
+.tabel_exemple
+
+	{
+
+	width: 100%;
+
+	color: black;
+
+	font-size: 1.0em;
+
+	font-family: Courier New;
+
+	border: 1 px black solid;
+
+	border-spacing: 0px;
+
+	border-collapse: collapse;
+
+	text-align: left;
+
+	}
+
+.celula_header
+
+	{
+
+	color: black;
+
+	font-family: Arial;
+
+	background-color: rgb(204,204,204);
+
+	width: 50%;
+
+	border: 2px groove black;
+
+	}
+
+.celula_exemplu
+
+	{
+
+	valign: top;
+
+	color: black;
+
+	font-family: Courier New;
+
+	width: 50%;
+
+	border: 2px groove black;
+
+	vertical-align: top;
+
+	}
+
+cod
+
+	{
+
+	font-family: Courier New;
+
+	background-color: rgb(204,204,204);
+
+	color: black;
+
+	}
+
+
+
+</style>
+
+</head><body>
+
+
+
+<div style="color: rgb(153, 153, 153);" id="google_header" class="google_header">
+
+<p><font size="4">&nbsp;</font><font face="Courier New" size="4"><span style="font-family: Times New Roman;">Programarea Calculatoarelor, seria CC</span></font></p>
+<p></p>
+</div>
+
+
+
+<h1 class="numar_laborator">Laborator 7</h1>
+
+<h1 class="nume_laborator">Funcții cu pointeri. Șiruri de caractere</h1>
+
+<h3 class="titlu_sectiune">În acest laborator veţi învăţa să: </h3>
+
+<ul>
+	<li class="text_normal">	
+		Definiţi funcţii care pot modifica argumentele primite (pointeri).
+	</li>
+	<li class="text_normal">	
+		Utilizați șiruri de caractere și funcții pentru șiruri de caractere.
+	</li>
+	<li class="text_normal">	
+		Definiți funcții care execută anumite operații asupra unor șiruri de caractere.
+	</li>
+	<li class="text_normal">	
+		Faceți diferența între un întreg și un pointer la un întreg.
+	</li>
+</ul>
+<br>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+	Pointeri
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+			Atunci când definiți o variablilă, compilatorul va fi informat despre 2 lucruri: numele
+			variabilei si tipul ei, de exemplu <cod>int n</cod>. Astfel compilatorul va rezerva o 
+			zonă de memorie pentru aceasta variabilă (4 octeți pentru o arhitectură pe 32 biți). 
+		</p>
+		<p>
+			Atunci când se face o atribuire <cod>n = 7</cod>, la zona de memorie rezervată variabilei 			
+			<cod>n</cod> va fi scrisă noua valoare. 
+		</p>
+		<p>
+			Pentru ca o funcție să poată modifica valoarea variabilei <cod>n</cod>
+			ea va avea nevoie de adresa la care se află, de exemplu, pentru a citi variabila am scrie
+			<cod>scanf("%d", <b>&amp;</b>n);</cod>
+		</p>
+		<p> 
+			Să presupunem că vrem să scrie o funcție care incrementează un întreg, va trebui deci
+			să ținem cont că funcția va primi ca argument adresa întregului pe care vrem să-l incrementăm,
+			deci un <cod>int *</cod>.
+		</p>
+		<div class="cod">
+			<p>
+			void inc(int * p_n) <br>
+			{ <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;*p_n = *p_n + 1; // prin *p_n ne referim la valoarea de la respectiva adresa <br>
+			}
+			</p>
+		</div>
+		<p>
+			Pentru a apela funcția pentru un întreg definit ca <cod>int n</cod> vom scrie <cod>inc(<b>&amp;</b>n)</cod>:
+		</p>
+		<p> <imp>Greșit:</imp>
+		</p>
+		<div class="cod">
+			<p>
+			void inc_gresit(int n) <br>
+			{ <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;n++; // n este doar o copie a valorii cu care a fost apelata functia<br>
+			}
+			</p>
+		</div>
+		<p> Funcția este greșită deoarece ea primește un întreg. Dacă ar fi apelată în modul următor:
+		</p><div class="cod">
+			... <br>
+			int a = 5; <br>
+			inc_gresit(a); // functia primeste doar valoarea variabilei <br>
+			... <br>
+		</div>
+		atunci va primi o copie a valorii lui <cod>a</cod> în momentul apelării, valoare ce va fi stocată într-o 
+		variabilă locală funcției. Toate modificările vor fi efectuate, de fapt, asupra acestei variabile <imp>locale</imp>.
+		Pentru a înțelege mai ușor, gândiți-vă că putem apela <cod>inc_gresit(5)</cod> și este firesc că această funcție nu 
+		va modifica valoarea constantei <cod>5</cod>.
+		<p></p>
+		<p> Urmăriți următorul program care definește funcția <cod>inc</cod> și o apelează, dar mai afișează și alte 
+		informații legate de dispunerea datelor în memorie.
+		</p>
+		<div class="cod">
+			<p>
+			#include &lt;stdio.h&gt;<br>
+			<br>
+			void inc(int * p_n) <br>
+			{ <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;printf("incrementing value at address %p\n", p_n); <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;printf("before: %d\n", *p_n); <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;*p_n = *p_n + 1; // prin *p_n ne referim la valoarea de la respectiva adresa <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;printf("after: %d\n", *p_n); <br>
+			} <br> 
+			<br>
+			int main()<br>
+			{ <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;int n = 0; <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;int *pn = &amp;n; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// pn va fi un pointer catre n<br>	
+			&nbsp;&nbsp;&nbsp;&nbsp;printf("%p\t%p\n", &amp;n, pn); // se observa ca reprezinta aceeasi adresa <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;printf("%d\t%d\n", n, *pn); // si, prin urmare, indica catre aceeasi valoare <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;inc(&amp;n); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// apelam functia pentru adresa lui n, pentru ca n sa fie modificat <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;printf("%d\t%d\n", n, *pn); // valoarea lui n s-a modificat <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;inc(pn); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// pn indica tot catre adresa lui n <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;printf("%d\t%d\n", n, *pn); // se va obtine deci acelasi comportament <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;return 0; <br>
+			}
+			</p>
+		</div>
+		<p> Dimensiunea unui pointer, <cod>sizeof(int*)</cod> va fi 32b(= 4Bytes) (pentru un sistem pe 32b), deci adresele vor fi numere între
+		<cod>0</cod> și <cod>2<sup>32</sup> = 4GB</cod>. Observați în acest sens variabila <cod>pn</cod> ce are ca valoare adresa variabilei <cod>n</cod>.
+		</p>
+		<p>
+		Desenul următor prezintă o <u>posibilă</u> dispunere a variabilelor din programul nostru 
+		în memorie. Urmăriți desenul și cereți explicații dacă ceva nu este clar.
+		</p>
+		<img src="PC_lab07_files/mem.gif" height="50%" width="60%">
+		<p></p>
+	</div>
+</div>
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+
+
+<h3 class="titlu_sectiune">
+	Șiruri de caractere
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+			Un șir de caractere este un vector cu elemente de tip <cod>char</cod>, ultimul caracter din șir fiind <cod>'\0'</cod> (cod ASCII 0).
+		</p>
+		<p>
+			De exemplu, șirul <cod>"abc"</cod> va fi reprezentat prin vectorul <cod>{'a', 'b', 'c', '\0'}</cod>, deci va ocupa 4 octeți.
+		</p>
+		<p>
+			Funcțiile pentru prelucrarea șirurilor se găsesc în <cod>string.h</cod>.
+		</p>
+		<p>
+			Funcții din <cod>string.h</cod>:
+		</p><ul>
+			<li>int <b>strcmp</b>(const char *s1, const char *s2); </li>
+			<li>char *<b>strcpy</b>(char *d, const char *s);</li>
+			<li>char* <b>strncpy</b>(char *d, const char *s, unsigned n);</li>
+			<li>char *<b>strdup</b>(const char *s);</li>
+			<li>int <b>strlen</b>(const char *s);</li>
+			<li>char *<b>strcat</b>(char *d, const char *s);</li>
+			<li>char *<b>strncat</b>(char *d, const char *s, unsigned n);</li>
+			<li>char *<b>strchr</b>(const char *s, int c);</li>
+			<li>char *<b>strrchr</b>(const char *s, int c);</li>
+			<li>char *<b>strstr</b>(const char *s, const char *subsir);</li>
+		</ul>
+		<p></p>
+		<p>Funcții pentru citirea și afișarea șirurilor de caractere
+		</p><ul>
+			<li>char *<b>gets</b>(char *s);</li>
+			<li>int <b>puts</b>(char *s);</li>
+			<li>int <b>scanf</b>("%s", s);</li>
+			<li>int <b>printf</b>("%s", s);</li>
+		</ul>
+		<p></p>
+	</div>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Problema 1 - problemă rezolvată
+
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+		Scrieți o funcție pentru interschimbarea a 2 întregi.
+		</p>
+	</div>
+</div>
+
+<h3 class="titlu_sectiune"> Rezolvare:
+</h3>
+<div style="margin-left: 40px;">
+	<div class="cod">
+			<p>
+			#include &lt;stdio.h&gt;<br>
+			<br>
+			void swap(int *pa, int *pb) <br>
+			{ <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;int aux; // vom avea nevoie de un loc auxiliar de stocare<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;aux = *pa; // aux este un intreg, nu un pointer, deci nu vom folosi "*"<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;*pa = *pb; // pa si pb sunt pointeri, vom 
+folosi "*" pentru a accesa valorile de la respectivele adrese<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;*pb = aux; <br>
+			} <br> 
+			<br>
+			int main()<br>
+			{ <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;int a = 5, b = 7; <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;printf("%d %d\n", a, b); <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;swap(&amp;a, &amp;b); <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;printf("%d %d\n", a, b); <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;return 0; <br>
+			}
+			</p>
+	</div>
+	<p> <imp>Atenție!</imp> O greșeală frecventă este să scrieți:
+		</p><div class="cod">
+			<p>
+			... <br>
+			int *aux; <br>
+			*aux = *pa;  <br>
+			... 
+		</p>
+	   </div>
+		Problema este că <cod>aux</cod> este un pointer, care însă nu indică către o locație validă de memorie. 
+		Atunci când definiți un pointer, se alocă memorie doar pentru pointer, nu și pentru variabilă către care pointează, 
+		rezultând într-o eroare de acces la memorie la rularea programului.
+	<p></p>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Problema 2. 
+
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+	 		O funcție care primește un vector și numărul său de elemente și 
+întoarce un pointer la elementul maxim din vector (dacă există mai 
+multe, se poate întoarce un pointer la oricare dintre ele).
+			Dacă vectorul nu are elemente, se va returna <cod>NULL</cod>. 
+		</p>
+		<div class="cod">
+		<p>
+			int* get_max(int n, int *v);
+		</p>
+		</div>
+		<p> Se va afișa adresa întoarsă de funcție, precum și valoarea aflată la această adresă.
+		</p>
+			
+	</div>
+</div>
+
+
+<h4 class="test_exemplu">
+     Exemplu:
+</h4>
+
+<table class="tabel_exemple">
+	<tbody>
+
+		<tr>
+			<td class="celula_header">
+				Intrare
+			</td>
+			<td class="celula_header">
+				Ieşire
+			</td>
+		</tr>
+
+		<tr>
+			<td class="celula_exemplu">
+				5<br>
+				2 5 6 1 4
+			</td>
+			<td class="celula_exemplu">
+				0xcfde121e <br>
+				6
+			</td>
+		</tr>
+
+	</tbody>
+</table>
+
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Problema 3. 
+
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+	 		O funcție care numără câte elemente pozitive, câte elemente negative
+ și câte elemente nule se află într-un vector. Antetul funcției va fi:
+		</p>
+		<div class="cod">
+		<p>
+		void count(int n, int *v, int *zero, int *poz, int *neg);
+		</p>
+		</div>
+			
+	</div>
+</div>
+
+
+<h4 class="test_exemplu">
+     Exemplu:
+</h4>
+
+<table class="tabel_exemple">
+	<tbody>
+
+		<tr>
+			<td class="celula_header">
+				Intrare
+			</td>
+			<td class="celula_header">
+				Ieşire
+			</td>
+		</tr>
+
+		<tr>
+			<td class="celula_exemplu">
+				5 <br>
+				0 1 -2 3 0 -5 6
+			</td>
+			<td class="celula_exemplu">
+				zero : 2 <br>
+				 poz : 3 <br>
+				 neg : 2 
+			</td>
+		</tr>
+
+	</tbody>
+</table>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Problema 4. 
+
+</h3>
+<h3 class="titlu_sectiune">
+
+  	A. 
+
+</h3>
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+ 		O funcție pentru ștergerea a <cod>n</cod> caractere dintr-o poziție <cod>p</cod> dată a unui șir. Se va folosi funcția <cod>strcpy</cod>. 
+		</p>
+		<p>  Funcția primește adresa de unde se șterge și numărul de caractere șterse și are ca rezultat adresa <cod>p</cod>.
+			</p><div class="cod">
+			<p>
+			char *strdel(char *p, int n); // sterge n caractere din pozitia poz
+			</p>
+			</div>
+			 <div class="text_hint">
+				<p> 
+					Pentru a șterge 5 caractere începând cu poziția 3 (al 4-lea caracter) din șirul <cod>s</cod> va trebui să apelați cu parametrii: <cod>strdel(s + 3, 5)</cod>.
+				</p>
+			</div>		
+	</div>
+		<p></p>
+	</div>
+
+
+
+<h3 class="titlu_sectiune">
+
+  	B. 
+
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+		O funcție pentru inserarea unui șir <cod>s</cod> într-o poziție dată p dintr-un alt
+șir, folosind funcția <cod>strcpy</cod>.
+		</p><div class="cod">
+		<p>
+		char *strins (char *p, char *s); // insereaza la p, sirul s
+		</p>
+		</div>
+		<p></p>
+	</div>
+</div>
+<h3 class="titlu_sectiune">
+  	C. 
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+		Un program care va căuta și înlocui un șir dat cu alt șir (de lungime diferită)
+		într-un text. Vor fi înlocuite toate aparițiile șirului dat.
+		</p>
+		<p>
+		Se vor folosi funcțiile definite anterior și funcții de bibliotecă.
+		</p>
+		<p>
+		Textul se va introduce în program ca un șir constant. Șirul căutat și cel cu care va
+		fi înlocuit se citesc de la consolă.
+		</p>
+	</div>
+</div>
+
+<h4 class="test_exemplu">
+     Exemplu:
+</h4>
+<p> Pentru șirul "ala bala portocala".
+</p>
+<table class="tabel_exemple">
+	<tbody>
+
+		<tr>
+			<td class="celula_header">
+				Intrare
+			</td>
+			<td class="celula_header">
+				Ieşire
+			</td>
+		</tr>
+
+		<tr>
+			<td class="celula_exemplu">
+				ala<br>
+				lala
+			</td>
+			<td class="celula_exemplu">
+				lala blala portoclala
+			</td>
+		</tr>
+
+	</tbody>
+</table>
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Problema 5. 
+
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+ 		O funcție care extrage un subșir de lungime dată dintr-o poziție dată a unui șir:
+			</p><div class="cod">
+			<p>
+			char *substr(char *src, int n, char *dest); // extrage de la pozitia src in dest n caractere
+			</p>
+			</div>
+			<p>
+			Funcția are ca rezultat adresa șirului extras.
+			</p>
+			 <div class="text_hint">
+				<p> 
+					Pentru a extrage 5 caractere începând cu poziția 3 (al 4-lea caracter) din șirul <cod>s</cod> în șirul <cod>p</cod>
+				va trebui să apelați cu parametrii: <cod>substr(s + 3, 5, p).</cod>
+				</p>
+			</div>		
+	</div>
+		<p></p>
+	</div>
+
+
+
+<h4 class="test_exemplu">
+     Exemplu:
+</h4>
+
+<table class="tabel_exemple">
+	<tbody>
+
+		<tr>
+			<td class="celula_header">
+				Intrare
+			</td>
+			<td class="celula_header">
+				Ieşire
+			</td>
+		</tr>
+
+		<tr>
+			<td class="celula_exemplu">
+				abcdefg<br>
+				2 3<br>
+			</td>
+			<td class="celula_exemplu">
+				cde
+			</td>
+		</tr>
+
+	</tbody>
+</table>
+
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Problema 6. 
+
+</h3>
+
+<h3 class="titlu_sectiune">
+   A. 
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+ 			O funcție de comparare a două șiruri de cifre zecimale ce reprezintă
+numere naturale (fără semn), cu rezultat -1, 0 sau 1:
+		</p>
+		<div class="cod">
+		<p>
+			int strdcmp(char *s1, char *s2); 
+		</p>
+		</div>
+		<p></p>
+	</div>
+</div>
+
+<h3 class="titlu_sectiune">
+   B. 
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+			O funcție de citire a unui întreg pozitiv cu verificare depășire
+valoare maximă posibilă. Se va citi numărul ca șir de caractere (cu <cod>scanf</cod>).
+		</p>
+		<p> Șirul se va compara șirul citit cu șirul corespunzator valorii maxime admise
+(<cod>INT_MAX</cod>). Constanta <cod>INT_MAX</cod> este definită in <cod>limits.h</cod>. 
+		</p>
+		<p>
+			Pentru comparare folosiți funcția definită anterior.
+		</p>
+		<p>În caz de introducere a unui număr prea mare funcția are ca rezultat pe <cod>- INT_MAX</cod>.
+		</p>
+		<div class="cod">
+		<p>
+			int readint(); 
+		</p>
+		</div>
+		<div class="text_hint">
+		<p>
+		Pentru a converti un întreg <cod>n</cod> într-un șir de caracter <cod>s</cod> puteți folosi:
+		<cod>
+			sprintf(s, "%d", n) 
+		</cod> (afișează în <cod>s</cod> pe <cod>n</cod>, ca întreg).
+		</p>
+		<p> Pentru a converti din șir în întreg puteți folosi <cod>int atoi(char *s)</cod>.
+		</p>
+		</div>
+	</div>
+</div>
+
+
+<h4 class="test_exemplu">
+     Exemplu:
+</h4>
+
+<table class="tabel_exemple">
+	<tbody>
+
+		<tr>
+			<td class="celula_header">
+				Intrare
+			</td>
+			<td class="celula_header">
+				Ieşire
+			</td>
+		</tr>
+
+		<tr>
+			<td class="celula_exemplu">
+				1<br>
+			</td>
+			<td class="celula_exemplu">
+				1
+			</td>
+		</tr>
+
+		<tr>
+			<td class="celula_exemplu">
+				2147483648<br>
+			</td>
+			<td class="celula_exemplu">
+				-2147483647
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Problema 7. 
+
+</h3>
+
+<h3 class="titlu_sectiune">
+   A. 
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+ 		Funcție care extrage următorul cuvânt format numai din litere mici
+începând de la o adresă dată.
+		</p>
+		<p>Funcția are ca rezultat adresa imediat
+următoare cuvântului extras (în al doilea argument al funcției):
+		</p>
+		<div class="cod">
+		<p>
+	 	 char *next (char *from, char *word);
+		</p>
+		</div>
+		<p></p>
+	</div>
+</div>
+
+<h3 class="titlu_sectiune">
+   B. 
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+		 Program pentru citirea unei linii ce conține cuvinte formate din litere
+mici și alte șiruri și afișarea cuvintelor formate din litere mici
+(separate între ele prin orice alte caractere).
+		</p>
+		</div>
+	</div>
+
+
+
+<h4 class="test_exemplu">
+     Exemplu:
+</h4>
+
+<table class="tabel_exemple">
+	<tbody>
+
+		<tr>
+			<td class="celula_header">
+				Intrare
+			</td>
+			<td class="celula_header">
+				Ieşire
+			</td>
+		</tr>
+
+		<tr>
+			<td class="celula_exemplu">
+  			( unu, 1 doi DOI trei; "patru" )
+			</td>
+			<td class="celula_exemplu">
+				 unu doi trei patru
+			</td>
+		</tr>
+
+	</tbody>
+</table>
+
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Problema 8. 
+
+</h3>
+
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+	 		O funcție care calculează panta și ordonata pentru o dreaptă dată prin 2 puncte.
+		</p>
+		<p> 
+			Ecuația dreptei dată prin pantă și ordonată este <cod>y = m * x + n</cod>
+		</p>
+		<div class="cod">
+			<p>
+			void panta(int x1, int y1, int x2, int y2, float *m, float *n); 
+			</p>
+		</div>
+		<p>
+			Dacă dreapta este verticală <cod>m</cod> va avea valoarea <cod>INT_MAX</cod> (definită in <cod>limits.h</cod>).
+		</p>
+		<p> Programul va citi coordonate a 2 puncte ce determină dreapta și încă un punct pentru care 
+			se va verifica dacă aparține dreptei, folosind funcția de mai sus. Atenție la cazul când dreapta e verticală.
+		</p>
+
+		<div class="text_hint">
+			<p>
+			Panta unei drepte date prin coordonatele <cod>(x<sub>1</sub>, y<sub>1</sub>)</cod> și <cod>(x<sub>2</sub>, y<sub>2</sub>)</cod> este: 
+				<cod>m = (y<sub>2</sub> - y<sub>1</sub>) / (x<sub>2</sub> - x<sub>1</sub>)</cod>, dacă <cod>x<sub>1</sub> != x<sub>2</sub></cod>. 
+			</p> 
+			<p> 
+			Ordonata va fi <cod>n = y<sub>1</sub> - m * x<sub>1</sub>.	
+			</cod></p>
+			<p>
+			Folosiți ecuația <cod>y = m * x + n</cod> ca să aflați dacă cel de-al treilea punct aparține dreptei. Dacă dreapta este verticală, 
+			trebuie să verificați egalitatea pentru coordonatele <cod>x</cod>.
+			</p>
+		</div>
+			
+	</div>
+</div>
+
+
+<h4 class="test_exemplu">
+     Exemplu:
+</h4>
+
+<table class="tabel_exemple">
+	<tbody>
+
+		<tr>
+			<td class="celula_header">
+				Intrare
+			</td>
+			<td class="celula_header">
+				Ieşire
+			</td>
+		</tr>
+
+		<tr>
+			<td class="celula_exemplu">
+				1 1<br>
+				2 2<br>
+				3 3
+			</td>
+			<td class="celula_exemplu">
+				DA
+			</td>
+		</tr>
+
+		<tr>
+			<td class="celula_exemplu">
+				2 1<br>
+				2 3<br>
+				3 3
+			</td>
+			<td class="celula_exemplu">
+				NU
+			</td>
+		</tr>
+
+	</tbody>
+</table>
+
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+
+<hr size="1">
+
+<h3 class="titlu_sectiune">
+
+   Problema 9. 
+
+</h3>
+
+<div style="margin-left: 40px;">
+	<div class="text_normal">
+		<p>
+		Funcție pentru incrementarea unui moment de timp, dat ca oră, minut
+		și secunda și perioada zilei (AM sau PM). Funcția va trebui să 
+		modifice 3 numere întregi și un vector de caractere și va primi
+		3 argumente pointer și un argument vector.
+		</p>
+	</div>
+</div>
+
+<h4 class="test_exemplu">
+     Exemplu:
+</h4>
+
+<table class="tabel_exemple">
+	<tbody>
+
+		<tr>
+			<td class="celula_header">
+				Intrare
+			</td>
+			<td class="celula_header">
+				Ieşire
+			</td>
+		</tr>
+
+		<tr>
+			<td class="celula_exemplu">
+				09 09 09 AM
+			</td>
+			<td class="celula_exemplu">
+				09:09:10 AM
+			</td>
+		</tr>
+
+		<tr>
+			<td class="celula_exemplu">
+				10 25 59 PM
+			</td>
+			<td class="celula_exemplu">
+				10:26:00 PM
+			</td>
+		</tr>
+
+		<tr>
+			<td class="celula_exemplu">
+				11 59 59 PM
+			</td>
+			<td class="celula_exemplu">
+				00:00:00 AM
+			</td>
+		</tr>
+
+	</tbody>
+</table>
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+<br>
+=======
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 741b20e58add22f5ff7f102122ab3e5d7fbad0c0
+
+﻿﻿</body></html>

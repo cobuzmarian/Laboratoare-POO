@@ -1,0 +1,482 @@
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<style type="text/css"> 
+
+.numar_laborator
+	{
+	font-family: Times New Roman;
+	}
+.nume_laborator
+	{
+	font-family: Times New Roman;
+	text-align: center;
+	}
+.titlu_sectiune
+	{
+	font-family: Times New Roman;
+	}
+.text_normal
+	{
+	font-family: Arial;
+	font-size: 1.0em;
+	color: black;
+	}
+.text_hint
+	{
+	font-family: Arial;
+	font-style: italic;
+	font-size: 0.8em;
+	color: rgb(102, 102, 102); 
+	}
+.text_exemplu
+	{
+	font-family: Arial;
+	}
+hr 
+	{
+	height: 1px;
+	}
+.cod
+	{
+	font-family: Courier New;
+	background-color: rgb(204,204,204);
+	color: black;
+	}
+.tabel_exemple
+	{
+	width: 100%;
+	color: black;
+	font-size: 1.0em;
+	font-family: Courier New;
+	border: 1 px black solid;
+	border-spacing: 0px;
+	border-collapse: collapse;
+	text-align: left;
+	}
+.celula_header
+	{
+	color: black;
+	font-family: Arial;
+	background-color: rgb(204,204,204);
+	width: 50%;
+	border: 2px groove black;
+	}
+.celula_exemplu
+	{
+	valign: top;
+	color: black;
+	font-family: Courier New;
+	width: 50%;
+	border: 2px groove black;
+	vertical-align: top;
+	}
+cod
+	{
+	font-family: Courier New;
+	background-color: rgb(204,204,204);
+	color: black;
+	}
+
+</style>
+</head><body>
+
+<div style="color: rgb(153, 153, 153);" id="google_header" class="google_header">
+<p><font size="4">&nbsp;</font><font face="Courier New" size="4"><span style="font-family: Times New Roman;">Programarea Calculatoarelor, seria CC</span></font></p>
+<p></p>
+</div>
+
+<h1 class="numar_laborator">Laborator 3 </h1>
+<h1 class="nume_laborator">Instrucţiunile limbajului C</h1>
+
+<h3 class="titlu_sectiune">În acest laborator veţi învăţa să:</h3>
+<ul>
+   <li class="text_normal">
+      Folosiţi corect instrucţiunile limbajului C
+   </li>
+   <li class="text_normal">
+      Comparaţi corect numere în virgulă mobilă
+   </li>
+   <li class="text_normal">
+      Implementaţi iterativ formule de recurenţă
+   </li>
+</ul>
+<br>
+
+<hr size="1">
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<h3 class="titlu_sectiune">
+   Sintaxa instrucţiunilor limbajului C
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         <b>Instrucţiunea </b><cod>if</cod>:
+      </p>
+   </div>
+   <div class="cod">
+      <p> 
+         if (expresie)<br>
+         &nbsp;&nbsp;&nbsp;instructiune1;<br>
+         [else<br>
+         &nbsp;&nbsp;&nbsp;instructiune2;]
+      </p>
+   </div>
+   <div class="text_normal">
+      <p>
+         Ramura <cod>else</cod> poate lipsi. De asemenea, instrucţiunea se poate formula şi ca expresie astfel:
+      </p>
+   <div class="cod">
+      <p> 
+         expresie?instructiune1:instructiune2;
+      </p>
+   </div>
+      <p>
+         <b>Instrucţiunea</b> <cod>switch</cod>:
+      </p>
+   <div class="cod">
+      <p> 
+         switch (valoare)<br>
+	 {<br>
+         &nbsp;&nbsp;&nbsp;case valoare1:<br>
+	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;instructiune1;<br>
+	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+	 &nbsp;&nbsp;&nbsp;case valoare2:<br>
+	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;instructiune2;<br>
+	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+         &nbsp;&nbsp;&nbsp;....................<br>
+         &nbsp;&nbsp;&nbsp;case valoareN:<br>
+	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;instructiuneN;<br>
+	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+         &nbsp;&nbsp;&nbsp;[default:<br>
+	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;instructiuneDefault;<br>
+	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;]<br>
+         }<br>
+      </p>
+   </div>
+   <div class="text_normal">
+      <p>
+         Ramura <cod>default</cod> poate lipsi. De asemenea, nu este obligatoriu să puneţi <cod>break;</cod> după fiecare caz din <cod>switch</cod>, dar dacă nu puneţi, se vor evalua toate condiţiile în ordine.
+      </p>
+   </div>
+   <div class="text_normal">
+      <p>
+         <b>Instrucţiunea </b><cod>while</cod>:
+      </p>
+   </div>
+   <div class="cod">
+      <p> 
+         while (expresie)<br>
+         &nbsp;&nbsp;&nbsp;instructiune;<br>
+      </p>
+   </div>
+   <div class="text_normal">
+      <p>
+         <b>Instrucţiunea </b><cod>do-while</cod>:
+      </p>
+   </div>
+   <div class="cod">
+      <p> 
+         do<br>
+         {<br>
+         instructiune;<br>
+         }<br>
+         while (expresie);
+      </p>
+   </div>
+   <div class="text_normal">
+      <p>
+         <b>Instrucţiunea </b><cod>for</cod>:
+      </p>
+   </div>
+   <div class="cod">
+      <p> 
+         for (variabila = expresie1; expresie2; expresie3)<br>
+         &nbsp;&nbsp;&nbsp;instructiune;<br>
+      </p>
+   </div>
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 1. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         Scrieţi un program pentru afişarea codurilor tuturor caracterelor cu coduri între <cod>32</cod> şi <cod>127</cod>, folosind funcţia <cod>printf</cod> într-un ciclu, câte zece caractere pe o linie. Puteţi folosi urmatorul apel al funcţiei <cod>printf</cod>:
+      </p>
+   </div>
+   <div class="cod">
+      <p> 
+         printf("%c = %d ", ch, ch);
+      </p>
+   </div>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 2. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         Scrieţi un program pentru afişarea primelor <cod>n</cod> (<cod>n&lt;=30000</cod>) numere naturale, câte <cod>m</cod> (<cod>m&lt;=13</cod>)
+ pe o linie. După fiecare 24 de linii afișate, programul va trebui să 
+aștepte apăsarea unei taste pentru a continua. Pentru a aștepta apăsarea
+ unei taste, folosiţi:
+      </p>
+   </div>
+   <div class="cod">
+      <p>
+         getchar();
+      </p>
+   </div>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 3. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         Scrieţi un program pentru adunarea de <cod>N</cod> ori a lui <cod>x</cod> şi adunarea de <cod>N</cod> ori a lui <cod>Y</cod> şi afişează sumele <cod>SX</cod> şi <cod>SY</cod>. <cod>X</cod> şi suma <cod>SX</cod> sunt de tip <cod>float</cod>, iar <cod>Y</cod> şi suma <cod>SY</cod> sunt de tip <cod>double</cod>. 
+      </p>
+      <p>
+         Se vor afişa sumele parţiale la fiecare <cod>N/10</cod> termeni
+ calculaţi. Aveți grijă să folosiți formatele de citire și afișare 
+corespunzătoare. Folosiţi următoarele seturi de date de intrare:
+      </p>
+   </div>
+   <div class="cod">
+      <p>
+               x=0.1<br>
+               y=0.1<br>
+               n=10<br>
+      </p>
+   </div>
+   <div class="cod">
+      <p>
+               x=0.01<br>
+               y=0.01<br>
+               n=100<br>
+      </p>
+   </div>
+   <div class="cod">
+               x=0.001<br>
+               y=0.001<br>
+               n=1000<br>
+   </div>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 4. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         Se citesc numere naturale până la întâlnirea numărului <cod>0</cod>.
+ Să se afişeze toate perechile de numere citite consecutiv cu 
+proprietatea că al doilea număr reprezintă restul împărţirii primului 
+număr la suma cifrelor sale.
+      </p>
+   </div>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 5. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         Se citeşte de la tastatură un număr natural <cod>p</cod>. Să se determine toate perechile distincte de numere întregi (<cod>i</cod>, <cod>j</cod>, <cod>k</cod>) cu proprietatea că ele pot reprezenta laturile unui triunghi de perimetru <cod>p</cod>. Folosiţi maxim două instrucţiuni <cod>for</cod>.
+      </p>
+   </div>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 6. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         Să se scrie un program pentru calculul combinărilor de <cod>n</cod> luate câte <cod>m</cod>, pentru <cod>n=10</cod> şi <cod>m</cod> între 1 şi 10, prin două metode:
+         </p><ul>
+         <li> 
+             Folosind relaţia de recurenţă: <br>
+             <cod>C(n,k) = C(n, k - 1) * (n - k + 1)/k</cod> pentru <cod>k=1,m</cod> şi <cod>C(n, 0) = 1</cod>
+         </li>
+         <li>
+             Folosind relaţia de calcul: <br>
+             <cod>C(n, m) = n! / (m! * (n - m)!)</cod>
+         </li>
+         </ul>
+      <p></p>
+   </div>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 7. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         Scrieţi un program pentru calculul valorii funcţiei exponenţiale într-un punct <cod>x</cod> prin dezvoltare după formula de mai jos (dezvoltarea în serie Taylor): 
+      </p>
+   </div>
+   <div class="cod">
+      <p>
+         e<sup>x</sup>= 1 + x/1! + x<sup>2</sup>/2! + x<sup>3</sup>/3! + ... + x<sup>n</sup>/n! + ...
+      </p>
+   </div>
+   <div class="text_normal">
+      <p>
+         Calculaţi această valoare în două variante: 
+         </p><ul>
+         <li>
+            Ca sumă a unui număr dat de termeni
+         </li>
+         <li>
+            Ca sumă a termenilor mai mari decât un epsilon dat (de exemplu, <cod>EPS=0.001</cod>)
+         </li>
+         </ul>
+      <p></p>	
+   </div>
+   <div class="text_normal">
+      <p>
+         Se va folosi relaţia de recurenţă:
+      </p>	
+   </div>
+   <div class="cod">
+      <p>
+         t<sub>k</sub> = t<sub>k - 1</sub> * x / k <br>
+         t<sub>0</sub> = 1
+      </p>
+   </div>
+   <div class="text_normal">
+      <p>
+         unde <cod>t<sub>k</sub></cod> este termenul <cod>k</cod> din sumă. 
+      </p>	
+      <p>
+         Comparaţi rezultatul obţinut cu rezultatul funcţiei <cod>exp(x)</cod> şi cu rezultatul funcţiei <cod>pow(2.718, x)</cod>. Folosiţi alternativ tipurile <cod>float</cod> şi <cod>double</cod> şi comparaţi rezultatele.
+      </p>
+   </div>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 8. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         Scrieţi un program pentru calculul şi afişarea rădăcinii 
+pătrate a unor numere folosind următoarea relaţie de recurenţă între 
+două aproximaţii succesive <cod>r1</cod> şi <cod>r2</cod> ale rădăcinii lui <cod>x</cod>: 
+      </p>
+   </div>
+   <div class="cod">
+      <p>
+         r2 = (r1 + x / r1) / 2;
+      </p>
+   </div>
+   <div class="text_normal">
+      <p>
+         Aproximaţia iniţială <cod>r1</cod> poate fi orice număr (se va lua <cod>r1 = x / 2</cod>). Relaţia de recurenţă se aplică atâta timp cât <cod>r1</cod> este diferit de <cod>r2</cod>. 
+      </p>	
+   </div>
+   <div class="text_normal">
+      <p>
+         <b>ATENŢIE!</b> În problemele care folosesc numere reale nu se 
+face niciodată comparaţia exactă între acestea, datorită erorilor de 
+precizie care intervin în calcule. Astfel, în loc de testul <cod>a == b</cod> se va verifica dacă <cod>|a - b| &lt; EPS</cod>:
+      </p>	
+   </div>
+   <div class="cod">
+      <p>
+         fabs(a - b) &lt; EPS
+      </p>
+   </div>
+   <div class="text_normal">
+      <p>
+         unde <cod>EPS</cod> este precizia dorită (de exemplu, pentru trei zecimale exacte, vom folosi <cod>EPS == 0.001</cod>. Se va afişa, pentru verificare, şi rezultatul funcţiei <cod>sqrt(x)</cod> pentru primele 20 de numere pare.
+      </p>	
+   </div>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 9. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         Şirul lui Fibonacci este următorul: <b> 0, 1, 1, 2, 3, 5, 8, 13, 21, ... </b>. El se construieşte după următoarele reguli:
+      </p>
+   </div>
+   <div class="cod">
+      <p>
+         F(0) = 0<br>
+	 F(1) = 1<br>
+         F(k) = F(k - 1) + F(k - 2), pentru orice k &gt; 1
+      </p>
+   </div>
+   <div class="text_normal">
+      <p>
+         Dându-se un număr natural <cod>n</cod> (<cod>n&lt;=100</cod>), se cere să se afişeze toate numerele prime din primii <cod>n</cod> termeni ai şirului Fibonacci.
+      </p>
+   </div>
+</div>
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+   Problema 10. 
+</h3>
+<div style="margin-left: 40px;">
+   <div class="text_normal">
+      <p>
+         Dându-se un număr natural <cod>n</cod> (<cod>1&lt;=n&lt;=100000</cod>), să se afişeze numărul de cifre obţinut prin alipirea numerelor <b>1, 2, 3, ... n</b> (adică numărul <cod>12345678910111213...</cod>).
+      </p>
+  </div>
+  <h4 class="test_exemplu">
+     Exemplu:
+  </h4>
+  <table class="tabel_exemple">
+      <tbody>
+         <tr>
+            <td class="celula_header">
+               Intrare
+            </td>
+            <td class="celula_header">
+               Ieşire
+            </td>
+         </tr>
+         <tr>
+            <td class="celula_exemplu">
+               n=100
+            </td>
+            <td class="celula_exemplu">
+               192
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div>
+</div></div></body></html>

@@ -1,0 +1,590 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css"> 
+
+
+
+.numar_laborator
+
+{
+	
+		font-family: Times New Roman;
+		
+}
+
+.nume_laborator
+
+{
+	
+		font-family: Times New Roman;
+		
+		text-align: center;
+		
+}
+
+.titlu_sectiune
+
+{
+	
+		font-family: Times New Roman;
+		
+}
+
+.text_normal
+
+{
+	
+		font-family: Arial;
+		
+		font-size: 1.0em;
+		
+		color: black;
+		
+}
+
+.text_hint
+
+{
+	
+		font-family: Arial;
+		
+		font-style: italic;
+		
+		font-size: 0.8em;
+		
+		color: rgb(102, 102, 102); 
+		
+}
+
+.text_exemplu
+
+{
+	
+		font-family: Arial;
+		
+}
+
+hr 
+
+{
+	
+		height: 1px;
+		
+}
+
+.cod
+
+{
+	
+		font-family: Courier New;
+		
+		background-color: rgb(204,204,204);
+		
+		color: black;
+		
+}
+
+.tabel_exemple
+
+{
+	
+		width: 100%;
+		
+		color: black;
+		
+		font-size: 1.0em;
+		
+		font-family: Courier New;
+		
+		border: 1 px black solid;
+		
+		border-spacing: 0px;
+		
+		border-collapse: collapse;
+		
+		text-align: left;
+		
+}
+
+.celula_header
+
+{
+	
+		color: black;
+		
+		font-family: Arial;
+		
+		background-color: rgb(204,204,204);
+		
+		width: 50%;
+		
+		border: 2px groove black;
+		
+}
+
+.celula_exemplu
+
+{
+	
+		valign: top;
+		
+		color: black;
+		
+		font-family: Courier New;
+		
+		width: 50%;
+		
+		border: 2px groove black;
+		
+		vertical-align: top;
+		
+}
+
+cod
+
+{
+	
+		font-family: Courier New;
+		
+		background-color: rgb(204,204,204);
+		
+		color: black;
+		
+}
+
+
+
+</style>
+
+</head><body bgcolor="#ffffff">
+
+
+
+<div style="color: rgb(153, 153, 153);" id="google_header" class="google_header">
+
+<p><font size="4">&nbsp;</font><font face="Courier New" size="4"><span style="font-family: Times New Roman;">Programarea Calculatoarelor, seria CC</span></font></p>
+<p></p>
+</div>
+<div class="nume_laborator">
+<p><b>Echipa de PC vă dorește vacanța plăcută și un </b></p></div>
+<center><img src="PC_lab12_files/CraciunFericit.jpg" styles=""></center>
+<h1 class="numar_laborator">Laborator 12 </h1>
+
+<h1 class="nume_laborator">Fișiere text. Argumente în linia de comandă</h1>
+
+<h3 class="titlu_sectiune">În acest laborator veţi învăţa să: </h3>
+
+<ul>
+<li>Citiți și scrieți date din fișiere text.</li>
+<li>Trimiteți și folosiți argumente în linia de comandă.</li>
+</ul>
+<br>
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+Fișiere text
+</h3>
+<div style="margin-left: 40px;">
+<div class="text_normal">
+<p>
+Pentru a realiza operații cu fișiere text se folosesc funcții și structuri definite în <cod>stdio.h</cod>:
+</p><ul>
+<li><cod>FILE</cod> este o structură ce conține informațiile necesare controlării unui fișier.</li>
+<li><cod>FILE * fopen ( const char * filename, const char * mode )</cod> asociază fișierul cu o structură <cod>FILE</cod> și întoarce un pointer la această structură.
+Dacă fișierul nu există sau nu a putut fi deschis, se va întoarce <cod>NULL</cod>. <cod>mode</cod> reprezintă modul de access dorit: 
+<ul>
+<li><cod>"r"</cod> deschide fișierul pentru citire; fișierul trebuie să existe.</li>
+<li><cod>"w"</cod> creează un fișier gol pentru scriere; dacă există 
+deja un fișier cu același nume, conținutul lui este șters și este tratat
+ ca un fișier gol.</li>
+<li><cod>"a"</cod> adaugă datele la sfârșitul fișierului; fișierul este creat dacă nu există.</li>
+<li><cod>"r+"</cod> deschide un fișier atât pentru scriere, cât și pentru citire; fișierul trebuie să existe.</li>
+<li><cod>"w+"</cod> creează un fișier gol atât pentru scriere, cât și 
+pentru citire; dacă există deja un fișier cu același nume, conținutul 
+lui este șters și este tratat ca un fișier gol.</li>
+<li><cod>"a+"</cod> deschide un fișier pentru citire și adăugare la 
+sfârșit; se poate citi de la orice poziție din fișier, însă scrierea se 
+face doar la sfârșit; fișierul este creat dacă nu există</li>
+</ul></li>
+<li><cod>int fclose ( FILE * file )</cod> închide fișierul asociat cu structura <cod>file</cod> și îl dezasociază.</li>
+</ul>
+Funcții de citire și afișare pentru fișiere:
+<ul>
+<li><cod>int fgetc ( FILE * f )</cod> întoarce următorul caracter din fișier convertit la <cod>int</cod> sau <cod>EOF</cod> dacă s-a întâlnit sfârșitul de fișier sau o eroare.</li>
+<li><cod>char *fgets ( char *buf, int nmax, FILE * f )</cod> citește caractere din fișier până cănd se întâlnește <cod>'\n'</cod> (este și el adăugat la șir) sau până când s-au citit <cod>nmax - 1</cod> caractere.</li>
+<li><cod>int fputc ( int c, FILE * f )</cod> scrie caracterul <cod>c</cod> în fișier; funcția întoarce caracterul scris, în caz de success sau <cod>EOF</cod> altfel.</li>
+<li><cod>int fputs ( char *buf, FILE *f )</cod> scrie șirul <cod>buf</cod> în fișier; în caz de eroare se întoarce <cod>EOF</cod>, altfel se întoarce o valoare non-negativă.</li>
+<li><cod>int fscanf ( FILE *f, const char * format, ... )</cod></li>
+<li><cod>int fprintf ( FILE *f, const char * format, ... )</cod></li>
+</ul>
+<p></p>
+</div>
+</div>
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+Argumente în linia de comandă
+</h3>
+<div style="margin-left: 40px;">
+<div class="text_normal">
+<p>
+Pentru a specifica argumente în linia de comandă, antetul funcției <cod>main</cod> va trebui să fie de forma:<br>
+</p><div class="cod">
+<p>
+int main ( int argc, char *argv[] );
+</p>
+</div>
+<cod>argc</cod> reprezintă numărul de argumente, iar <cod>argv</cod> vectorul de pointeri la argumente (șiruri de caractere). Primul argument <cod>argv[ 0 ]</cod> este întotdeauna numele executabilului. <br><br>
+Pentru a seta argumentele din CodeBlocks va trebui să adăugați fișierul sursă la un proiect și apoi să selectați: <cod>Project -&gt; Set programs' arguments</cod>.
+<p></p>
+</div>
+</div>
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+Problema 0 - Problemă rezolvată
+</h3>
+<div style="margin-left: 40px;">
+<div class="text_normal">
+<p>
+Scrieți un program care citește conținutul unui fișier text <cod>myfile.txt</cod> și îl trimite către stdout.
+</p>
+<div class="cod">
+
+<pre width="80"><font color="#a020f0">#include &lt;stdio.h&gt;</font>
+
+<strong><font color="#228b22">#define BUFMAX 1005</font></strong>
+
+<strong><font color="#4169e1"><a name="main"></a>int main(int argc, char **argv)</font></strong>
+{
+        FILE * pFile;
+        char buffer [BUFMAX];
+
+        pFile = fopen(<font color="#666666">"myfile.txt"</font> , <font color="#666666">"r"</font>);
+        <font color="#4169e1">if</font> (pFile == NULL)
+		fprintf(stderr, <font color="#666666">"Eroare! Nu am putut deschide fisierul!\n"</font>);
+        <font color="#4169e1">else</font>
+        {
+                <font color="#4169e1">while</font> (fgets(buffer, BUFMAX, pFile) != NULL)
+			{
+                        fputs (buffer, stdout);
+                }
+                fclose (pFile);
+        }
+        <font color="#4169e1">return</font> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+Problema 1 - Problemă rezolvată
+</h3>
+<div style="margin-left: 40px;">
+<div class="text_normal">
+<p>
+Scrieți un program pentru concatenarea mai multor fișiere text într-un 
+fișier destinație. Programul va primi numele fișierelor ca argumente în 
+linia de comandă, în următoarea ordine: <cod>destinatie sursa1 sursa2 ... sursan</cod>.
+</p>
+<div class="cod">
+
+<pre width="80"><font color="#a020f0">#include &lt;stdio.h&gt;</font>
+
+<strong><font color="#228b22">#define BUFMAX 1005</font></strong>
+
+<strong><font color="#4169e1"><a name="main"></a>int main(int argc, char *argv[])</font></strong>
+{
+        FILE *dest, *src;
+        int i;
+        char buffer[BUFMAX];
+
+        dest = fopen(argv[1], <font color="#666666">"w"</font>);
+                <font color="#4169e1">if</font> (!dest) fprintf(stderr, <font color="#666666">"Eroare! Nu am putut deschide fisierul destinatie!\n"</font>);
+
+        <font color="#4169e1">for</font> (i = 2; i &lt; argc; ++i) {
+                src = fopen(argv[i], <font color="#666666">"r"</font>);
+                                <font color="#4169e1">if</font> (!src) fprintf(stderr, <font color="#666666">"Eroare! Nu am putut deschide fisierul sursa (%d)!\n"</font>, i);
+                <font color="#4169e1">while</font> (fgets(buffer, BUFMAX, src) != NULL)
+                        fputs(buffer, dest);
+                fclose(src);
+        }
+
+        fclose(dest);
+        <font color="#4169e1">return</font> 0;
+}
+</pre>
+</div>
+</div>
+</div>
+<!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+<hr size="1">
+<h3 class="titlu_sectiune">
+Problema 2.
+</h3>
+<div style="margin-left: 40px;">
+<div class="text_normal">
+<h3 class="titlu_sectiune">
+A.
+</h3>
+<p>
+Scrieți un program pentru căutarea unui șir dat într-un fișier text și 
+afișarea liniilor care conțin șirul dat. Fișierul și șirul căutat vor fi
+ trimise ca argumente în linia de comandă, în această ordine.
+</p>
+<h4 class="test_exemplu">
+     Exemplu:
+  	</h4>
+	<p>Daca căutăm în fișierul <cod>input.txt</cod> stringul <cod>vacanta</cod>:
+	<br><br><cod>./executabil input.txt vacanta<cod><br><br>
+  <table class="tabel_exemple">
+      <tbody>
+         <tr>
+            <td class="celula_header">
+               Intrare (din fisierul <b>input.txt</b>)
+            </td>
+            <td class="celula_header">
+               Ieşire (stdout)
+            </td>
+         </tr>
+         <tr>
+            <td class="celula_exemplu">
+               Mai e putin si vine vacanta !<br>
+     	       Mie nu imi plac pointerii dar iubesc vacanta !<br>
+			   Abia astept sesiunea !<br>
+			   Haideti sa mergem la un suc chiar acum !<br>
+			   Cine stie sa se dea cu placa de snowboard ?!<br>
+			   Vacanta asta merg la Predeal si ma dau cu placa :)<br>
+			   Ma asteapta o sesiune infernala :-(<br>
+			   Vine vacanta cu trenul din Franta ...<br>
+			   La multi ani 2011 !<br>
+            </td>
+            <td class="celula_exemplu">
+               Mai e putin si vine vacanta !<br>
+			   Mie nu imi plac pointerii dar iubesc vacanta !<br>
+			   Vine vacanta cu trenul din Franta ...<br>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+
+</cod></cod></p><h3 class="titlu_sectiune">
+B.
+</h3>
+<p>
+Adăugați programului de la punctul <cod>A</cod> posibilitatea de a primi
+ ca argumente și una sau mai multe dintre următoarele opțiuni (ultimele 2
+ argumente vor fi întotdeauna numele fișierului și șirul căutat):
+	</p><ul>
+	 <li><cod>-i</cod> ignoră diferentă dintre litere mici și litere mari.</li>
+	 <li><cod>-n</cod> afișează și numerele liniilor din fișier care conțin șirul căutat.</li>
+	 <li><cod>-c</cod> afișează numărul de linii în care s-a găsit șirul căutat.</li>
+	 </ul>
+	 <p></p>
+
+	<h4 class="test_exemplu">
+     Exemplu:
+  	</h4>
+	<p>Daca căutăm în fișierul <cod>input.txt</cod> stringul <cod>vacanta</cod>:
+	<br><br><cod>./executabil -i -n -c input.txt vacanta<cod><br><br>
+  <table class="tabel_exemple">
+      <tbody>
+         <tr>
+            <td class="celula_header">
+               Intrare (din fisierul <b>input.txt</b>)
+            </td>
+            <td class="celula_header">
+               Ieşire (stdout)
+            </td>
+         </tr>
+         <tr>
+            <td class="celula_exemplu">
+               Mai e putin si vine vacanta !<br>
+     	       Mie nu imi plac pointerii dar iubesc vacanta !<br>
+			   Abia astept sesiunea !<br>
+			   Haideti sa mergem la un suc chiar acum !<br>
+			   Cine stie sa se dea cu placa de snowboard ?!<br>
+			   Vacanta asta merg la Predeal si ma dau cu placa :)<br>
+			   Ma asteapta o sesiune infernala :-(<br>
+			   Vine vacanta cu trenul din Franta ...<br>
+			   La multi ani 2011 !<br>
+            </td>
+            <td class="celula_exemplu">
+               [1] Mai e putin si vine vacanta !<br>
+			   [2] Mie nu imi plac pointerii dar iubesc vacanta !<br>
+			   [6] Vacanta asta merg la Predeal si ma dau cu placa :)<br>
+			   [8] Vine vacanta cu trenul din Franta ...<br>
+			   Numar total de linii: 4<br>
+            </td>
+         </tr>
+      </tbody>
+   </table> 
+
+	 </cod></cod></p></div>
+	 </div>
+	 
+	 
+	 <!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+	 
+	 <hr size="1">
+	 
+	 <h3 class="titlu_sectiune">
+	 Problema 3.
+	 </h3>
+	 
+	 <div style="margin-left: 40px;">
+	 <div class="text_normal">
+	 <p>
+	 Se dă un fișier text ce conține informațiile despre situația la o 
+anumită materie a unei grupe de studenți. Pentru fiecare student există 
+în fișier o linie de forma:
+	 </p><div class="cod">
+	 <p>
+	 Nume Prenume nota_activitate nota_examen
+	 </p>
+	 </div>
+	 <p></p>
+	 Să se definească o structură <cod>STUDENT</cod> care reține aceste informații. <br><br>
+	 Să se scrie un program care afișează:
+	 <ul>
+	 <li>nota finală pentru fiecare student, calculați nota finală (va exista un câmp corespunzâtor în structură), după formula: <cod>(nota_activitate  + 2 * nota_examen) / 3</cod>; nota se va afișa cu 2 zecimale.</li>
+	 <li>numărul de studenți promovați (ambele note &gt;= 5) și procentul de promovabilitate.</li>
+	 <li>numele studenților cu notă finală maximă.</li>
+	 </ul>
+	 <h4 class="test_exemplu">
+     Exemplu:
+  	</h4>
+  <table class="tabel_exemple">
+      <tbody>
+         <tr>
+            <td class="celula_header">
+               Intrare (<b>input.txt</b>)
+            </td>
+            <td class="celula_header">
+               Ieşire (<b>output.txt</b>)
+            </td>
+         </tr>
+         <tr>
+            <td class="celula_exemplu">
+			6<br>
+			Dinca Alexandru 8.4 9.5<br>
+			Georgescu Andrada 9.4 10<br>
+			Ghitulete Razvan 9.3 9.2<br>
+			Scoica Adrian 10 9.5<br>
+			Tabara Mihai 7.2 8.5<br>
+			Tiriplica Diana 9.5 9.5<br>
+			</td>
+            <td class="celula_exemplu">
+			Nota finala Dinca Alexandru: 9.13<br>
+			Nota finala Georgescu Andrada: 9.80<br>
+			Nota finala Ghitulete Razvan: 9.23<br>
+			Nota finala Scoica Adrian: 9.66<br>
+			Nota finala Tabara Mihai: 8.06<br>
+			Nota finala Tiriplica Diana: 9.50<br>
+			5 studenti promovati.<br>
+			100%(procent de promovabilitate)<br>
+			0 studenti au obtinut nota finala maxima<br>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+	 </div>
+	 </div>
+	 
+	 <!--Acesta este prototipul unei probleme. Pentru scrie o problema, da copy-paste la sfarsit si modifica textul. Decomenteaza ce e nevoie. Codul trebuie incadrat intre taguri de tip <cod>-->
+	 
+	 <hr size="1">
+	 
+	 <h3 class="titlu_sectiune">
+	 Problema 4.
+	 </h3>
+	 
+	 <div style="margin-left: 40px;">
+	 <div class="text_normal">
+	 <p>
+	 Se dă un fișier în care este memorată o tabelă de codificare, sub forma: 
+	 </p><div class="cod">
+	 <p>
+	 caracter_de_codificat caracter_codificat \n
+	 </p>
+	 </div>
+	 Să se scrie un program care primește ca argumente în linia de comandă 
+tabela de codificare, fișierul de codificat și numele fișierului în care
+ se va scrie codificarea (în această ordine) și codifică fișierul primit
+ conform codului.
+	 <p></p>
+	 <p>Presupunem un fișier <cod>tabela_de_codare.in</cod> care reține următoarele corespondențe:
+	</p><h4 class="test_exemplu">
+     Exemplu:
+  	</h4>
+  	<table class="tabel_exemple">
+      <tbody>
+         <tr>
+            <td class="celula_header">
+               <b>tabela_de_codare.in</b>
+            </td>
+         </tr>
+         <tr>
+            <td class="celula_exemplu">
+			a b<br>
+			b c<br>
+			c d<br>
+			d e<br>
+			e f<br>
+			f g<br>
+			g h<br>
+			h i<br>
+			i j<br>
+			j k<br>
+			k l<br>
+			l c<br>
+			m n<br>
+			n o<br>
+			o p<br>
+			! ?<br>
+			? !<br>
+			</td>
+         </tr>
+      </tbody>
+   </table>
+	<p>Aplicăm algoritmul de codare în fișierul <cod>input.txt</cod> și vom obține un fișier <cod>output.txt</cod>.
+	<br><br><cod>./executabil tabela_de_codare.in input.txt output.txt<cod><br>
+
+	</cod></cod></p><h4 class="test_exemplu">
+     Exemplu:
+  	</h4>
+  <table class="tabel_exemple">
+      <tbody>
+         <tr>
+            <td class="celula_header">
+               Intrare (<b>input.txt</b>)
+            </td>
+            <td class="celula_header">
+               Ieşire (<b>output.txt</b>)
+            </td>
+         </tr>
+         <tr>
+            <td class="celula_exemplu">
+			Abia astept examenul de PL !<br>
+			In vacanta dorm. Dorm pe partie !<br>
+			Cine vrea sa se joace PACMAN ?<br>
+			Voi n-aveti somn azi ?<br>
+			</td>
+            <td class="celula_exemplu">
+            BCjb bstfpt fxbnfouc ef PC ?<br>
+			Jo vbdbotb eprn. Eprn pf pbrtjf ?<br>
+			Djof vrfb sb sf kpbdf PBDNBO !<br>
+			Vpj o-bvftj spno bzj !<br>
+			</td>
+         </tr>
+      </tbody>
+   </table>
+
+	 </div>
+	 </div>
+	 
+	 ﻿﻿</body></html>

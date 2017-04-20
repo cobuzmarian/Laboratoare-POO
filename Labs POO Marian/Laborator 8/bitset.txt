@@ -1,0 +1,64 @@
+#include <iostream>
+
+using namespace std;
+
+class BitSet{
+  char v[100]; // Vector de 100 caractere = 800 biti
+  
+  public:
+     BitSet() {
+        for (int f = 0; f < 100; f++)
+          v[f] = 0; // initializare multime vida
+     }
+     
+     void toString() { // Afisare multime
+       cout << "{ ";
+       for (int f = 0; f < 100; f++){
+         if (v[f] != 0)
+           for (int g = 0; g < 8; g++)
+             if (v[f] & (1<<(7-g)))
+               cout << 8*f+g << ' ';
+       }
+       cout << "}" << endl;
+     }
+     
+     bool contains(int i) { // verificare apartenenta la multime 
+       return (v[i/8] & (1 << (7-i%8)));
+     }
+     
+     void add (int i) { // Adaugare la multime
+       v[i/8] = v[i/8] | (1 << (7-i%8));
+     }
+     
+     void remove (int i) { // Stergere din multime
+       v[i/8] = v[i/8] & (~(1 << (7-i%8)));
+     }
+    
+};
+
+int main() {
+    BitSet i;    
+    i.toString();
+    
+    //adaugari
+    i.add(1);
+    i.toString();
+    i.add(27);
+    i.toString();
+    i.add(43);
+    i.toString();
+    
+    // stergeri
+    i.remove(5);
+    i.toString();
+    i.remove(42);
+    i.toString();
+    i.remove(1);
+    i.toString();
+    i.remove(22);
+    i.toString();
+    
+    
+	system("PAUSE");
+    return 0;
+}

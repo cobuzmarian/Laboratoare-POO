@@ -1,0 +1,423 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>~/pc-materiale/Rezolvari/2010_2011/lab7/rezolvari7p2.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/pc-materiale/Rezolvari/2010_2011/lab7/rezolvari7p3.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/pc-materiale/Rezolvari/2010_2011/lab7/rezolvari7p4.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/pc-materiale/Rezolvari/2010_2011/lab7/rezolvari7p5.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/pc-materiale/Rezolvari/2010_2011/lab7/rezolvari7p6.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/pc-materiale/Rezolvari/2010_2011/lab7/rezolvari7p7.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/pc-materiale/Rezolvari/2010_2011/lab7/rezolvari7p8.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>~/pc-materiale/Rezolvari/2010_2011/lab7/rezolvari7p9.c.html</title><meta name="Generator" content="Vim/7.2"><meta http-equiv="content-type" content="text/html; charset=UTF-8"></head><body bgcolor="#ffffff" text="#000000">Pentru fisierele sursa cu rezolvarile, verificati arhiva.
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><br>
+<font color="#0000c0">&nbsp;* Problema 2</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#c000c0">#include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<br>
+<font color="#008000">int</font>* get_max(<font color="#008000">int</font>&nbsp;n, <font color="#008000">int</font>&nbsp;*v) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(n == <font color="#c00000">0</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">NULL</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;max = *v, *pmax = v; <font color="#0000c0">//max retine valoarea lui v[0], iar pmax retine un pointer la inceputul vectorului</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>(i = <font color="#c00000">1</font>; i &lt; n; i++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(*v &gt; max) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max
+ = *v;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pmax
+ = v;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;pmax;<br>
+}<br>
+<br>
+<font color="#008000">int</font>&nbsp;main(){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;n, v[<font color="#c00000">100</font>], i;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//printf("n=");</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c00000">"</font>, &amp;n);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>(i = <font color="#c00000">0</font>; i &lt; n; i++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c00000">"</font>, &amp;v[i]);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>* poz = get_max(n, v);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(poz != <font color="#c00000">NULL</font>)&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">%p</font><font color="#c000c0">\n</font><font color="#c000c0">%d</font><font color="#c000c0">\n</font><font color="#c00000">"</font>, poz, *poz);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">else</font>&nbsp;printf(<font color="#c00000">"Vectorul are 0 elemente.</font><font color="#c000c0">\n</font><font color="#c00000">"</font>); <font color="#0000c0">//daca am incerca sa accesam poz, am primi Segmentation fault pentru ca poz este NULL in acest caz</font><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><br>
+<font color="#0000c0">&nbsp;* Problema 3</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#c000c0">#include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<br>
+<font color="#008000">void</font>&nbsp;count(<font color="#008000">int</font>&nbsp;n, <font color="#008000">int</font>&nbsp;*v, <font color="#008000">int</font>&nbsp;*zero, <font color="#008000">int</font>&nbsp;*poz, <font color="#008000">int</font>&nbsp;*neg){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;i;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*zero = *poz = *neg = <font color="#c00000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>(i = <font color="#c00000">0</font>; i &lt; n; i++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(v[i] == <font color="#c00000">0</font>) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(*zero)++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">else</font>&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(v[i] &lt; <font color="#c00000">0</font>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(*neg)++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(*poz)++;<br>
+}<br>
+<br>
+<font color="#008000">int</font>&nbsp;main(){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;v[<font color="#c00000">100</font>], i, n;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;po = <font color="#c00000">0</font>, ne = <font color="#c00000">0</font>, ze = <font color="#c00000">0</font>;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//printf("n=");</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c00000">"</font>, &amp;n);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>(i = <font color="#c00000">0</font>; i &lt; n; i++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c00000">"</font>, &amp;v[i]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count(n, v, &amp;ze, &amp;po, &amp;ne);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"zero : </font><font color="#c000c0">%d</font><font color="#c000c0">\n</font><font color="#c00000">poz : </font><font color="#c000c0">%d</font><font color="#c000c0">\n</font><font color="#c00000">neg : </font><font color="#c000c0">%d</font><font color="#c000c0">\n</font><font color="#c00000">"</font>, ze, po, ne);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><br>
+<font color="#0000c0">&nbsp;* Problema 4</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#c000c0"># include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<font color="#c000c0"># include </font><font color="#c00000">&lt;string.h&gt;</font><br>
+<br>
+<font color="#008000">char</font>* strdel(<font color="#008000">char</font>* p, <font color="#008000">int</font>&nbsp;n)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//caz 1: nu exista mai mult de n caractere incepand de la pozitia p</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(strlen(p) &lt;= n) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*p = <font color="#c000c0">'\0'</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;p;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//in caz contrar, facem stergerea copiind caracterele de la p+n peste cele de la p</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strcpy(p, p + n);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;p;<br>
+}<br>
+<br>
+<font color="#008000">char</font>* strins(<font color="#008000">char</font>* p, <font color="#008000">char</font>&nbsp;*s)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//pas 1: copiem sirul din p intr-o alta locatie</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">char</font>&nbsp;*tail_p = strdup(p);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//pas 2: copiem la pozitia p noul sir</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strcpy(p, s);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//pas 3: copiem la sfarsit caracterele care existau inainte in p</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strcat(p, tail_p);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;p;<br>
+}<br>
+<br>
+<font color="#008000">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">char</font>&nbsp;s[<font color="#c00000">100</font>],replacethis[<font color="#c00000">100</font>],withthis[<font color="#c00000">100</font>];<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gets(s);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#c00000">"</font><font color="#c000c0">%s</font><font color="#c00000">&nbsp;</font><font color="#c000c0">%s</font><font color="#c00000">"</font>, replacethis, withthis);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">char</font>&nbsp;*p;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// pornim cu p fiind prima aparitie a sirului &lt;replacethis&gt; in sirul &lt;s&gt;</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// atata timp cat mai exista aparitii, facem inlocuirea si setam "p" ca fiind adresa urmatoarei</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// aparitii a sirului &lt;replacethis&gt; in &lt;s&gt;</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//
+ ATENTIE! este foarte important sa dam p=strstr(p+strlen(withthis),...) 
+pentru ca in caz contrar programul ar cicla la infinit daca sirul 
+&lt;replacethis&gt; se regaseste in &lt;withthis&gt;</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">// Cu alte cuvinte, am inlocui in inlocuire, in locuire, in inlocuire...</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>&nbsp;(p = strstr(s, replacethis); p != <font color="#c00000">NULL</font>; p = strstr(p + strlen(withthis), replacethis)){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strdel(p, strlen(replacethis));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strins(p, withthis);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">%s</font><font color="#c000c0">\n</font><font color="#c00000">"</font>, s);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><font color="#0000c0">&nbsp;</font><br>
+<font color="#0000c0">&nbsp;* Problema 5</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#c000c0"># include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<font color="#c000c0"># include </font><font color="#c00000">&lt;string.h&gt;</font><br>
+<br>
+<font color="#008000">char</font>* substr(<font color="#008000">char</font>* src, <font color="#008000">int</font>&nbsp;n, <font color="#008000">char</font>* dest)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strncpy(dest, src, n);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(n &lt;= strlen(src)) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dest[n] = <font color="#c000c0">'\0'</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;dest;<br>
+}<br>
+<br>
+<font color="#008000">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">char</font>&nbsp;s[<font color="#c00000">100</font>],subs[<font color="#c00000">100</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;poz,len;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#c00000">"</font><font color="#c000c0">%s</font><font color="#c00000">&nbsp;</font><font color="#c000c0">%d</font><font color="#c00000">&nbsp;</font><font color="#c000c0">%d</font><font color="#c00000">"</font>,s, &amp;poz, &amp;len);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;substr(s + poz, len, subs);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">%s</font><font color="#c00000">"</font>,subs);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">\n</font><font color="#c00000">"</font>);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><br>
+<font color="#0000c0">&nbsp;* Problema 6</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#c000c0"># include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<font color="#c000c0"># include </font><font color="#c00000">&lt;string.h&gt;</font><br>
+<font color="#c000c0"># include </font><font color="#c00000">&lt;limits.h&gt;</font><br>
+<br>
+<font color="#008000">int</font>&nbsp;strdcmp(<font color="#008000">char</font>* s1, <font color="#008000">char</font>* s2)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;l1 = strlen(s1), l2 = strlen(s2);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(l1 &lt; l2) <font color="#804000">return</font>&nbsp;-<font color="#c00000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(l1 &gt; l2) <font color="#804000">return</font>&nbsp;<font color="#c00000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">while</font>&nbsp;((*s1) == (*s2) &amp;&amp; (*s1) != <font color="#c000c0">'\0'</font>){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s1++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s2++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;((*s1) &lt; (*s2)) <font color="#804000">return</font>&nbsp;-<font color="#c00000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;((*s1) &gt; (*s2)) <font color="#804000">return</font>&nbsp;<font color="#c00000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+<br>
+<font color="#008000">int</font>&nbsp;readint()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">char</font>&nbsp;buff[<font color="#c00000">100</font>], int_max[<font color="#c00000">100</font>];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sprintf(int_max, <font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c00000">"</font>, <font color="#c00000">INT_MAX</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#c00000">"</font><font color="#c000c0">%s</font><font color="#c00000">"</font>, buff);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(strdcmp(buff, int_max) == <font color="#c00000">1</font>) <font color="#804000">return</font>&nbsp;-<font color="#c00000">INT_MAX</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;atoi(buff);<br>
+}<br>
+<br>
+<font color="#008000">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;n = readint();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c000c0">\n</font><font color="#c00000">"</font>,n);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><br>
+<font color="#0000c0">&nbsp;* Problema 7</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#c000c0"># include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<font color="#c000c0"># include </font><font color="#c00000">&lt;string.h&gt;</font><br>
+<br>
+<font color="#008000">char</font>* next(<font color="#008000">char</font>* from, <font color="#008000">char</font>* word)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//pas 1: sarim peste caracterele care sunt diferite de '\0' sau de litere mici</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">while</font>&nbsp;((*from) != <font color="#c000c0">'\0'</font>&nbsp;&amp;&amp; ((*from) &lt; <font color="#c00000">'a'</font>&nbsp;|| (*from) &gt; <font color="#c00000">'z'</font>)) from++;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//daca nu mai sunt litere in from</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;((*from) == <font color="#c000c0">'\0'</font>) <font color="#804000">return</font>&nbsp;<font color="#c00000">NULL</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//pas 2: sarim peste litere</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">char</font>&nbsp;*p = from;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">while</font>&nbsp;((*p) != <font color="#c000c0">'\0'</font>&nbsp;&amp;&amp; (*p) &gt;= <font color="#c00000">'a'</font>&nbsp;&amp;&amp; (*p) &lt;= <font color="#c00000">'z'</font>) p++;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//pas 3: copiem in word (p-from) caractere</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strncpy(word, from, p - from);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;word[p - from] = <font color="#c000c0">'\0'</font>;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;p;<br>
+}<br>
+<br>
+<font color="#008000">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">char</font>&nbsp;buff[<font color="#c00000">100</font>], *p, cuv[<font color="#c00000">100</font>];<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gets(buff);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">for</font>&nbsp;(p = next(buff, cuv); p != <font color="#c00000">NULL</font>; p = next(p, cuv))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">%s</font><font color="#c00000">&nbsp;"</font>, cuv);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">\n</font><font color="#c00000">"</font>);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><br>
+<font color="#0000c0">&nbsp;* Problema 8</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#c000c0"># include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<font color="#c000c0"># include </font><font color="#c00000">&lt;limits.h&gt;</font><br>
+<font color="#c000c0"># include </font><font color="#c00000">&lt;stdlib.h&gt;</font><br>
+<font color="#c000c0"># include </font><font color="#c00000">&lt;math.h&gt;</font><br>
+<br>
+<font color="#c000c0"># define EPS </font><font color="#c00000">1e-5</font><br>
+<br>
+<font color="#008000">void</font>&nbsp;panta(<font color="#008000">int</font>&nbsp;x1, <font color="#008000">int</font>&nbsp;y1, <font color="#008000">int</font>&nbsp;x2, <font color="#008000">int</font>&nbsp;y2, <font color="#008000">float</font>&nbsp;*m, <font color="#008000">float</font>&nbsp;*n)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(x1 == x2){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*m = <font color="#c00000">INT_MAX</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*n = <font color="#c00000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(x2 &lt; x1){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;panta(x2, y2, x1, y1, m, n);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*m = ((<font color="#008000">float</font>)(y2 - y1)) / (x2 - x1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*n = y1 - (*m) * x1;<br>
+}<br>
+<br>
+<font color="#008000">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;x1, x2, y1, y2, xverif, yverif;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">float</font>&nbsp;m1, m2, n1, n2;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//printf("Primul punct: ");</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#c00000">"</font><font color="#c000c0">%d%d</font><font color="#c00000">"</font>, &amp;x1, &amp;y1);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//printf("Al doilea punct: ");</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#c00000">"</font><font color="#c000c0">%d%d</font><font color="#c00000">"</font>, &amp;x2, &amp;y2);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#0000c0">//printf("Punctul de verificare: ");</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#c00000">"</font><font color="#c000c0">%d%d</font><font color="#c00000">"</font>, &amp;xverif, &amp;yverif);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;panta(x1, y1, x2, y2, &amp;m1, &amp;n1);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;panta(x1, y1, xverif, yverif, &amp;m2, &amp;n2);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(abs(m1 - m2) &lt;= EPS)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"DA</font><font color="#c000c0">\n</font><font color="#c00000">"</font>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">else</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"NU</font><font color="#c000c0">\n</font><font color="#c00000">"</font>);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+<br>
+</font><br>
+<hr size="1">
+
+
+
+
+
+
+<font face="monospace">
+<font color="#0000c0">/*</font><br>
+<font color="#0000c0">&nbsp;* Problema 9</font><br>
+<font color="#0000c0">&nbsp;</font><font color="#0000c0">*/</font><br>
+<br>
+<font color="#c000c0"># include </font><font color="#c00000">&lt;stdio.h&gt;</font><br>
+<font color="#c000c0"># include </font><font color="#c00000">&lt;ctype.h&gt;</font><br>
+<br>
+<font color="#008000">void</font>&nbsp;incrementeaza_timp(<font color="#008000">int</font>&nbsp;*h, <font color="#008000">int</font>&nbsp;*m, <font color="#008000">int</font>&nbsp;*s, <font color="#008000">char</font>&nbsp;*sufix)<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(*s)++;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sufix[<font color="#c00000">0</font>] = toupper(sufix[<font color="#c00000">0</font>]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sufix[<font color="#c00000">1</font>] = toupper(sufix[<font color="#c00000">1</font>]);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(*s &gt; <font color="#c00000">59</font>) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*s = <font color="#c00000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(*m)++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">else</font>&nbsp;<font color="#804000">return</font>;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(*m &gt; <font color="#c00000">59</font>) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*m = <font color="#c00000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(*h)++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">else</font>&nbsp;<font color="#804000">return</font>;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(sufix[<font color="#c00000">0</font>] == <font color="#c00000">'P'</font>&nbsp;&amp;&amp; *h &gt;= <font color="#c00000">12</font>) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*h = <font color="#c00000">0</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sufix[<font color="#c00000">0</font>] = <font color="#c00000">'A'</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">if</font>&nbsp;(sufix[<font color="#c00000">0</font>] == <font color="#c00000">'A'</font>&nbsp;&amp;&amp; *h &gt;= <font color="#c00000">13</font>) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*h = <font color="#c00000">1</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sufix[<font color="#c00000">0</font>] = <font color="#c00000">'P'</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+}<br>
+<br>
+<font color="#008000">int</font>&nbsp;main()<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">int</font>&nbsp;h,m,s;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#008000">char</font>&nbsp;sufix[<font color="#c00000">3</font>];<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(<font color="#c00000">"</font><font color="#c000c0">%d</font><font color="#c00000">&nbsp;</font><font color="#c000c0">%d</font><font color="#c00000">&nbsp;</font><font color="#c000c0">%d</font><font color="#c00000">&nbsp;</font><font color="#c000c0">%s</font><font color="#c00000">"</font>, &amp;h, &amp;m, &amp;s, sufix);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;incrementeaza_timp(&amp;h, &amp;m, &amp;s, sufix);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(<font color="#c00000">"</font><font color="#c000c0">%02d</font><font color="#c00000">:</font><font color="#c000c0">%02d</font><font color="#c00000">:</font><font color="#c000c0">%02d</font><font color="#c00000">&nbsp;</font><font color="#c000c0">%s</font><font color="#c000c0">\n</font><font color="#c00000">"</font>,h, m, s, sufix);<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#804000">return</font>&nbsp;<font color="#c00000">0</font>;<br>
+}<br>
+</font><br>
+</body></html>
